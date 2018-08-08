@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
 import Header from './header'
+import AuthorWithBio from './authorWithBio'
 
 injectGlobal`
   html {
@@ -45,6 +46,7 @@ const Layout = ({children, data}) => (
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title}/>
       <RootDiv>
+        <AuthorWithBio/>
         {children}
       </RootDiv>
       </>
