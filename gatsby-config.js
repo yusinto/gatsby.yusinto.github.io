@@ -3,10 +3,11 @@ module.exports = {
     title: 'Gatsby Default Starter',
   },
   plugins: [
-    'gatsby-plugin-styled-components',
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',
         short_name: 'starter',
@@ -17,12 +18,19 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography.js`,
+        pathToConfigModule: 'src/utils/typography.js',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/markdown`,
+        name: 'markdown-pages',
+      },
+    },
+    'gatsby-transformer-remark'
   ],
 }
