@@ -8,7 +8,6 @@ const RootDiv = styled.div`
   top: 0;
   width: 100%;
   height: ${StickyHeaderHeight}px;
-  //border: 1px brown solid;
   opacity: 0.96;
   background: white;
   z-index: 2;
