@@ -6966,6 +6966,10 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-lines-ellipsis@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.13.2.tgz#0d5726ab1f5e8107398262f5faf16e2e4de08951"
+
 react-side-effect@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
