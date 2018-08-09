@@ -18,6 +18,12 @@ const Logo = styled.h1`
   margin-left: 20px;
   font-size: 25px;
   font-weight: bold;
+  
+  @media(min-width: 768px) {
+    margin: 0;
+    text-align: center;
+    font-size: 32px;
+  } 
 `
 
 const Header = ({siteTitle}) => (

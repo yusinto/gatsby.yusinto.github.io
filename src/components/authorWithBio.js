@@ -13,7 +13,7 @@ const Bio = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.8;
 `
 
@@ -26,15 +26,11 @@ const ProfilePic = styled.div`
   background-size: cover;
 `
 const Name = styled.div`
-  font-size: 12px;
   font-weight: bold;
   opacity: 1;
 `
-const Description = styled.div`
-  max-width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const DateReadMinutes = styled.div`
+  font-size: 11.5px;
 `
 
 export default () => (
@@ -42,12 +38,11 @@ export default () => (
     <ProfilePic/>
     <Bio>
       <Name>Yusinto Ngadiman</Name>
-      <Description>
-        Frontend Lead at Qantas working on assure.com
-        Passionate about docker, react, graphql and everything
+      <div>
+        Addicted to react, graphql & everything
         else javascript.
-      </Description>
-      <div>8 Aug | 5 min read</div>
+      </div>
+      <DateReadMinutes>8 Aug | 5 min read</DateReadMinutes>
     </Bio>
   </RootDiv>
 )
