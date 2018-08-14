@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: `ReactJunkie - Yusinto Ngadiman's blog`,
   },
   plugins: [
     'gatsby-plugin-offline',
@@ -31,6 +31,29 @@ module.exports = {
         name: 'markdown-pages',
       },
     },
-    'gatsby-transformer-remark'
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {
+                sh: 'bash',
+              },
+            },
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow"
+            }
+          },
+        ],
+      },
+    },
   ],
 }

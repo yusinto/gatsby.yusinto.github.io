@@ -1,4 +1,5 @@
 import React from 'react'
+// import {graphql} from 'gatsby';
 import styled from 'styled-components'
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHoc from 'react-lines-ellipsis/lib/responsiveHOC'
@@ -35,16 +36,31 @@ const DateReadMinutes = styled.div`
   font-size: 11.5px;
 `
 
-export default () => (
-  <RootDiv>
-    <ProfilePic/>
-    <Bio>
-      <Name>Yusinto Ngadiman</Name>
-      <ResponsiveEllipsis
-        text='Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.'
-        maxLine='2'
-      />
-      <DateReadMinutes>8 Aug | 5 min read</DateReadMinutes>
-    </Bio>
-  </RootDiv>
-)
+export default ({data}) => {
+  // const {markdownRemark: {frontmatter: {date}}} = data;
+  return (
+    <RootDiv>
+      <ProfilePic/>
+      <Bio>
+        <Name>Yusinto Ngadiman</Name>
+        <ResponsiveEllipsis
+          text='Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.'
+          maxLine='2'
+        />
+        <DateReadMinutes>8 Aug | 5 min read</DateReadMinutes>
+      </Bio>
+    </RootDiv>
+  )
+}
+
+// export const markdownTemplateQuery = graphql`
+//     query GetBlog($path: String!) {
+//         markdownRemark(frontmatter: { path: { eq: $path } }) {
+//             frontmatter {
+//                 date
+//                 path
+//                 title
+//             }
+//         }
+//     }
+// `;

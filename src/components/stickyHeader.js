@@ -25,7 +25,7 @@ const Logo = styled.h1`
   } 
 `
 
-const Header = ({siteTitle}) => (
+const Header = () => (
   <RootDiv>
     <Logo>
       <Link to="/">ReactJunkie</Link>

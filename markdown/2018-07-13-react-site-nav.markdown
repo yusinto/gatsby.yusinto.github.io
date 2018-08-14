@@ -21,7 +21,7 @@ tag:
 
 Stripe has a beautiful site nav and this package is inspired by that.
 Introducing react-site-nav, a beautifully animated site nav powered by styled components
-and css animations. Play with the [live demo](https://now-evztwufdfm.now.sh){:target="_blank"} powered by now
+and css animations. Play with the [live demo](https://now-evztwufdfm.now.sh) powered by now
 or check out the video below.
 
 <p align="center">
@@ -35,11 +35,11 @@ Let's use react-site-nav and add a kick ass nav to create-react-app!
 
 We'll create a new create-react-app project and install react-site-nav the usual way:
 
-{% highlight bash %}
+```sh
 create-react-app cra-with-nav
 cd cra-with-nav
 yarn add react-site-nav
-{% endhighlight %}
+```
 
 ## Step 2: Adding SiteNav and ContentGroup
 
@@ -61,19 +61,19 @@ It takes only a few lines of code to get up and going, but it still looks very b
 Let's make it pretty! First, set our SiteNav to debug mode so the content group stays open
 when we hover over it:
 
-{% highlight javascript %}
+```js
 <SiteNav debug={true}>
-{% endhighlight %}
+```
 
 Let's get rid of those ugly default list style, margin and padding:
 
-{% highlight css %}
+```css
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-{% endhighlight %}
+```
 
 Next instead of a bullet point, let's have an image next to our text. Our jsx becomes:
 
@@ -81,19 +81,19 @@ Next instead of a bullet point, let's have an image next to our text. Our jsx be
 
 Let's use flex for our list item so we can easily center everything:
 
-{% highlight css %}
+```css
 li {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
 }
-{% endhighlight %}
+```
 
 It's starting to look good! Just some finishing touches now to make the images and text vertically
 aligned and some hover effects:
 
-{% highlight css %}
+```css
 li:hover {
     opacity: 0.7;
 }
@@ -103,27 +103,27 @@ li > span {
     text-align: left;
     margin-left: 10px;
 }
-{% endhighlight %}
+```
 
 ## Tadaa
 ![Before and after](/assets/images/before-after.png)
 
-Check out the live demo [here](https://build-licattzisr.now.sh/){:target="_blank"}. The complete stylesheet:
+Check out the live demo [here](https://build-licattzisr.now.sh/). The complete stylesheet:
 
 <script src="https://gist.github.com/yusinto/9a04ad983ff2b03a140683d45ef9405b.js"></script>
 
 ## Next steps
 There are still loads left to do, like mobile and sizing near edges. I'll get to those in time!
 
-For more, check out [github](https://github.com/yusinto/react-site-nav){:target="_blank"}. There are three fully
-working spas including the code in this blog in the [examples](https://github.com/yusinto/react-site-nav/tree/master/examples){:target="_blank"}
-folder. The code in this blog is under [examples/cra-with-nav](https://github.com/yusinto/react-site-nav/tree/master/examples/cra-with-nav){:target="_blank"}.
+For more, check out [github](https://github.com/yusinto/react-site-nav). There are three fully
+working spas including the code in this blog in the [examples](https://github.com/yusinto/react-site-nav/tree/master/examples)
+folder. The code in this blog is under [examples/cra-with-nav](https://github.com/yusinto/react-site-nav/tree/master/examples/cra-with-nav).
 
 Please star it if you like it! Thanks.
 
 ## Thanks
-[Max Stoiber](https://mxstbr.com/){:target="_blank"} is awesome.
-[Styled components](https://www.styled-components.com/){:target="_blank"} is awesome.
-[Now](https://zeit.co/now){:target="_blank"} is awesome. Thanks.
+[Max Stoiber](https://mxstbr.com/) is awesome.
+[Styled components](https://www.styled-components.com/) is awesome.
+[Now](https://zeit.co/now) is awesome. Thanks.
 
 ---------------------------------------------------------------------------------------
