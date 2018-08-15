@@ -1,6 +1,6 @@
 ---
 path: "/react-site-nav"
-date: "2018-07-13 07:30"
+date: "13 Jul 2018"
 title: "Introducing react-site-nav"
 tag:
 - react
@@ -24,9 +24,7 @@ Introducing react-site-nav, a beautifully animated site nav powered by styled co
 and css animations. Play with the [live demo](https://now-evztwufdfm.now.sh) powered by now
 or check out the video below.
 
-<p align="center">
-{% youtube 4fThkT_vlBE %}
-</p>
+`youtube: 4fThkT_vlBE`
 
 ## Goal
 Let's use react-site-nav and add a kick ass nav to create-react-app!
@@ -43,15 +41,46 @@ yarn add react-site-nav
 
 ## Step 2: Adding SiteNav and ContentGroup
 
-Good stuff. Now we are going to add two components from react-site-nav to App.js: SiteNav and ContentGroup.
+Good stuff. Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
-<script src="https://gist.github.com/yusinto/c53edbc178d9dd3289c1a80050e9f20f.js"></script>
+```js
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import SiteNav, {ContentGroup} from 'react-site-nav';
+
+export default () => (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo"/>
+        <h1 className="App-title">Welcome to React</h1>
+      </header>
+      <SiteNav>
+        <ContentGroup title="About" width="240" height="140">
+          <ul>
+            <li>About me</li>
+            <li>My projects</li>
+          </ul>
+        </ContentGroup>
+        <ContentGroup title="Contact" width="200" height="150">
+          <ul>
+            <li><a href="https://github.com/yusinto">Github</a></li>
+            <li><a href="https://twitter.com/yusinto">Twitter</a></li>
+          </ul>
+        </ContentGroup>
+      </SiteNav>
+      <p className="App-intro">
+        To get started, edit <code>src/App.js</code> and save to reload.
+      </p>
+    </div>
+);
+```
 
 SiteNav is the root react component that contains ContentGroup children.
 Each ContentGroup can accept 3 props: title, width and height.
 
 <p align="center">
-<img src="/assets/images/react-site-nav-content-group.png" width="400"/>
+<img src="src/pages/react-site-nav/content-group.png" width="400"/>
 </p>
 
 

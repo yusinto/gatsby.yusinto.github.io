@@ -36,8 +36,8 @@ const DateReadMinutes = styled.div`
   font-size: 11.5px;
 `
 
-export default ({data}) => {
-  // const {markdownRemark: {frontmatter: {date}}} = data;
+export default ({datePosted}) => {
+
   return (
     <RootDiv>
       <ProfilePic/>
@@ -47,20 +47,8 @@ export default ({data}) => {
           text='Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.'
           maxLine='2'
         />
-        <DateReadMinutes>8 Aug | 5 min read</DateReadMinutes>
+        <DateReadMinutes>{datePosted} | 5 min read</DateReadMinutes>
       </Bio>
     </RootDiv>
   )
 }
-
-// export const markdownTemplateQuery = graphql`
-//     query GetBlog($path: String!) {
-//         markdownRemark(frontmatter: { path: { eq: $path } }) {
-//             frontmatter {
-//                 date
-//                 path
-//                 title
-//             }
-//         }
-//     }
-// `;

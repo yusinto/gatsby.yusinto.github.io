@@ -28,7 +28,7 @@ const RootDiv = styled.div`
   padding: ${StickyHeaderHeight}px 1.0875rem 1.45rem;
 `
 
-const Layout = ({children, data}) => (
+const Layout = ({children, data, datePosted}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -52,7 +52,7 @@ const Layout = ({children, data}) => (
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title}/>
       <RootDiv>
-        <AuthorWithBio/>
+        <AuthorWithBio datePosted={datePosted}/>
         {children}
       </RootDiv>
       </>
@@ -62,6 +62,7 @@ const Layout = ({children, data}) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  datePosted: PropTypes.string,
 }
 
 export default Layout

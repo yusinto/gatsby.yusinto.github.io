@@ -5,10 +5,10 @@ import Layout from '../components/layout'
 export default ({data}) => {
   const {markdownRemark} = data;
   const {frontmatter, html} = markdownRemark;
+  const {date, title} = frontmatter;
   return (
-    <Layout>
-      <h1>{frontmatter.title}</h1>
-      {/*<h2>{frontmatter.date}</h2>*/}
+    <Layout datePosted={date}>
+      <h1>{title}</h1>
       <div
         className="blog-post-content"
         dangerouslySetInnerHTML={{__html: html}}
