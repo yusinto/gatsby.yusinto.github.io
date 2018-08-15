@@ -6,7 +6,6 @@ import styled, {injectGlobal} from 'styled-components'
 import Header from './stickyHeader'
 import AuthorWithBio from './authorWithBio'
 import {StickyHeaderHeight} from '../constants'
-import 'prismjs/themes/prism-tomorrow.css'
 
 injectGlobal`
   html {
