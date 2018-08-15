@@ -141,7 +141,7 @@ Check out the live demo [here](https://build-licattzisr.now.sh/). The complete s
 
 <script src="https://gist.github.com/yusinto/9a04ad983ff2b03a140683d45ef9405b.js"></script>
 
-### Next steps
+## Next steps
 There are still loads left to do, like mobile and sizing near edges. I'll get to those in time!
 
 For more, check out [github](https://github.com/yusinto/react-site-nav). There are three fully
@@ -150,7 +150,7 @@ folder. The code in this blog is under [examples/cra-with-nav](https://github.co
 
 Please star it if you like it! Thanks.
 
-# Thanks
+## Thanks
 [Max Stoiber](https://mxstbr.com/) is awesome.
 [Styled components](https://www.styled-components.com/) is awesome.
 [Now](https://zeit.co/now) is awesome. Thanks.
