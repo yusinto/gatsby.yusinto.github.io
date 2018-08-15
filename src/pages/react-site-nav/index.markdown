@@ -2,6 +2,9 @@
 path: "/react-site-nav"
 date: "13 Jul 2018"
 title: "Introducing react-site-nav"
+attachments: 
+ - "./content-group.png"
+ - "./before-after.png"
 tag:
 - react
 - site
@@ -80,7 +83,7 @@ SiteNav is the root react component that contains ContentGroup children.
 Each ContentGroup can accept 3 props: title, width and height.
 
 <p align="center">
-<img src="src/pages/react-site-nav/content-group.png" width="400"/>
+<img src="/static/content-group-30bbe1838f03f6b99727bb0b7e05bdb3.png" width="400"/>
 </p>
 
 
@@ -135,7 +138,7 @@ li > span {
 ```
 
 ### Tadaa
-![Before and after](/assets/images/before-after.png)
+![Before and after](/static/before-after-ce4e99e70fefa6289df75704480ee784.png)
 
 Check out the live demo [here](https://build-licattzisr.now.sh/). The complete stylesheet:
 
