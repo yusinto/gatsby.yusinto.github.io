@@ -26,10 +26,10 @@ or check out the video below.
 
 `youtube: 4fThkT_vlBE`
 
-## Goal
+### Goal
 Let's use react-site-nav and add a kick ass nav to create-react-app!
 
-## Step 1: Install
+### Step 1: Install
 
 We'll create a new create-react-app project and install react-site-nav the usual way:
 
@@ -39,11 +39,11 @@ cd cra-with-nav
 yarn add react-site-nav
 ```
 
-## Step 2: Adding SiteNav and ContentGroup
+### Step 2: Adding SiteNav and ContentGroup
 
 Good stuff. Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
-```js
+```js{4,12-25}
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -84,7 +84,7 @@ Each ContentGroup can accept 3 props: title, width and height.
 </p>
 
 
-## Step 3: Making it pretty
+### Step 3: Making it pretty
 
 It takes only a few lines of code to get up and going, but it still looks very basic.
 Let's make it pretty! First, set our SiteNav to debug mode so the content group stays open
@@ -134,14 +134,14 @@ li > span {
 }
 ```
 
-## Tadaa
+### Tadaa
 ![Before and after](/assets/images/before-after.png)
 
 Check out the live demo [here](https://build-licattzisr.now.sh/). The complete stylesheet:
 
 <script src="https://gist.github.com/yusinto/9a04ad983ff2b03a140683d45ef9405b.js"></script>
 
-## Next steps
+### Next steps
 There are still loads left to do, like mobile and sizing near edges. I'll get to those in time!
 
 For more, check out [github](https://github.com/yusinto/react-site-nav). There are three fully
@@ -150,7 +150,7 @@ folder. The code in this blog is under [examples/cra-with-nav](https://github.co
 
 Please star it if you like it! Thanks.
 
-## Thanks
+# Thanks
 [Max Stoiber](https://mxstbr.com/) is awesome.
 [Styled components](https://www.styled-components.com/) is awesome.
 [Now](https://zeit.co/now) is awesome. Thanks.

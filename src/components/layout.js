@@ -20,6 +20,16 @@ injectGlobal`
     text-decoration: none;
     opacity: 0.7;
   }
+  
+  .gatsby-highlight-code-line {
+    background-color: #5068ad;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #f99;
+  }
 `
 
 const RootDiv = styled.div`
