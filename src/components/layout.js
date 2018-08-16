@@ -12,6 +12,11 @@ injectGlobal`
     font-family: sans-serif;
   }
   
+  h2, h3, h4, h5 {
+    margin-top: 50px;
+    margin-bottom: 12px;
+  }
+  
   body {
     margin: 0;
   }
@@ -29,6 +34,10 @@ injectGlobal`
     padding-right: 1em;
     padding-left: 0.75em;
     border-left: 0.25em solid #f99;
+  }
+  
+  .embedVideoIframe {
+    margin-bottom: 0;
   }
 `
 

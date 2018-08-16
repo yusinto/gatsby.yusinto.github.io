@@ -25,6 +25,9 @@ export const markdownTemplateQuery = graphql`
                 date
                 path
                 title
+                files {
+                    publicURL
+                }
             }
         }
     }

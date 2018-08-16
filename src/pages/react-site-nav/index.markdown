@@ -2,7 +2,7 @@
 path: "/react-site-nav"
 date: "13 Jul 2018"
 title: "Introducing react-site-nav"
-attachments: 
+files: 
  - "./content-group.png"
  - "./before-after.png"
 tag:
@@ -29,7 +29,7 @@ or check out the video below.
 
 `youtube: 4fThkT_vlBE`
 
-### Goal
+## Goal
 Let's use react-site-nav and add a kick ass nav to create-react-app!
 
 ### Step 1: Install
@@ -44,7 +44,7 @@ yarn add react-site-nav
 
 ### Step 2: Adding SiteNav and ContentGroup
 
-Good stuff. Now we are going to add two components to App.js: SiteNav and ContentGroup.
+Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
 ```js{4,12-25}
 import React from 'react';
@@ -81,9 +81,9 @@ export default () => (
 
 SiteNav is the root react component that contains ContentGroup children.
 Each ContentGroup can accept 3 props: title, width and height.
-
+abc
 <p align="center">
-<img src="/static/content-group-30bbe1838f03f6b99727bb0b7e05bdb3.png" width="400"/>
+<img src="/static/content-group-396901a1a29375028ed6be56abf069b0.png" width="400" style="border: 1px solid #2d2d2d"/>
 </p>
 
 
