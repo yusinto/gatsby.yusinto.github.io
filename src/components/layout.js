@@ -12,9 +12,17 @@ injectGlobal`
     font-family: sans-serif;
   }
   
+  h1 {
+    margin-top: 50px;
+  }
+  
   h2, h3, h4, h5 {
     margin-top: 50px;
     margin-bottom: 12px;
+  }
+  
+  p {
+    margin-bottom: 10px;
   }
   
   body {
@@ -24,6 +32,10 @@ injectGlobal`
   a:hover {
     text-decoration: none;
     opacity: 0.7;
+  }
+  
+  .gatsby-highlight {
+    margin-bottom: 30px;
   }
   
   .gatsby-highlight-code-line {
@@ -38,6 +50,12 @@ injectGlobal`
   
   .embedVideoIframe {
     margin-bottom: 0;
+  }
+  
+  #markdownImage {
+    border: 1px solid #2d2d2d;
+    box-shadow: 6px 7px 5px -1px rgba(0,0,0,0.11);
+    border-radius: 7px;
   }
 `
 

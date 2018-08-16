@@ -83,7 +83,7 @@ SiteNav is the root react component that contains ContentGroup children.
 Each ContentGroup can accept 3 props: title, width and height.
 abc
 <p align="center">
-<img src="/static/content-group-396901a1a29375028ed6be56abf069b0.png" width="400" style="border: 1px solid #2d2d2d"/>
+<img src="/static/content-group-396901a1a29375028ed6be56abf069b0.png" width="400" id="markdownImage"/>
 </p>
 
 
@@ -109,7 +109,17 @@ ul {
 
 Next instead of a bullet point, let's have an image next to our text. Our jsx becomes:
 
-<script src="https://gist.github.com/yusinto/840ecdba5ce0d8f4bf85fa11ae2a4e51.js"></script>
+```js
+import aboutMeImage from './about-me.png';
+
+  // ... other code omitted for brevity
+  <ul>
+    <li>
+      <img src={aboutMeImage} height="40"/>
+      <span>About me</span>
+    </li>
+  </ul>
+```
 
 Let's use flex for our list item so we can easily center everything:
 
@@ -137,21 +147,44 @@ li > span {
 }
 ```
 
-### Tadaa
-![Before and after](/static/before-after-ce4e99e70fefa6289df75704480ee784.png)
+Final result looks like this:
 
-Check out the live demo [here](https://build-licattzisr.now.sh/). The complete stylesheet:
+<img src="/static/before-after-ce4e99e70fefa6289df75704480ee784.png" id="markdownImage"/>
 
-<script src="https://gist.github.com/yusinto/9a04ad983ff2b03a140683d45ef9405b.js"></script>
+Check out the live demo [here](https://build-licattzisr.now.sh/). The complete stylesheet looks
+like this:
+
+```css
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+li:hover {
+    opacity: 0.7;
+}
+
+li > span {
+    flex: 0 0 100px;
+    text-align: left;
+    margin-left: 10px;
+}
+```
 
 ## Next steps
-There are still loads left to do, like mobile and sizing near edges. I'll get to those in time!
-
-For more, check out [github](https://github.com/yusinto/react-site-nav). There are three fully
+There are still loads left to do, like mobile. I'll get to that in time! For more, 
+check out [github](https://github.com/yusinto/react-site-nav). There are three fully
 working spas including the code in this blog in the [examples](https://github.com/yusinto/react-site-nav/tree/master/examples)
-folder. The code in this blog is under [examples/cra-with-nav](https://github.com/yusinto/react-site-nav/tree/master/examples/cra-with-nav).
-
-Please star it if you like it! Thanks.
+folder. The code in this blog is under [examples/cra-with-nav](https://github.com/yusinto/react-site-nav/tree/master/examples/cra-with-nav). 
+Please star if you like it!
 
 ## Thanks
 [Max Stoiber](https://mxstbr.com/) is awesome.
