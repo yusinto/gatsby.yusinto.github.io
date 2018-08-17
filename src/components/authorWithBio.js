@@ -1,10 +1,10 @@
 import React from 'react'
-// import {graphql} from 'gatsby';
 import styled from 'styled-components'
-import LinesEllipsis from 'react-lines-ellipsis'
-import responsiveHoc from 'react-lines-ellipsis/lib/responsiveHOC'
+import ellipsize from 'ellipsize'
 
-const ResponsiveEllipsis = responsiveHoc()(LinesEllipsis)
+const blurp = 'Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.';
+const blurpShort = ellipsize(blurp, 30);
+const blurpMedium = ellipsize(blurp, 80);
 
 const RootDiv = styled.div`
   display: grid;
@@ -32,8 +32,27 @@ const Name = styled.div`
   font-weight: bold;
   opacity: 1;
 `
+const Blurp = styled.div`
+  &:after {
+    @media(max-width: 320px) {
+      content: '${blurpShort}';
+    }
+    
+    @media(min-width: 321px) {
+      content: '${blurpMedium}';
+    }
+    
+    @media(min-width: 455px) {
+      content: '${blurp}';
+    }
+  }
+`
 const DateReadMinutes = styled.div`
   font-size: 11.5px;
+`
+const MidDot = styled.span`
+  padding: 0px 7px;
+  vertical-align: middle;
 `
 
 export default ({datePosted, timeToRead}) => {
@@ -42,11 +61,8 @@ export default ({datePosted, timeToRead}) => {
       <ProfilePic/>
       <Bio>
         <Name>Yusinto Ngadiman</Name>
-        <ResponsiveEllipsis
-          text='Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.'
-          maxLine='2'
-        />
-        <DateReadMinutes>{datePosted} | {timeToRead} min read</DateReadMinutes>
+        <Blurp />
+        <DateReadMinutes>{datePosted}<MidDot>&middot;</MidDot>{timeToRead} min read</DateReadMinutes>
       </Bio>
     </RootDiv>
   )
