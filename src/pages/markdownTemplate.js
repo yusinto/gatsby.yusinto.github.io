@@ -4,10 +4,10 @@ import Layout from '../components/layout'
 
 export default ({data}) => {
   const {markdownRemark} = data;
-  const {frontmatter, html} = markdownRemark;
-  const {date, title} = frontmatter;
+  const {frontmatter: {date, title}, html, timeToRead} = markdownRemark;
+
   return (
-    <Layout datePosted={date}>
+    <Layout datePosted={date} timeToRead={timeToRead}>
       <h1>{title}</h1>
       <div
         className="blog-post-content"
@@ -21,6 +21,7 @@ export const markdownTemplateQuery = graphql`
     query BlogPostByPath($path: String!) {
         markdownRemark(frontmatter: { path: { eq: $path } }) {
             html
+            timeToRead
             frontmatter {
                 date
                 path

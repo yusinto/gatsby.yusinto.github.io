@@ -36,8 +36,7 @@ const DateReadMinutes = styled.div`
   font-size: 11.5px;
 `
 
-export default ({datePosted}) => {
-
+export default ({datePosted, timeToRead}) => {
   return (
     <RootDiv>
       <ProfilePic/>
@@ -47,7 +46,7 @@ export default ({datePosted}) => {
           text='Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.'
           maxLine='2'
         />
-        <DateReadMinutes>{datePosted} | 5 min read</DateReadMinutes>
+        <DateReadMinutes>{datePosted} | {timeToRead} min read</DateReadMinutes>
       </Bio>
     </RootDiv>
   )

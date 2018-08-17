@@ -24,9 +24,9 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    result.data.allMarkdownRemark.edges.forEach(({ node: {frontmatter} }) => {
       createPage({
-        path: node.frontmatter.path,
+        path: frontmatter.path,
         component: markdownTemplate,
         context: {}, // additional data can be passed via context
       });
