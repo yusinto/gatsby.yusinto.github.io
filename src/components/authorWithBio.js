@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ellipsize from 'ellipsize'
 
 const blurp = 'Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.';
-const blurpShort = ellipsize(blurp, 30);
+const blurpShort = ellipsize(blurp, 60);
 const blurpMedium = ellipsize(blurp, 80);
 
 const RootDiv = styled.div`
@@ -34,11 +34,9 @@ const Name = styled.div`
 `
 const Blurp = styled.div`
   &:after {
-    @media(max-width: 320px) {
-      content: '${blurpShort}';
-    }
+    content: '${blurpShort}';
     
-    @media(min-width: 321px) {
+    @media(min-width: 380px) {
       content: '${blurpMedium}';
     }
     
