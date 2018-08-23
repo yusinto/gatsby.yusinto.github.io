@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
-import Header from './stickyHeader'
+import Header from './header'
 import AuthorWithBio from './authorWithBio'
 import {StickyHeaderHeight} from '../constants'
 
