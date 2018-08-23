@@ -53,7 +53,7 @@ yarn add react-site-nav
 
 Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
-```js{4,12-25}
+```javascript{4,12-25}
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';

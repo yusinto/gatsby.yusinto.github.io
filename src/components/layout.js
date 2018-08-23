@@ -39,13 +39,13 @@ injectGlobal`
   }
   
   .gatsby-highlight-code-line {
-    background-color: #5068ad;
+    background-color: #14161a;
     display: block;
     margin-right: -1em;
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
-    border-left: 0.25em solid #f99;
+    //border-left: 0.25em solid #f99;
   }
   
   .embedVideoIframe {
