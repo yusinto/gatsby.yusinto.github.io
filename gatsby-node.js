@@ -1,8 +1,15 @@
-const path = require("path");
+const path = require('path');
+
+const uniq = (arrArg) => {
+  return arrArg.filter((elem, pos, arr) => {
+    return arr.indexOf(elem) == pos;
+  });
+};
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const markdownTemplate = path.resolve('src/pages/markdownTemplate.js');
+  const tagTemplate = path.resolve('src/pages/tagTemplate.js');
 
   return graphql(`
     {
@@ -14,6 +21,7 @@ exports.createPages = ({ actions, graphql }) => {
           node {
             frontmatter {
               path
+              tags
             }
           }
         }
@@ -24,12 +32,40 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node: {frontmatter} }) => {
+    const posts = result.data.allMarkdownRemark.edges;
+
+    // blog posts
+    posts.forEach(({ node: {frontmatter} }) => {
       createPage({
         path: frontmatter.path,
         component: markdownTemplate,
         context: {}, // additional data can be passed via context
       });
+    });
+
+    // tag pages
+    let tags = []
+    // Iterate through each post, putting all found tags into `tags`
+    posts.forEach(p => {
+      const t = p.node.frontmatter.tags;
+      if (t) {
+        tags = tags.concat(t);
+      }
+    })
+
+    // dedupe
+    tags = uniq(tags);
+
+    // Make tag pages
+    tags.forEach(tag => {
+      console.log(`creating page for ${tag}`);
+      createPage({
+        path: `/tags/${tag}/`,
+        component: tagTemplate,
+        context: {
+          tag,
+        },
+      })
     });
   });
 };

@@ -2,25 +2,12 @@
 path: "/react-site-nav"
 date: "13 Jul 2018"
 title: "Introducing react-site-nav"
+published: true
 files: 
  - "./content-group.png"
  - "./before-after.png"
  - "./hero.jpeg"
-tag:
-- react
-- site
-- nav
-- navigation
-- bar
-- navbar
-- stripe
-- styled
-- components
-- menu
-- css
-- animations
-- grid
-- cssgrid
+tags: ["react-site-nav", "react", "site", "nav", "navigation", "bar", "navbar", "stripe", "styled", "components", "menu", "css", "animations", "grid", "cssgrid"]
 ---
 
 # Introducing react-site-nav

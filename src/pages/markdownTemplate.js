@@ -28,6 +28,7 @@ export const markdownTemplateQuery = graphql`
                 files {
                     publicURL
                 }
+                tags
             }
         }
     }
