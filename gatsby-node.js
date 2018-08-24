@@ -8,7 +8,7 @@ const uniq = (arrArg) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  const markdownTemplate = path.resolve('src/pages/markdownTemplate.js');
+  const postTemplate = path.resolve('src/pages/postTemplate.js');
   const tagTemplate = path.resolve('src/pages/tagTemplate.js');
 
   return graphql(`
@@ -38,7 +38,7 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach(({ node: {frontmatter} }) => {
       createPage({
         path: frontmatter.path,
-        component: markdownTemplate,
+        component: postTemplate,
         context: {}, // additional data can be passed via context
       });
     });
