@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import {Link} from 'gatsby'
 
 const List = styled.ul`
   list-style-type: none;
@@ -17,14 +18,26 @@ const ListItem = styled.li`
     background: rgba(0,0,0,.05);
     border-radius: 3px;
     margin: 8px;
-    padding: 0px 10px;
+    padding: 0 10px;
+    
+    & a {
+      color: black;
+    }
+    
+    & a:hover {
+      opacity: 1;
+    }
+    
+    &:hover {
+      background: rgba(0,0,0,0.1);
+    }
 `
 
 export default ({tags}) => (
   <List>
     {
       tags.map(t => {
-        return <ListItem key={t}>{t}</ListItem>
+        return <ListItem key={t}><Link to={`/tags/${t}`}>{t}</Link></ListItem>
       })
     }
   </List>
