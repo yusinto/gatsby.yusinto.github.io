@@ -61,8 +61,8 @@ injectGlobal`
 
 const RootDiv = styled.div`
   margin: 0 auto;
-  max-width: 740px;
-  padding: ${StickyHeaderHeight}px 1.0875rem 1.45rem;
+  width: 100%;
+  padding: ${StickyHeaderHeight}px 0;
 `
 
 const Layout = ({children, data, datePosted, timeToRead}) => (

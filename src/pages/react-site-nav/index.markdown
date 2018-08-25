@@ -4,17 +4,11 @@ date: "13 Jul 2018"
 title: "Introducing react-site-nav"
 published: true
 files: 
+ - "./hero.jpeg"
  - "./content-group.png"
  - "./before-after.png"
- - "./hero.jpeg"
 tags: ["react-site-nav", "react", "site", "nav", "navigation", "bar", "navbar", "stripe", "styled", "components", "menu", "css", "animations", "grid", "cssgrid"]
 ---
-
-# Introducing react-site-nav
-
-<div>
-    <img src="/static/hero-758016d917c5f38785da1c6fed32dd0e.jpeg"/>
-</div>
 
 Stripe has a beautiful site nav and this package is inspired by that.
 Introducing react-site-nav, a beautifully animated site nav powered by styled components

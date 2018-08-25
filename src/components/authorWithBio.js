@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ellipsize from 'ellipsize'
+import {ContentStyles} from '../utils/sc-utils'
 
 const blurp = 'Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.';
 const blurpShort = ellipsize(blurp, 60);
@@ -12,6 +13,7 @@ const RootDiv = styled.div`
   grid-template-rows: 100px;
   grid-column-gap: 5px;
   align-items: center;
+  ${ContentStyles}
 `
 const Bio = styled.div`
   display: flex;
@@ -59,7 +61,7 @@ export default ({datePosted, timeToRead}) => {
       <ProfilePic/>
       <Bio>
         <Name>Yusinto Ngadiman</Name>
-        <Blurp />
+        <Blurp/>
         <DateReadMinutes>{datePosted}<MidDot>&middot;</MidDot>{timeToRead} min read</DateReadMinutes>
       </Bio>
     </RootDiv>
