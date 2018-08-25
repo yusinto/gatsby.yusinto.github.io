@@ -16,12 +16,12 @@ const Content = styled.div`
 export default ({data}) => {
   const {markdownRemark} = data;
   const {frontmatter: {title, date, tags, files}, html, timeToRead} = markdownRemark;
-  const hero = files.find(f => f.name === 'hero');
+  const hero = files && files.find(f => f.name === 'hero');
 
   return (
     <Layout datePosted={date} timeToRead={timeToRead}>
       <Content><Title>{title}</Title></Content>
-      <img alt="hero" src={hero.publicURL}/>
+      {hero ? <img alt="hero" src={hero.publicURL}/> : null}
       <Content dangerouslySetInnerHTML={{__html: html}}/>
       <Content><TagList tags={tags}/></Content>
     </Layout>

@@ -58,7 +58,6 @@ exports.createPages = ({ actions, graphql }) => {
 
     // Make tag pages
     tags.forEach(tag => {
-      console.log(`creating page for ${tag}`);
       createPage({
         path: `/tags/${tag}/`,
         component: tagTemplate,
