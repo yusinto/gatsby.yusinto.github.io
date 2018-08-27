@@ -154,25 +154,27 @@ query {
 ## Step 4: Compile
 Say we have a relay query like so:
 
-```js
-<QueryRenderer
-    environment={relayEnvironment}
-    query={graphql`
-        query client_index_Query {
-          user {
-            email
-            name
-            favouritePlaces {
-                business { # look ma, remote schema field!
-                    name
-                    email
-                    address
-                }
-            }
+```jsx
+const query = graphql`
+    query client_index_Query {
+        user {
+          email
+          name
+          favouritePlaces {
+              business { # look ma, remote schema field!
+                  name
+                  email
+                  address
+              }
           }
         }
-    `}
-    // .... excluded for brevity
+    }
+`;
+
+// most props omitted for brevity
+<QueryRenderer
+    environment={relayEnvironment}
+    query={query}
 />
 ```
 

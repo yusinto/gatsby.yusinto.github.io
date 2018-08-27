@@ -34,7 +34,7 @@ yarn add react-site-nav
 
 Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
-```javascript{4,12-25}
+```jsx{4,12-25}
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -65,6 +65,7 @@ export default () => (
       </p>
     </div>
 );
+
 ```
 
 SiteNav is the root react component that contains ContentGroup children.
@@ -81,7 +82,7 @@ It takes only a few lines of code to get up and going, but it still looks very b
 Let's make it pretty! First, set our SiteNav to debug mode so the content group stays open
 when we hover over it:
 
-```js
+```jsx
 <SiteNav debug={true}>
 ```
 
@@ -97,7 +98,7 @@ ul {
 
 Next instead of a bullet point, let's have an image next to our text. Our jsx becomes:
 
-```js
+```jsx
 import aboutMeImage from './about-me.png';
 
   // ... other code omitted for brevity

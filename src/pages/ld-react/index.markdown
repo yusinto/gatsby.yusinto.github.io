@@ -27,7 +27,7 @@ yarn add ld-react
 The withFlagProvider hoc initialises an ldClient object on componentDidMount and sets up subscriptions to all flags.
 It then uses the context api to pass flag values to consumers. 
 
-```js
+```jsx
 import {withFlagProvider} from 'ld-react';
 import Home from './home';
 
@@ -47,7 +47,7 @@ not mandatory.
 The withFlags hoc sets up a context consumer which passes flags to the wrapped component. Your flags will then be
 available as camelCased keys under `this.props.flags.yourFeatureFlag`. 
 
-```js
+```jsx
 import {withFlags} from 'ld-react';
 
 const Home = props => {
