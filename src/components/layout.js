@@ -45,7 +45,7 @@ injectGlobal`
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
-    //border-left: 0.25em solid #f99;
+    border-left: 0.2em solid yellowgreen;
   }
   
   .embedVideoIframe {
