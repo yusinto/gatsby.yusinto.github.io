@@ -12,7 +12,9 @@ const Title = styled.h1`
 const Content = styled.div`
   ${ContentStyles}
 `
-
+const Hero = styled.img`
+  width: 100%;
+`
 export default ({data}) => {
   const {markdownRemark} = data;
   const {frontmatter: {title, date, tags, files}, html, timeToRead} = markdownRemark;
@@ -21,7 +23,7 @@ export default ({data}) => {
   return (
     <Layout datePosted={date} timeToRead={timeToRead}>
       <Content><Title>{title}</Title></Content>
-      {hero ? <img alt="hero" src={hero.publicURL}/> : null}
+      {hero ? <Hero alt="hero" src={hero.publicURL}/> : null}
       <Content dangerouslySetInnerHTML={{__html: html}}/>
       <Content><TagList tags={tags}/></Content>
     </Layout>
