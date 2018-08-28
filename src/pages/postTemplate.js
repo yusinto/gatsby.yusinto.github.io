@@ -14,6 +14,8 @@ const Content = styled.div`
 `
 const Hero = styled.img`
   width: 100%;
+  max-height: 300px;
+  object-fit: cover;
 `
 export default ({data}) => {
   const {markdownRemark} = data;

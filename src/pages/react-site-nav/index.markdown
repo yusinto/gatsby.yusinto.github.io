@@ -4,7 +4,7 @@ date: "13 Jul 2018"
 title: "Introducing react-site-nav"
 published: true
 files: 
- - "./hero.jpeg"
+ - "./hero.png"
  - "./content-group.png"
  - "./before-after.png"
 tags: ["react-site-nav", "react", "site", "nav", "navigation", "bar", "navbar", "stripe", "styled", "components", "menu", "css", "animations", "grid", "cssgrid"]
@@ -34,7 +34,7 @@ yarn add react-site-nav
 
 Now we are going to add two components to App.js: SiteNav and ContentGroup.
 
-```jsx{4,12-25}
+```jsx{4,12-25}{numberLines: true}
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';

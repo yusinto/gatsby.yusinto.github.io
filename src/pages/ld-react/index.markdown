@@ -4,6 +4,8 @@ date: "30 May 2018"
 title: "React integration with Launch Darkly using ld-react"
 published: true
 tags: ["ld-react", "launch", "darkly", "react", "feature", "flag", "integration", "context", "api", "toggle"]
+files:
+ - "./hero.jpeg"
 ---
 
 About two years ago I wrote a package [ld-redux](https://github.com/yusinto/ld-redux)

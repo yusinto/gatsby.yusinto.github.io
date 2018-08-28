@@ -6,6 +6,7 @@ published: true
 tags: ["relay", "schema", "stitching", "graphql", "apollo", "react", "js", "javascript", "prisma", "graphcool", "persisted", "queries"]
 files:
  - "./loui-stitch.jpg"
+ - "./hero.jpeg"
 ---
 
 Schema stitching was introduced by Apollo, so there is a general misconception that it
