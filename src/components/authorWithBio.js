@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ellipsize from 'ellipsize'
 import {ContentStyles} from '../utils/sc-utils'
+import profilePic from '../../src/images/icon-512x512.png'
 
 const blurp = 'Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.';
 const blurpShort = ellipsize(blurp, 60);
@@ -26,7 +27,7 @@ const ProfilePic = styled.div`
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  background-image: url("http://reactjunkie.com/assets/images/yus_profile_pic.jpg");
+  background-image: url('${profilePic}');
   background-position: center top;
   background-size: cover;
 `
