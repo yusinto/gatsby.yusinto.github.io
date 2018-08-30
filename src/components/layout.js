@@ -34,6 +34,10 @@ injectGlobal`
     opacity: 0.7;
   }
   
+  ul {
+    margin-left: 1.78rem;
+  }
+  
   .gatsby-highlight {
     margin-bottom: 30px;
   }
