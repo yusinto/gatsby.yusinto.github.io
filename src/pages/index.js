@@ -1,11 +1,15 @@
 import React from 'react'
 import {graphql, Link} from 'gatsby'
 import styled from 'styled-components'
+import {ContentStyles} from '../utils/sc-utils'
 import Layout from '../components/layout';
 import DateReadTime from '../components/dateReadTime'
 
+const Content = styled.div`
+  ${ContentStyles}
+`
 const PostTile = styled.section`
-  margin: 20px 20px 30px;
+  margin: 20px 0 30px;
   padding: 15px 15px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -53,27 +57,29 @@ export default ({data}) => {
 
   return (
     <Layout authorBioLayout="column">
-      {
-        posts.map(p => {
-          const {excerpt, timeToRead, frontmatter: {title, date, path, files}} = p.node;
-          const hero = files && files.find(f => f.name === 'hero');
+      <Content>
+        {
+          posts.map(p => {
+            const {excerpt, timeToRead, frontmatter: {title, date, path, files}} = p.node;
+            const hero = files && files.find(f => f.name === 'hero');
 
-          return (
-            <PostTile key={path}>
-              <StyledGatsbyLink to={path}>
-                {hero ? <PostHero src={hero.publicURL}/> : null}
-                <PostDescription>
-                  <Title>
-                    {title}
-                  </Title>
-                  <Summary>{excerpt}</Summary>
-                  <DateReadTime date={date} timeToRead={timeToRead}/>
-                </PostDescription>
-              </StyledGatsbyLink>
-            </PostTile>
-          );
-        })
-      }
+            return (
+              <PostTile key={path}>
+                <StyledGatsbyLink to={path}>
+                  {hero ? <PostHero src={hero.publicURL}/> : null}
+                  <PostDescription>
+                    <Title>
+                      {title}
+                    </Title>
+                    <Summary>{excerpt}</Summary>
+                    <DateReadTime date={date} timeToRead={timeToRead}/>
+                  </PostDescription>
+                </StyledGatsbyLink>
+              </PostTile>
+            );
+          })
+        }
+      </Content>
     </Layout>
   );
 };
