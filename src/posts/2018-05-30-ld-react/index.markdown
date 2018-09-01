@@ -1,6 +1,6 @@
 ---
 path: "/ld-react"
-date: "30 May 2018"
+date: "2018-05-30"
 title: "React integration with Launch Darkly using ld-react"
 published: true
 tags: ["ld-react", "launch", "darkly", "react", "feature", "flag", "integration", "context", "api", "toggle"]

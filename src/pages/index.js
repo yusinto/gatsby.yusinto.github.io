@@ -95,7 +95,7 @@ export const indexQuery = graphql`
                     excerpt
                     timeToRead
                     frontmatter {
-                        date
+                        date(formatString: "MMMM DD, YYYY")
                         path
                         title
                         files {

@@ -1,6 +1,6 @@
 ---
 path: "/react-site-nav"
-date: "13 Jul 2018"
+date: "2018-07-13"
 title: "Introducing react-site-nav"
 published: true
 files: 

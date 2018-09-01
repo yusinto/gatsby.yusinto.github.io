@@ -38,7 +38,7 @@ export const postTemplateQuery = graphql`
             html
             timeToRead
             frontmatter {
-                date
+                date(formatString: "MMMM DD, YYYY")
                 path
                 title
                 files {
