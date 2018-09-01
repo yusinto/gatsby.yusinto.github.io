@@ -77,34 +77,40 @@ const Layout = ({children, pageType, datePosted, timeToRead}) => (
         site {
           siteMetadata {
             title
+            description,
+            keywordsCsv,
+            blurb
           }
         }
       }
     `}
-    render={data => (
-      <>
-      <Helmet
-        title={data.site.siteMetadata.title}
-        meta={[
-          {name: 'description', content: 'Sample'},
-          {name: 'keywords', content: 'sample, something'},
-        ]}
-      >
-        <html lang="en"/>
-      </Helmet>
-      <Header siteTitle={data.site.siteMetadata.title}/>
-      <RootDiv>
-        {
-          pageType === 'home' ?
-            <AuthorBioHomepage/>
-            :
-            <AuthorBio datePosted={datePosted} timeToRead={timeToRead}/>
-        }
+    render={data => {
+      const {title, description, keywordsCsv, blurb} = data.site.siteMetadata;
+      return (
+        <>
+        <Helmet
+          title={title}
+          meta={[
+            {name: 'description', content: `${description} ${blurb}`},
+            {name: 'keywords', content: keywordsCsv},
+          ]}
+        >
+          <html lang="en"/>
+        </Helmet>
+        <Header siteTitle={data.site.siteMetadata.title}/>
+        <RootDiv>
+          {
+            pageType === 'home' ?
+              <AuthorBioHomepage blurb={blurb}/>
+              :
+              <AuthorBio blurb={blurb} datePosted={datePosted} timeToRead={timeToRead}/>
+          }
 
-        {children}
-      </RootDiv>
-      </>
-    )}
+          {children}
+        </RootDiv>
+        </>
+      )
+    }}
   />
 )
 

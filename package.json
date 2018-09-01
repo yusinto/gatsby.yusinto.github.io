@@ -18,6 +18,7 @@
     "gatsby-remark-responsive-iframe": "^1.4.20",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "memoize-one": "^4.0.2",
     "prismjs": "^1.15.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

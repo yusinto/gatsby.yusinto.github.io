@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import {ContentStyles} from '../utils/sc-utils'
 import profilePic from '../../src/images/icon-512x512.png'
 
-const blurp = 'Frontend Engineer @ Qantas. Tea lover. Passionate about react graphql and everything else javascript.';
-
 const ProfilePic = styled.div`
   border-radius: 50%;
   background-image: url('${profilePic}');
@@ -34,12 +32,8 @@ const Name = styled.div`
   font-weight: bold;
   opacity: 1;
 `
-const Blurp = styled.div`
+const Blurb = styled.div`
  font-size: 15px;
-    
-  &:after {
-    content: '${blurp}';
-  }
 `
 const RootDiv = styled.div`
   display: grid;
@@ -57,12 +51,12 @@ const RootDiv = styled.div`
   }
 `
 
-export default () => (
+export default ({blurb}) => (
     <RootDiv>
       <ProfilePic/>
       <Bio>
         <Name>Yusinto Ngadiman</Name>
-        <Blurp/>
+        <Blurb>{blurb}</Blurb>
       </Bio>
     </RootDiv>
 )
