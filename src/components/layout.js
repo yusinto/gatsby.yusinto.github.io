@@ -5,6 +5,7 @@ import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
 import Header from './header'
 import AuthorBio from './authorBio'
+import AuthorBioHomepage from './authorBioHomepage'
 import {StickyHeaderHeight} from '../constants'
 
 injectGlobal`
@@ -69,7 +70,7 @@ const RootDiv = styled.div`
   padding: ${StickyHeaderHeight}px 0;
 `
 
-const Layout = ({children, authorBioLayout, datePosted, timeToRead}) => (
+const Layout = ({children, pageType, datePosted, timeToRead}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -93,7 +94,13 @@ const Layout = ({children, authorBioLayout, datePosted, timeToRead}) => (
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title}/>
       <RootDiv>
-        <AuthorBio layout={authorBioLayout} datePosted={datePosted} timeToRead={timeToRead}/>
+        {
+          pageType === 'home' ?
+            <AuthorBioHomepage/>
+            :
+            <AuthorBio datePosted={datePosted} timeToRead={timeToRead}/>
+        }
+
         {children}
       </RootDiv>
       </>

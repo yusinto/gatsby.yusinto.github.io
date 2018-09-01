@@ -56,7 +56,7 @@ export default ({data}) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout authorBioLayout="column">
+    <Layout pageType="home">
       <Content>
         {
           posts.map(p => {
