@@ -21,15 +21,21 @@ const StyledGatsbyLink = styled(GatsbyLink)`{
     opacity: 1;
   }
 }`
-const PostHero = styled.img`
-  max-height: 80%;
+const PostHero = styled.div`
+  width: 100%;
+  height: 120px;
+  background-image: url('${props => props.src}');
+  margin: 10px 0 20px;
+  background-position: 50% 50%;
+  background-size: cover;
+  border-radius: 3px;
+  
+  @media(min-width: 690px) {
+    height: 200px;
+  }
 `
 const PostDescription = styled.div`
   color: black;
-  
-  &:hover {
-    opacity: 0.7;
-  }
 `
 const Title = styled.h3`
   margin: 0 0 10px;
@@ -39,6 +45,7 @@ const Title = styled.h3`
   }
 `
 const Summary = styled.div`
+  margin: 10px 0 20px;
   font-size: 16px;
 `
 export default ({data}) => {
@@ -48,30 +55,23 @@ export default ({data}) => {
     <Layout authorBioLayout="column">
       {
         posts.map(p => {
-          const {timeToRead, frontmatter: {title, date, path, files}} = p.node;
-          const postHero = files && files.find(f => f.name === 'hero');
+          const {excerpt, timeToRead, frontmatter: {title, date, path, files}} = p.node;
+          const hero = files && files.find(f => f.name === 'hero');
 
-          if (postHero) {
-            return (
-              <PostTile key={path}>
-                <StyledGatsbyLink to={path}>
-                  <PostHero src={postHero.publicURL} alt={title}/>
-                  <PostDescription>
-                    <Title>
-                      {title}
-                    </Title>
-                    <Summary>
-                      Some content summary here...
-                    </Summary>
-                    <DateReadTime date={date} timeToRead={timeToRead}/>
-                  </PostDescription>
-                </StyledGatsbyLink>
-              </PostTile>
-            );
-          }
-
-          // TODO: use default hero if none is set
-          return null;
+          return (
+            <PostTile key={path}>
+              <StyledGatsbyLink to={path}>
+                {hero ? <PostHero src={hero.publicURL}/> : null}
+                <PostDescription>
+                  <Title>
+                    {title}
+                  </Title>
+                  <Summary>{excerpt}</Summary>
+                  <DateReadTime date={date} timeToRead={timeToRead}/>
+                </PostDescription>
+              </StyledGatsbyLink>
+            </PostTile>
+          );
         })
       }
     </Layout>
@@ -86,6 +86,7 @@ export const indexQuery = graphql`
         ) {
             edges {
                 node {
+                    excerpt
                     timeToRead
                     frontmatter {
                         date
