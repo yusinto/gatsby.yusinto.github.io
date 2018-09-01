@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
 import Header from './header'
-import AuthorWithBio from './authorWithBio'
+import AuthorBio from './authorBio'
 import {StickyHeaderHeight} from '../constants'
 
 injectGlobal`
@@ -69,7 +69,7 @@ const RootDiv = styled.div`
   padding: ${StickyHeaderHeight}px 0;
 `
 
-const Layout = ({children, data, datePosted, timeToRead}) => (
+const Layout = ({children, authorBioLayout, datePosted, timeToRead}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -93,7 +93,7 @@ const Layout = ({children, data, datePosted, timeToRead}) => (
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title}/>
       <RootDiv>
-        <AuthorWithBio datePosted={datePosted} timeToRead={timeToRead}/>
+        <AuthorBio layout={authorBioLayout} datePosted={datePosted} timeToRead={timeToRead}/>
         {children}
       </RootDiv>
       </>
