@@ -58,6 +58,7 @@ export default ({data}) => {
   return (
     <Layout pageType="home">
       <Content>
+        <h4>Latest</h4>
         {
           posts.map(p => {
             const {excerpt, timeToRead, frontmatter: {title, date, path, files}} = p.node;
