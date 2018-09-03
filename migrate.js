@@ -8,6 +8,7 @@ posts.forEach(p => {
   const dirName = path.basename(p, '.markdown');
 
   const fullDirPath = `${__dirname}/src/posts/${dirName}`;
+  if(!fs.existsSync(fullDirPath)) {
     fs.mkdirSync(fullDirPath);
   }
 
