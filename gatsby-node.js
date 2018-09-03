@@ -21,6 +21,7 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     {
       allMarkdownRemark(
+        filter: {frontmatter: {published: {eq: true}}}
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -28,6 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
           node {
             frontmatter {
               path
+              published
               tags
             }
           }
@@ -51,7 +53,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
 
     // tag pages
-    let tags = []
+    let tags = [];
     // Iterate through each post, putting all found tags into `tags`
     posts.forEach(p => {
       const t = p.node.frontmatter.tags;

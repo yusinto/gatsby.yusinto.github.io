@@ -2,7 +2,7 @@
 path: "/async-generator-functions"
 published: false
 title: "Async Generator Functions"
-date: "2018-01-14 07:30"
+date: "2018-01-14"
 tags: ["async", "generator", "functions", "iterator", "yield", "for-await-of", "for", "await", "of"]
 ---
 An exciting new feature of js is async generator functions. A normal function in javascript is

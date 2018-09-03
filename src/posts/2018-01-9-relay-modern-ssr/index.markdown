@@ -1,6 +1,6 @@
 ---
 path: "/relay-modern-persisted-queries"
-date: "2018-01-09 07:30"
+date: "2018-01-09"
 title: "Relay Modern Server Side Rendering"
 published: false
 tags: ["relay", "modern", "ssr", "server", "side", "rendering", "redux"]
