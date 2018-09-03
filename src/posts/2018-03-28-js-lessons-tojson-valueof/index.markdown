@@ -6,6 +6,10 @@ published: true
 tags: ["js", "lessons", "javascript", "tojson", "valueof", "json", "stringify", "prototype", "object"]
 ---
 
+For most javascript objects, the prototype chain ends at the Object prototype. This prototype provides a few commonly used
+methods like `toString`, `isPrototypeOf` and `hasOwnProperty`. Today I'll be looking at two less
+commonly used methods (at least by me!): toJSON and valueOf.
+
 ## toJSON
 If you need a custom output when json stringifying your object, you can define
 a function called toJSON() which will be invoked automatically by
