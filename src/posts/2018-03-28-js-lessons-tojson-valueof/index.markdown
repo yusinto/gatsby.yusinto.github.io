@@ -6,27 +6,61 @@ published: true
 tags: ["js", "lessons", "javascript", "tojson", "valueof", "json", "stringify", "prototype", "object"]
 ---
 
-## toJSON()
+## toJSON
 If you need a custom output when json stringifying your object, you can define
 a function called toJSON() which will be invoked automatically by
 JSON.stringify():
 
-TODO: https://gist.github.com/whoisryosuke/17d79b09a4923546ab58009720d50976
-<p data-height="376" data-theme-id="dark" data-slug-hash="KoZmLa" data-default-tab="js,result" data-user="yusinto" data-embed-version="2" data-pen-title="Javascript Lessons" class="codepen">See the Pen <a href="https://codepen.io/yusinto/pen/KoZmLa/">Javascript Lessons</a> by Yusinto Ngadiman (<a href="https://codepen.io/yusinto">@yusinto</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+```js
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  // JSON.stringify will invoke this method if it is defined
+  toJSON() {
+    return {
+      fullName: `${this.firstName} ${this.lastName}`,
+    }
+  }
+}
+
+const yus = new Person('Yusinto', 'Ngadiman');
+console.log(JSON.stringify(yus)); // {"fullName":"Yusinto Ngadiman"}
+```
 
 Without the custom toJSON() implementation, the code above will use the default
 implementation:
 
 ```json
-{"firstName":"Yus","lastName":"Ng"}
+{"firstName":"Yusinto","lastName":"Ngadiman"}
 ```
 
-## valueOf()
+## valueOf
 Object.prototype has a built-in valueOf method which returns the primitive value
 of the object. You can override this method to return a custom primitive value
 for your object:
 
-<p data-height="372" data-theme-id="dark" data-slug-hash="YaYQyo" data-default-tab="js,result" data-user="yusinto" data-embed-version="2" data-pen-title="Javascript Lessons: valueOf" class="codepen">See the Pen <a href="https://codepen.io/yusinto/pen/YaYQyo/">Javascript Lessons: valueOf</a> by Yusinto Ngadiman (<a href="https://codepen.io/yusinto">@yusinto</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+```js
+class Car {  
+  constructor(make, model, price) {
+    this.make = make;
+    this.model = model;
+    this.price = price;
+  }
+  
+  // override Object.prototype.valueOf to return a 
+  // custom primitive value
+  valueOf() {
+    return this.price;
+  }
+}
+
+const myCar = new Car('Tesla', 'Model 3', 55000);
+const tax = myCar * 0.33;
+console.log(`Total car price: ${tax + myCar}`); // 73150
+```
 
 The override allows us to perform arithmetic with our object. Without the override,
 the valueOf myCar will be NaN (Not-a-Number).
