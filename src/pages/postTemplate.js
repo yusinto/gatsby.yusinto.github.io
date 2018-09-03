@@ -7,7 +7,7 @@ import {ContentStyles} from '../utils/sc-utils';
 
 const Title = styled.h1`
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `
 const Content = styled.div`
   ${ContentStyles}

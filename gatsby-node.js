@@ -7,9 +7,16 @@ const uniq = (arrArg) => {
 };
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+  const { createRedirect, createPage } = actions;
   const postTemplate = path.resolve('src/pages/postTemplate.js');
   const tagTemplate = path.resolve('src/pages/tagTemplate.js');
+
+  createRedirect({
+    fromPath: '/ld-react-context-api',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/ld-react',
+  })
 
   return graphql(`
     {

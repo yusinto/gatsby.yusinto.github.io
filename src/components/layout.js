@@ -35,7 +35,7 @@ injectGlobal`
     opacity: 0.7;
   }
   
-  ul {
+  ul, ol {
     margin-left: 1.78rem;
   }
   
