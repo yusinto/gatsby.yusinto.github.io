@@ -7,14 +7,16 @@ const posts = fs.readdirSync(sourceDir);
 posts.forEach(p => {
   const dirName = path.basename(p, '.markdown');
 
-  const fullDirPath = `${__dirname}/src/posts/${dirName}`;
-  if(!fs.existsSync(fullDirPath)) {
-    fs.mkdirSync(fullDirPath);
-  }
+  if(dirName !== '2018-05-30-ld-react-context-api') { // HACK: don't copy ld-react-context-api
+    const fullDirPath = `${__dirname}/src/posts/${dirName}`;
+    if(!fs.existsSync(fullDirPath)) {
+      fs.mkdirSync(fullDirPath);
+    }
 
-  const sourceFilePath = `${sourceDir}/${p}`;
-  const destinationFilePath = `${fullDirPath}/index.markdown`;
-  if(!fs.existsSync(destinationFilePath)) {
-    fs.copyFileSync(sourceFilePath, destinationFilePath);
+    const sourceFilePath = `${sourceDir}/${p}`;
+    const destinationFilePath = `${fullDirPath}/index.markdown`;
+    if(!fs.existsSync(destinationFilePath)) {
+      fs.copyFileSync(sourceFilePath, destinationFilePath);
+    }
   }
 });
