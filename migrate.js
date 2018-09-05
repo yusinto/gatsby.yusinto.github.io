@@ -111,6 +111,7 @@ posts.forEach(p => {
     markdownResult = replaceAll(markdownResult, '{% highlight json %}', '```json');
     markdownResult = replaceAll(markdownResult, '{% highlight xml %}', '```xml');
     markdownResult = replaceAll(markdownResult, '{% highlight c# %}', '```jsx');
+    markdownResult = replaceAll(markdownResult, '{% highlight C# %}', '```jsx');
     markdownResult = replaceAll(markdownResult, '{% highlight raw %}', '```bash');
     markdownResult = replaceAll(markdownResult, '{% highlight bash %}', '```bash');
     markdownResult = replaceAll(markdownResult, '{% highlight graphql %}', '```graphql');

@@ -66,7 +66,7 @@ as the trigger and click define function. Copy paste the subscription query
 below into the left window pane under subscription query.
 
 #### subscription.graphql
-{% highlight C# %}
+```jsx
 subscription {
   Customer(filter: {
     mutation_in: [CREATED]

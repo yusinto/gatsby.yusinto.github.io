@@ -110,7 +110,7 @@ code. But we'll talk more about this in a later post.
 If you come from an OO background like me, you should be familiar with the syntax here.
 
 ##### appComponent.js
-{% highlight C# %}
+```jsx
 /*
  Import react's default module and assign it to a variable named React. 
  Additionally we also import the Component module and assign it to a 
@@ -152,7 +152,7 @@ change. We'll talk about props and state more in later posts.
 For now, just understand that you are writing a html-like syntax called jsx which becomes part of the virtual dom.
 
 ##### index.js
-{% highlight C# %}
+```jsx
 // Import the render method from react-dom so we can mount our 
 // component onto an html element
 import React from 'react';
