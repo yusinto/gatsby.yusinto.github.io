@@ -22,10 +22,6 @@ injectGlobal`
     margin-bottom: 12px;
   }
   
-  p {
-    margin-bottom: 10px;
-  }
-  
   body {
     margin: 0;
   }

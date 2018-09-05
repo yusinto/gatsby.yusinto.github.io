@@ -1,5 +1,5 @@
 ---
-path: "/relay-modern-persisted-queries"
+path: "/relay-modern-ssr"
 date: "2018-01-09"
 title: "Relay Modern Server Side Rendering"
 published: false
