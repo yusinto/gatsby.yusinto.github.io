@@ -80,7 +80,7 @@ Two things we need to solve here:
 2. close() does not restart the server. It stops the server from accepting new connections and then shuts down the server when all its existing connections have closed.
 
 ###Step 1.1: Getting a reference to http.Server
-<img alt="Neo Spoon" src="/static/neo_spoon.jpg" id="markdownImage"/>
+<img alt="Neo Spoon" src="/static/neo_spoon-c65e71e55d98c3699fbafc25d2ca7fc0.jpg" id="markdownImage"/>
 
 Let's take a look at some code.
 
@@ -268,7 +268,7 @@ What does it look like in code?
 ```
 
 ##Step 2: Clearing the require cache
-<img alt="Are we there yet?" src="/static/batman_robin.jpg" id="markdownImage"/>
+<img alt="Are we there yet?" src="/static/batman_robin-1f4e7212084be221fa9183119e440660.jpg" id="markdownImage"/>
 
 If you try the code above, you realise that it does not freakin work. Why? 
 We are forgetting one thing: node caches all modules when required. How is

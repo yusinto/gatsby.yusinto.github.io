@@ -1,6 +1,6 @@
 ---
 path: "/launch-darkly-part-two"
-date: "2016-11-1"
+date: "2016-11-01"
 title: "Targeting users with React Redux and Launch Darkly"
 published: true
 tags: ["targeting", "users", "react", "redux", "feature", "toggle", "launch", "darkly", "toggling", "ld-redux"]
@@ -51,12 +51,12 @@ compared to targeting individual users.
 
 For example, the settings below will target users in Australia:
 
-<img alt="Targeting user by country?" src="/static/user_targeting_by_country.png" id="markdownImage"/>
+<img alt="Targeting user by country?" src="/static/user_targeting_by_country-75b784f592576e23cc931cce05d8084f.png" id="markdownImage"/>
 
 You can also serve true to a percentage of Australian users using the "percentage rollout" serve option.
 For example the settings below will rollout true to 50% of Australian users:
 
-<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_percentage_rollout.png" id="markdownImage"/>
+<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_percentage_rollout-5c8a23d810a5429989d1fde3b02c53af.png" id="markdownImage"/>
 
 ###Advanced targeting
 If you look carefully there's an Advanced option if you select percentage rollout. The purpose of this 
@@ -67,7 +67,7 @@ For example, the settings below will serve true to half of chrome users, half of
 half of firefox users, etc. It's a way of "bucketing" your users so each bucket receives the 
 percentage rollout you specified.
 
-<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_advanced.png" id="markdownImage"/>
+<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_advanced-03f7439a4d9a93756f445a7a1b34af85.png" id="markdownImage"/>
 
 ##Usage with ld-redux
 If you use [ld-redux](https://github.com/yusinto/ld-redux), you pass the user object

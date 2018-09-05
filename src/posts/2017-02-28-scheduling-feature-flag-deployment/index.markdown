@@ -16,7 +16,7 @@ Use Launch Darkly? Love their feature flagging and a/b testing features? Like re
 Anyway I use Launch Darkly at my workplace (I work at an airline company spelt with a Q and I live in Sydney Australia) and I recently faced a
 challenge with zero dark thirty deployments.
 
-<img alt="Zero dark what?" src="/static/tropic.jpg" id="markdownImage"/>
+<img alt="Zero dark what?" src="/static/tropic-f1e4467c77ca99aa138b609a47a35be2.jpg" id="markdownImage"/>
 
 No no what I meant was I had feature flagging in place in my app, and I had to turn flags on (and off) at unearthly hours like 12:01 AM. So being a hacker,
 I wasn't going to lie down and wait for 12:01 AM to come by and turn on a switch. No sir! I am much much smarter than that. Instead, I spent sleepless nights
@@ -85,7 +85,7 @@ ldScheduler.runEveryXSeconds({
 
 and you schedule your flags through launch darkly's dashboard:
 
-<img alt="LaunchDarkly dashboard scheduling config" src="/static/ld-scheduler-flag-settings-resized.png" id="markdownImage"/>
+<img alt="LaunchDarkly dashboard scheduling config" src="/static/ld-scheduler-flag-settings-resized-76c5996c0023abfd1ddb827f7d737002.png" id="markdownImage"/>
 
 **HACK**: We hijack the description field to store our scheduling config as a json object where:
 <ul>

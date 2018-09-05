@@ -1,6 +1,6 @@
 ---
 path: "/step-three-to-react-speed-dev-with-hot-module-replacement"
-date: "2016-04-2"
+date: "2016-04-02"
 title: "Step 3 to React - Speed dev with hot module replacement"
 published: true
 tags: ["react", "hmr", "hot", "module", "replacement", "webpack", "babel"]

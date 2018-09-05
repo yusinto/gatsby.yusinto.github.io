@@ -34,7 +34,7 @@ Apollo really has done a lot of work to simplify the integration of graphql into
 It's so good to finally see the face behind the code! I am both a fan and user of serverless
 and styled components, so thanks for teaching me so much guys!
 
-<img alt="Max Stoiber and Nik Graf" src="/static/max_nik.png" id="markdownImage"/>
+<img alt="Max Stoiber and Nik Graf" src="/static/max_nik-c963a99e1eef61bb996c72e0bfdd332e.png" id="markdownImage"/>
 
 ## The main event
 Prior to the start of the conference we heard word that Dan Abramov will not make it to Paris.
@@ -97,15 +97,15 @@ These are some of the people I met and the insights I gathered from them:
 <b>Dafeng Guo cofounder of strikingly</b> - started strikingly with 2 other founders in YCombinator in 2012. They had 0 paying customers
 in 2012, now they have over 130 employees and a lot more customers :). I am a user of strikingly and I can't recommend it enough. He also
 showed me strikingly's latest wechat feature where strikingly websites now are automatically converted to wechat apps. That's super cool!
-<img alt="Dafeng" src="/static/dafeng.png" id="markdownImage"/>
+<img alt="Dafeng" src="/static/dafeng-be0c28025424c3ada2b2b2e22fa6d1c8.png" id="markdownImage"/>
 
 <b>Griffith Tchen Pan</b> - works at myworkpapers.com. Started in Gold Coast Australia and now has offices in USA and London. 8 years of
  dedication and commitment to a product pays off. That's what I learned from him.
- <img alt="Griffith" src="/static/griffith.png" id="markdownImage"/>
+ <img alt="Griffith" src="/static/griffith-90c7466495c87c288e9417ac6e3b70d0.png" id="markdownImage"/>
 
 <b>Brian Christensen</b> Danish guy I met at the workshop. Arguably the smartest guy in Denmark, he knows everything from docker to glam to
 elm, and does not have a CI in place at his workplace. Just kidding Brian :). He drinks a lot.
-<img alt="Brian" src="/static/brian.png" id="markdownImage"/>
+<img alt="Brian" src="/static/brian-bf1d61879c7dc12dc5c7b4af89c8e346.png" id="markdownImage"/>
 
 # Conclusion
 It's not the best organised conference I've been for a few reasons. 
@@ -121,7 +121,7 @@ I travelled 26 hours from Sydney Australia, stopping at 3 different countries en
 and then back. Is it worth it? Yes. I definitely won't forget it. Here are more pics from all
 the great people I met. Till next time!
 
-<img alt="Brian" src="/static/react_conference_collage.png" id="markdownImage"/>
+<img alt="Brian" src="/static/react_conference_collage-06aad020e79ef66d8d0ecf765e7c182a.png" id="markdownImage"/>
 
 
 ---------------------------------------------------------------------------------------

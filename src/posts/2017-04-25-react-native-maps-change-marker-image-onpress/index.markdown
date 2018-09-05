@@ -125,12 +125,12 @@ AppRegistry.registerComponent('mapMarkers', () => MapMarkers);
 Before you run this in the simulator, you'll need to set a custom location
 in the ios simulator. We'll only be demoing on ios only for this blog.
 
-<img alt="Simulator Location Menu" src="/static/simulator_location_menu.png" id="markdownImage"/>
+<img alt="Simulator Location Menu" src="/static/simulator_location_menu-c9a2d11813e71eca98033053a8b6c321.png" id="markdownImage"/>
 
 Set the custom location to Cafe Sydney -33.861924, 151.210891. If you haven't
 been, you have to! It's an awesome restaurant!
 
-<img alt="Set Custom Location" src="/static/custom_location.png" id="markdownImage"/>
+<img alt="Set Custom Location" src="/static/custom_location-32b1fbae2f11a036a16924a9fa724bea.png" id="markdownImage"/>
 
 ## Run the project
 
@@ -141,7 +141,7 @@ react-native run-ios
 You should see a map view with the user location set to Cafe Sydney in Australia.
 Now let's add a few markers.
 
-{% highlight js%}
+```jsx
 // Add these at the top of the file, straight after the imports
 const RESTAURANTS = [
   {
@@ -209,7 +209,7 @@ marker and save that to state. Then on the image prop, we can inspect
 if the marker being rendered matches the selected index in state, and use
 a different image if so.
 
-{% highlight js%}
+```jsx
 // At the top of the file after imports, we require our marker images
 const marker = require('./assets/images/marker.png');
 const selectedMarker = require('./assets/images/marker-selected.png');
