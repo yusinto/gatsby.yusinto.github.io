@@ -31,7 +31,7 @@ We want to use webpack to watch our server files for changes, rebundle on change
 
 Watching files for changes is already supported by webpack out of the box so that's easy. For example we can do this:
 
-```jsx
+```js
   function watchServerChanges() {
     const webpack = require('webpack');
     const serverCompiler = webpack(require('path/to/webpack/server/config');
@@ -51,13 +51,14 @@ Watching files for changes is already supported by webpack out of the box so tha
   }
 ```
 
-We can call watchServerChanges on our server bootstrap and walah problem solved. Well not quite. How do we tackle restarting express on server file changes?
+We can call watchServerChanges on our server bootstrap and walah problem solved. Well not quite. 
+How do we tackle restarting express on server file changes?
 
 ##Step 1: Express server restart using htttp.Server.close()
 The http.Server object provides a [close](https://nodejs.org/api/http.html#http_server_close_callback) method which sounds like it might do the job.
 For example we can theoretically do this:
 
-```jsx
+```js
   function onServerChange(err, stats) {
     if (err) {
       console.log('Server bundling error:' + JSON.stringify(err));
@@ -85,7 +86,7 @@ Two things we need to solve here:
 Let's take a look at some code.
 
 ####src/server/index.js (bootstrap)
-```jsx
+```js
   require('babel-polyfill');
   
   // require the server entry file where the express server is initialised
@@ -96,7 +97,7 @@ Let's take a look at some code.
 ```
 
 ####src/server/server.js (entry)
-```jsx
+```js
 import express from 'express';
 
 const PORT = 3000;
@@ -128,7 +129,7 @@ Meaning the main export of our app needs to be exposed to the consumer. To do th
 in your webpack server config file, set **output.libraryTarget = 'commonjs2'**, like so:
 
 ####webpack.config.server.js
-```jsx
+```js{22-24}
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -171,7 +172,6 @@ module.exports = {
 };
 ```
  
-
 ###Step 1.2: Restarting express
  
 Now we have http.Server, we can call close() to stop the server. However as mentioned earlier, 
@@ -189,12 +189,10 @@ the connection. I store these in a Map for better performance rather
 than a normal object as suggested in the post. We can then call
 socket.destroy() in our watch handler for all sockets, which
 terminates all connections to our http.Server. The close() method can then
-proceed to shut the server.
-
-What does it look like in code? 
+proceed to shut the server. What does it look like in code? 
 
 ####src/server/index.js (bootstrap)
-```jsx
+```js
   require('babel-polyfill');
   
   watchServerChanges();
@@ -278,7 +276,7 @@ same server.bundle.js which is not we want. We want to require the newly
 bundled server.bundle.js which webpack produces. To do this we need to clear
 the require cache:
 
-```jsx
+```js
   function clearCache() {
     const cacheIds = Object.keys(require.cache);
     for(let id of cacheIds) {
@@ -292,22 +290,21 @@ the require cache:
 
 You call clearCache() in onServerChange callback prior to starting the 
 express server like so:
-```jsx
-      
-      //... same code as above
-      
-      // watch file changes
-      compiler.watch(compilerOptions, function onServerChange(err, stats){
-        if (err) {
-          console.log('Server bundling error:' + JSON.stringify(err));
-          return;
-        }
-        
-        // This solves all first world problems
-        clearCache();
-  
-        //... same as above
-      });
+```js{10-11}
+    //... same code as above
+    
+    // watch file changes
+    compiler.watch(compilerOptions, function onServerChange(err, stats){
+    if (err) {
+      console.log('Server bundling error:' + JSON.stringify(err));
+      return;
+    }
+    
+    // This solves all first world problems
+    clearCache();
+    
+    //... same as above
+    });
     
     // ... 
 ```

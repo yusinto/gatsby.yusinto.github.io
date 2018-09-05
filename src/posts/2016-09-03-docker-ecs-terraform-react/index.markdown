@@ -61,7 +61,7 @@ docker runs it for you automatically, and then saves the resultant state of that
 So right click on the root directory of your project, add a new file call it <i>Dockerfile</i>. It should look like this:
 
 ####DockerFile
-```bash
+```docker
 # We need a base image to build upon. Use the latest node image from 
 # dockerhub as the base image so we get node and npm for free
 FROM node:latest
@@ -103,7 +103,7 @@ would have changed in the src folder, because it contains all our source code, i
 the cache will be invalidated. Once invalidated, all subsequent instructions will create new layers ignoring the cache.</li>
 </ul>
 
-For more information on docker build cache check the official doco [here](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+For more information on docker build cache check the official doco [here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
 
 ## Step 3: Create .dockerignore
 
@@ -112,7 +112,7 @@ We need one more file before we can build our image. Go ahead and add a new file
 
 Docker will exclude files and directories specified here from the image. It should look like this:
 
-```bash
+```text
 .git
 .gitignore
 node_modules

@@ -2,7 +2,7 @@
 path: "/feature-driven-development"
 date: "2017-03-22"
 title: "Feature driven development"
-published: true
+published: false
 tags: ["feature", "flag", "driven", "development", "git", "model", "agile", "scrum", "sprint"]
 ---
 I'm writing this onboard of a plane, en route to my holidays in Vietnam. I was fortunate enough to get a business class upgrade (bucket list item
@@ -22,12 +22,9 @@ or even in a day. What does this further mean? This means the scrum is dead my f
 
 ## Scrum is dead.. again?
 I'm quoting Dave Thomas' infamous blog post "[Agile is dead](http://davethomas.org)". The idea of an x-nightly sprint at the end of which a prod deployment occurs
- is outdated, just as the waterfall model became outdated when agile was introduced. Some elements of the scrum are still useful e.g. standups and grooming, but the 
- notion of an end of sprint delivery is outdated.
+is outdated, just as the waterfall model became outdated when agile was introduced. Some elements of the scrum are still useful e.g. standups and grooming, but the 
+notion of an end of sprint delivery is outdated.
  
-## 
-
-
 Consider the following code (which you can see in entirety [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.js)):
 
 #### home.js

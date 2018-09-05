@@ -37,7 +37,7 @@ babel-register and babel-loader) to transpile jsx into pure javascript.
 ## Step 2.2: Configure webpack
 Create a new file called webpack.config.dev.js at the root directory of your project. The file contents should look like this:
 
-```jsx
+```js
 var webpack = require('webpack');
 var path = require('path');
 
@@ -75,15 +75,11 @@ poststart command which we don't use here.
 In prestart, we tell npm to run webpack with the config file above essentially
 bundling our app prior to running it.
 
-```jsx
-{
-...
-      "scripts": {
-        "prestart": "webpack --config webpack.config.dev.js --progress",
-        "start": "node src/server/index.js",
-      }
-...
-}
+```json
+  "scripts": {
+    "prestart": "webpack --config webpack.config.dev.js --progress",
+    "start": "node src/server/index.js"
+  }
 ```
 
 When the prestart command completes, a bundle.js file should exist in the dist folder.
@@ -175,9 +171,6 @@ between a request and a response. In this example, a GET request comes in from t
 middleware matches the route and executes our code. We use express' built-in static middleware so we get this for free.
 
 ```jsx
-
-...
-
 // This is our html template that contains our target mounting 
 // div id="reactDiv". Also note the script reference to /dist/bundle.js.
 const htmlString = `<!DOCTYPE html>
@@ -194,8 +187,6 @@ const htmlString = `<!DOCTYPE html>
 // Use express' built-in static middleware to serve static files in 
 // the dist folder
 app.use('/dist', Express.static('dist'));
-
-...
 ```
 
 ---

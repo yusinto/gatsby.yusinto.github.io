@@ -30,14 +30,14 @@ config when running updateSchema.
 ## Enough talk, show me some code
 You need the following babel packages:
 
-```jsx
+```bash
 sudo yarn add --dev babel-polyfill babel-preset-latest
 sudo yarn add babel-register babel-preset-stage-0
 ```
 
 In your package.json, you declare an npm run command update-schema which points an index.js file:
 
-```jsx
+```json
 "scripts": {
     "update-schema": "node ./src/graphql/index.js",
     ...
@@ -46,7 +46,7 @@ In your package.json, you declare an npm run command update-schema which points 
 
 Your src/graphql/index.js then looks like this:
 
-```jsx
+```js
 require('babel-register')({
   babelrc: false,
   presets: [

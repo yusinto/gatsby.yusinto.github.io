@@ -26,7 +26,7 @@ find any posts/articles/documentation that describe how I can do this. So I set 
 
 The genre enum type looks like this. You can find the complete schema [here](https://github.com/yusinto/movie-time/blob/master/src/graphql/schema.js).
 
-```jsx
+```graphql
 const genreEnum = new GraphQLEnumType({
   name: 'Genre',
   values: {
@@ -46,7 +46,7 @@ const genreEnum = new GraphQLEnumType({
 
 Our graphql endpoint should return a list like this:
 
-```jsx
+```js
 ['Action', 'Adventure',...,'Western']
 ```
 
@@ -54,11 +54,11 @@ Using the chrome debugger, I discovered that the genreEnum object has a property
 prefix means that it's a private property by convention, so we might not be doing the best thing here! However due to the lack of
 alternatives, it will have to do for now. Your resolve method should then look like this:
 
-```jsx
+```js
 resolve: () => genreEnum._values.map(e => e.value)
 ```
 
-And that's it! You can find the complete code on [github](https://github.com/yusinto/movie-time)
+And that's it! You can find the complete code on [github](https://github.com/yusinto/movie-time).
 
 Happy coding!
 

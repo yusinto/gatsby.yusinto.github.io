@@ -22,7 +22,7 @@ Or perhaps you want to show special offers only to premium members of your websi
 ## Ok sounds interesting. How do I do it?
 On init, you'll need to pass a user object to Launch Darkly so it has something to work with: 
 
-```jsx
+```js
 import ldClient from 'ldclient-js';
 
 // Launch Darkly supports the following user attributes by default
@@ -103,7 +103,7 @@ render(
 By default, if you don't specify a user object, ld-redux will create a default
 user like below:
 
-```jsx
+```js
 user = {
    key: uuid.v4(),
    ip: ip.address(),

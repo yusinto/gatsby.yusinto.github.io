@@ -78,7 +78,7 @@ So what do we do? Enter [babel-plugin-rewire](https://github.com/speedskater/bab
 ## Using rewire
 You need to install the following npm packages:
 
-```jsx
+```bash
 yarn add --dev jest babel-plugin-rewire enzyme react-addons-test-utils
 ```
 
@@ -89,7 +89,7 @@ Enzyme requires the official [react-addons-test-utils](https://facebook.github.i
 In your .babelrc, add an "env" block to include babel-plugin-rewire when running tests:
 
 #### .babelrc
-```jsx
+```json
 {
     "presets": ["es2015", "react", "stage-0"],
     
@@ -107,7 +107,7 @@ In your .babelrc, add an "env" block to include babel-plugin-rewire when running
 Now we can write the tests! The complete file is [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.test.js):
 
 #### home.test.js
-```jsx
+```jsx{6-9}
 import React from 'react';
 import {shallow} from 'enzyme';
 import HomeRedux from './home';

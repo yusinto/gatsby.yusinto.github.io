@@ -8,9 +8,7 @@ tags: ["react", "redux", "feature", "toggle", "launch", "darkly", "toggling"]
 ###_Update: 22 October 2016_
 _I have published an npm package called [ld-redux](https://github.com/yusinto/ld-redux) which covers everything you need to integrate launch darkly with your react
 redux app. It's the contents of this blog in an npm package. If you use it, please give me some feedback. Thanks!_
-
 ---
-
 I first heard the term feature toggle from someone I interviewed when we were talking about continuous deployment (deploying to prod at anytime, continuously).
 I didn't really think much of it at first, thinking that it's just a trivial bunch of if-else flags that I have to maintain
 manually. I couldn't be more wrong.
@@ -47,7 +45,7 @@ re-used throughout the app.
 We'll go ahead and create the action and reducer to perform this instantiation.
 
 ####appAction.js
-```jsx
+```js
 import ldClient from 'ldclient-js';
 
 export const initialiseLD = () => {
@@ -108,7 +106,7 @@ export const setLDReady = ldClient => {
 ```
 
 ####appReducer.js
-```jsx
+```js
 import Constants from './common/constant';
 
 const defaultState = {
@@ -138,7 +136,7 @@ best place to do this is at the root component's componentDidMount.
 I'll skip the appContainer snippet to keep things short.
 
 ####appComponent.js
-```jsx
+```js
 import React, {Component} from 'react';
 
 export default class App extends Component {
@@ -188,7 +186,7 @@ So now we can fetch "home" specific feature flags when ldclient is ready
 like so:
 
 ####homeComponent.js
-```jsx
+```js
 import React, {Component} from 'react';
 
 export default class Home extends Component {
@@ -214,14 +212,14 @@ export default class Home extends Component {
  a clean separation of concerns between actions and business logic.
 
 ####homeLogic.js
-```jsx
+```js
 export const homeFlags = {
   'random-number': false // default flag value
 };
 ```
 
 ####homeReducer.js
-```jsx
+```js
 ...
 const defaultState = {
   randomNumber: 0,
@@ -248,7 +246,7 @@ We can then retrieve individual feature flags for the home component
 in our initialiseHomeFlags action using ldclient's variation method:
 
 ####homeAction.js
-```jsx
+```js
 ...
 export const initialiseHomeFlags = () => {
   // use thunk
@@ -344,6 +342,6 @@ touched the tip of the iceberg. I will
 be blogging more about my journey towards continuous deployment with docker
 and launch darkly in the coming posts.
 
-All the code in this blog are available on [github](https://github.com/yusinto/launchdarkly)
+All the code in this blog are available on [github](https://github.com/yusinto/launchdarkly).
 
 ---------------------------------------------------------------------------------------

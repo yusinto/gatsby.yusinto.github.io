@@ -17,11 +17,10 @@ I encountered this at work when two of my colleagues (let's call them Lill and W
 in two different styles. Compare the printQuality method in the following code snippets:
 
 ####Lill: Standard es6 class method
-```jsx
+```js
 import React, {Component} from 'react';
 
 export default class MethLab extends Component {
-    
     constructor(props) {
         super(props);
         
@@ -42,7 +41,7 @@ export default class MethLab extends Component {
 ```
 
 ####Woic: Property initializer with arrow function
-```jsx
+```js
 import React, {Component} from 'react';
 
 export default class MethLab extends Component {
@@ -70,15 +69,15 @@ doing the same thing and are indifferent from each other. It's a fair and logica
 The answer lies in the es5 translation of these syntactic sugar. Let me explain through code:
 
 ####Lill: Standard es6 class method in es5
-```jsx
+```js
 function MethLab(props) {
-    ...
+    // ...
 
     // manually bind "this" context of printQuality function
     // to the instance of MethLab being constructed
     this.printQuality = this.printQuality.bind(this);
     
-    ...
+    // ...
 }
 
 MethLab.prototype.printQuality = function printQuality() {
@@ -87,15 +86,15 @@ MethLab.prototype.printQuality = function printQuality() {
 ```
 
 ####Woic: Property initializer with arrow function in es5
-```jsx
+```js
 function MethLab(props) {
-    ... 
+    // ... 
     
     this.printQuality = function () {
         console.log(this.state.methQuality);
     };
 
-    ...
+    // ...
 }
 
 ```

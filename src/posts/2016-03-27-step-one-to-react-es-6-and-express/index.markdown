@@ -18,14 +18,14 @@ bridged the gap even further. The introduction of arrow functions, classes and d
  add react. The following posts will gradually include react router, relay, hot module replacement (hmr), 
  redux, foundation (sass) and many other goodies!
  
- But first thing first
+ But first thing first..
 
 ---
 
 ## Step 1.1: Install babel
  You'll need to install express, babel-express and babel-preset-es2015:
 
-```jsx
+```bash
 npm install express babel-register babel-preset-es2015 --save
 ```
 
@@ -37,7 +37,7 @@ babel-preset-es2015 tells babel to transpile es6 code to es5.
 ## Step 1.2: Configure babel - add a .babelrc file
 Create a new file called .babelrc at the root directory of your project. The file contents should look like this:
 
-```jsx
+```json
 {
     "presets": ["es2015"]
 }
@@ -51,20 +51,16 @@ This configures babel to transpile es6 code to es5.
 
 In your package.json, add a scripts/start command which tells npm what to do when you run "npm start" in the command line:
 
-```jsx
-{
-...
-      "scripts": {
-        "start": "node src/server/index.js",
-      }
-...
-}
+```json
+  "scripts": {
+    "start": "node src/server/index.js",
+  }
 ```
 
 This tells npm to execute src/server/index.js when you run "npm start" at your root project folder. In this case, index.js 
 is the entry point to your app. The contents of this file should look like this: 
 
-```jsx
+```js
 require('babel-register');
 require('./server');
 ```
@@ -74,7 +70,7 @@ require('./server');
 ## Step 1.4: Write es6 code
 The file server.js contains all your es6 code for your app. It should look like this:
 
-```jsx
+```js
 import Express from 'express';
 
 const PORT = 3000;
@@ -97,7 +93,7 @@ arrow functions instead of inline function declarations and es6 template strings
 ## Step 1.5: Run your app!
 Run 
  
-```jsx
+```bash
 npm start
 ```
  

@@ -25,24 +25,17 @@ There are 6 packages we need to install:
 npm install --save-dev babel-plugin-react-transform react-transform-hmr react-transform-catch-errors redbox-react webpack-dev-middleware webpack-hot-middleware
 ```
 
+**babel-plugin-react-transform** - This modifies your react components by applying all the transforms we configure in .babelrc.
 
-#### babel-plugin-react-transform
+**react-transform-hmr** - This transform enables hot reloading of components
 
-This modifies your react components by applying all the transforms we configure in .babelrc.
+**react-transform-catch-errors** - This transform catches errors inside the render() method and renders that error instead of your component.
 
-#### react-transform-hmr, react-transform-catch-errors
-The babel plugin above applies these transforms to our react components. Each transform modifies your react component in a specific way:
+**redbox-react** - Used by react-transform-catch-errors to display errors in a red screen of death in the browser.
 
-<b>react-transform-hmr</b> - This transform enables hot reloading of components
-<b>react-transform-catch-errors</b> - This transform catches errors inside the render() method and renders that error instead of your component.
+**webpack-dev-middleware** - bundles our js file on the fly, stores it in memory and serves it
 
-#### redbox-react
-Used by react-transform-catch-errors to display errors in a red screen of death in the browser.
-
-#### webpack-dev-middleware, webpack-hot-middleware
-<b>webpack-dev-middleware</b> - bundles our js file on the fly, stores it in memory and serves it
-
-<b>webpack-hot-middleware</b> - enables hot reloading using webpack-dev-middleware above
+**webpack-hot-middleware** - enables hot reloading using webpack-dev-middleware above
 
 ---
 
@@ -50,7 +43,7 @@ Used by react-transform-catch-errors to display errors in a red screen of death 
 
 Your .babelrc file should look like this:
 
-```jsx
+```json
 {
     "presets": ["es2015", "react"],
     "plugins": [
@@ -71,16 +64,16 @@ Your .babelrc file should look like this:
 This is the configuration that uses the transform packages above. In short, we instruct the
 react-transform plugin to apply 2 transforms: the hmr and catch-errors transforms to our react 
 components. In simple terms, transforms are just functions that accepts a react component as input and modifies it. For 
-example, <b><i>react-transform-catch-errors</i></b> adds a try catch block on the original render method to catch exceptions.
+example, **_react-transform-catch-errors_** adds a try catch block on the original render method to catch exceptions.
 
 ---
 
 ## Step 3.3: Configure webpack
 Your webpack.config.dev.js should look like this:
 
-```jsx
-var webpack = require('webpack');
-var path = require('path');
+```js
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     // Add webpack-hot-middleware/client to our bundle so our app 
@@ -115,15 +108,15 @@ module.exports = {
 ## Step 3.4: Modify express app to support hmr
 Almost there! Now we need to modify server.js to use webpack dev and hot middlewares.
 
-```jsx
-...
+```js
+// ...
 
 import Webpack from 'webpack';
 import WebpackConfig from '../../webpack.config.dev';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebPackHotMiddleware from 'webpack-hot-middleware';
 
-...
+// ...
 
 // create a webpack instance from our dev config
 const webpackCompiler = Webpack(WebpackConfig);
@@ -142,7 +135,7 @@ app.use(WebPackHotMiddleware(webpackCompiler));
 // NOTE: delete express static middleware for dist. We don't need that
 // anymore because webpack-dev-middleware serves our bundle.js from memory
 
-...
+// ...
 ```
 
 ---

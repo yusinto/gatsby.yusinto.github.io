@@ -8,9 +8,6 @@ files:
  - "./tropic.jpg"
  - "./ld-scheduler-flag-settings-resized.png"
 ---
-
-#### Updated Mon 13 March 2017
-
 Use Launch Darkly? Love their feature flagging and a/b testing features? Like reading blog posts that sounds like an informercial? Umm...
 
 Anyway I use Launch Darkly at my workplace (I work at an airline company spelt with a Q and I live in Sydney Australia) and I recently faced a
@@ -31,7 +28,7 @@ A cron job that uses [launch darkly apis](http://apidocs.launchdarkly.com/docs/u
 ## Enough talk, show me some code
 Using the rest apis, you can update your flag with something  like this:
 
-```jsx
+```js
 const headers = {
   Accept: '*/*',
   'Content-Type': 'application/json',
@@ -40,7 +37,7 @@ const headers = {
 };
 const body = JSON.stringify([{
   op: 'replace',
-  path: '/environments/test';,
+  path: '/environments/test',
   value: true,
 }]);
 const url = 'https://app.launchdarkly.com/api/v2/flags/default/your-key';
@@ -67,13 +64,13 @@ Enter [ld-scheduler](https://github.com/yusinto/ld-scheduler).
 ## ld-scheduler
 With ld-scheduler, you do this from your node app:
 
-```jsx
+```bash
 yarn add ld-scheduler
 ```
 
 then
 
-```jsx
+```js
 import ldScheduler from 'ld-scheduler';
 
 ldScheduler.runEveryXSeconds({
@@ -102,10 +99,10 @@ and you schedule your flags through launch darkly's dashboard:
     <li>description is a textual string for the purpose of human readability</li>
 </ul>
 
-***AND*** you need to set a tag called "${yourEnv}-scheduled". For example, if you are scheduling a flag in the test environment,
+***AND*** you need to set a tag called \`${yourEnv}-scheduled\`. For example, if you are scheduling a flag in the test environment,
 your tag should be called "test-scheduled". Likewise if you are scheduling it in production, you need to add a "production-scheduled" tag.
 
-When ld-scheduler runs, it will set your flag on/off according the the json configuration. It will also remove the "${yourEnv}-scheduled" tag so
+When ld-scheduler runs, it will set your flag on/off according the the json configuration. It will also remove the \`${yourEnv}-scheduled\` tag so
 it does not get reprocessed. If there's no other scheduled tags, then ld-scheduler also sets the "Description" field
 to the json.description string, thereby deleting the json config replacing it with the description string.
 
@@ -133,7 +130,7 @@ ld-scheduler supports a second taskType "fallThoughRollout" which you can use to
 ```
 where variation 0 is true and variation 1 is false. Weight is in mili-percentage (if there's such a word) i.e. 90000 === 90% and 10000 === 10%.
 Of course you would enter this json object in the "Description" field of your flag settings in launch darkly's dashboard
-***AND*** set a "${yourEnv}-scheduled" tag.
+***AND*** set a \`${yourEnv}-scheduled\` tag.
 
 ## Conclusion
 Check out the [sample code](https://github.com/yusinto/ld-scheduler/tree/master/example) for a working example and let me know if this is useful (or not)!

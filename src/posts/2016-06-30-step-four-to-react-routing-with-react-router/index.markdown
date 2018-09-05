@@ -31,7 +31,7 @@ all our routing needs.
 You set up react router routes in jsx. What does that mean? That means you set up your routes
 the same way you write jsx; in an xml-like format with nested parent-child structure. 
  
-```xml
+```jsx
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import App from './component/appComponent';
@@ -64,7 +64,7 @@ matches <b>two</b> components at "/" and "/contact". That means <b>both</b> the 
 You need to use the Link component from react-router package instead of the standard html anchor tags to 
 be able to route across pages SPA style.
 
-```xml
+```jsx
 <Link to="/">Home</Link>
 <Link to="/contact">Contact Us</Link>
 ```
@@ -79,20 +79,24 @@ Instead of rendering your root component directly on the client side, you render
 specified. This is so we can match urls and render matching components using the routes declared in common/route.js
 The history attribute tells react router to use html5 history api as opposed to hash history. If you don't specify this attribute,
  you will get this warning: 
- ```xml
+ ```bash
  [react-router] `Router` no longer defaults the history prop to 
  hash history. Please use the `hashHistory` singleton instead."
  ```
 Html5 history api is preferable to hash history because it keeps the url clean:
 
-"/contact" 
+```html
+/contact
+```
 
 as opposed to:
 
-"/#/contact"
+```html
+/#/contact
+```
 
 The whole client/index.js looks like this:
-```xml
+```jsx
 // Import the render method from react-dom so we can mount our
 // component onto an html element
 import React from 'react';
@@ -152,7 +156,7 @@ We'll prettify our app by deactivating the current active link so users get a fe
 The whole appComponent.js looks like this:
 
 #### appComponent.js
-```xml
+```jsx
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
