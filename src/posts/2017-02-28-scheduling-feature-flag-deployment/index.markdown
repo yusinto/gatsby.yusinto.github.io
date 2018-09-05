@@ -1,19 +1,12 @@
 ---
-published: true
+path: "/scheduling-feature-flag-deployment"
+date: "2017-02-28"
 title: "Scheduling Feature Flag Deployment"
-layout: post
-date: 2017-02-28 08:30
-tag:
-- schedule
-- feature
-- flag
-- deployment
-- ld
-- scheduler
-- automate
-- automation
-- scheduling
-blog: true
+published: true
+tags: ["schedule", "feature", "flag", "deployment", "ld", "scheduler", "automate", "automation", "scheduling"]
+files:
+ - "./tropic.jpg"
+ - "./ld-scheduler-flag-settings-resized.png"
 ---
 
 #### Updated Mon 13 March 2017
@@ -23,7 +16,7 @@ Use Launch Darkly? Love their feature flagging and a/b testing features? Like re
 Anyway I use Launch Darkly at my workplace (I work at an airline company spelt with a Q and I live in Sydney Australia) and I recently faced a
 challenge with zero dark thirty deployments.
 
-![Zero dark what?](/assets/images/tropic.jpg)
+<img alt="Zero dark what?" src="/static/tropic.jpg" id="markdownImage"/>
 
 No no what I meant was I had feature flagging in place in my app, and I had to turn flags on (and off) at unearthly hours like 12:01 AM. So being a hacker,
 I wasn't going to lie down and wait for 12:01 AM to come by and turn on a switch. No sir! I am much much smarter than that. Instead, I spent sleepless nights
@@ -33,12 +26,12 @@ doing 30 hour days to write a node app that will do it for me. Take that zero da
 Need to turn flags on/off automatically at a specified scheduled time.  
 
 ## The solution
-A cron job that uses [launch darkly apis](http://apidocs.launchdarkly.com/docs/update-feature-flag){:target="_blank"} to automatically turn on/off flags.
+A cron job that uses [launch darkly apis](http://apidocs.launchdarkly.com/docs/update-feature-flag) to automatically turn on/off flags.
 
 ## Enough talk, show me some code
 Using the rest apis, you can update your flag with something  like this:
 
-{% highlight javascript %}
+```jsx
 const headers = {
   Accept: '*/*',
   'Content-Type': 'application/json',
@@ -57,7 +50,7 @@ const response = await fetch(url, {
     body
 });
 
-{% endhighlight %}
+```
 
 Of course you'll need to add some defensive programming for error catching
 and retries plus configuration for test and production environments
@@ -69,18 +62,18 @@ task by any means. An ad-hoc solution like this involves hard coding
 flag names and continual updates which are almost as bad as waking up at 
 12:01 AM to do the deployments manually.
 
-Enter [ld-scheduler](https://github.com/yusinto/ld-scheduler){:target="_blank"}.
+Enter [ld-scheduler](https://github.com/yusinto/ld-scheduler).
 
 ## ld-scheduler
 With ld-scheduler, you do this from your node app:
 
-{% highlight js %}
+```jsx
 yarn add ld-scheduler
-{% endhighlight %}
+```
 
 then
 
-{% highlight javascript %}
+```jsx
 import ldScheduler from 'ld-scheduler';
 
 ldScheduler.runEveryXSeconds({
@@ -88,11 +81,11 @@ ldScheduler.runEveryXSeconds({
   apiKey: 'your-secret-api-key',
   slack: 'your-slack-webhook-url'
 });
-{% endhighlight %}
+```
 
 and you schedule your flags through launch darkly's dashboard:
 
-![LaunchDarkly dashboard scheduling config](/assets/images/ld-scheduler-flag-settings-resized.png)
+<img alt="LaunchDarkly dashboard scheduling config" src="/static/ld-scheduler-flag-settings-resized.png" id="markdownImage"/>
 
 **HACK**: We hijack the description field to store our scheduling config as a json object where:
 <ul>
@@ -121,7 +114,7 @@ This way, you can safely run 2 instances of ld-scheduler; one for each environme
 ## Extra
 ld-scheduler supports a second taskType "fallThoughRollout" which you can use to set the default fallThrough rollout percentage:
 
-{% highlight json %}
+```json
 {
     "taskType": "fallThroughRollout",
     "targetDeploymentDateTime": "2017-03-3 02:33",
@@ -137,12 +130,12 @@ ld-scheduler supports a second taskType "fallThoughRollout" which you can use to
         }
     ]
 }
-{% endhighlight %}
+```
 where variation 0 is true and variation 1 is false. Weight is in mili-percentage (if there's such a word) i.e. 90000 === 90% and 10000 === 10%.
 Of course you would enter this json object in the "Description" field of your flag settings in launch darkly's dashboard
 ***AND*** set a "${yourEnv}-scheduled" tag.
 
 ## Conclusion
-Check out the [sample code](https://github.com/yusinto/ld-scheduler/tree/master/example){:target="_blank"} for a working example and let me know if this is useful (or not)!
+Check out the [sample code](https://github.com/yusinto/ld-scheduler/tree/master/example) for a working example and let me know if this is useful (or not)!
 
 ---------------------------------------------------------------------------------------

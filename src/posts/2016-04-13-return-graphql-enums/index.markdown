@@ -1,14 +1,9 @@
 ---
-published: true
+path: "/return-graphql-enums"
+date: "2016-04-13"
 title: "Returning graphql enum values to the client"
-layout: post
-date: 2016-04-13 15:45
-tag:
-- react
-- relay
-- graphql
-- GraphQLEnumType
-blog: true
+published: true
+tags: ["react", "relay", "graphql", "GraphQLEnumType"]
 ---
 
 In my attempt to learn Relay and GraphQL, I recently created a simple movie app. It is a single page app in both senses -
@@ -31,7 +26,7 @@ find any posts/articles/documentation that describe how I can do this. So I set 
 
 The genre enum type looks like this. You can find the complete schema [here](https://github.com/yusinto/movie-time/blob/master/src/graphql/schema.js).
 
-{% highlight js %}
+```jsx
 const genreEnum = new GraphQLEnumType({
   name: 'Genre',
   values: {
@@ -47,21 +42,21 @@ const genreEnum = new GraphQLEnumType({
     }
   }
 });
-{% endhighlight %}
+```
 
 Our graphql endpoint should return a list like this:
 
-{% highlight js %}
+```jsx
 ['Action', 'Adventure',...,'Western']
-{% endhighlight %}
+```
 
 Using the chrome debugger, I discovered that the genreEnum object has a property called <b>_values</b>. I'm guessing the underscore
 prefix means that it's a private property by convention, so we might not be doing the best thing here! However due to the lack of
 alternatives, it will have to do for now. Your resolve method should then look like this:
 
-{% highlight js %}
+```jsx
 resolve: () => genreEnum._values.map(e => e.value)
-{% endhighlight %}
+```
 
 And that's it! You can find the complete code on [github](https://github.com/yusinto/movie-time)
 

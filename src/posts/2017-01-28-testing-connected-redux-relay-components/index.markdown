@@ -1,19 +1,9 @@
 ---
-published: true
+path: "/testing-connected-redux-relay-components"
+date: "2017-01-28"
 title: "Testing Connected Redux and Relay Components"
-layout: post
-date: 2017-01-28 08:30
-tag:
-- redux
-- relay
-- connected
-- unit
-- tests
-- testing
-- encapsulation
-- jest
-- rewire
-blog: true
+published: true
+tags: ["redux", "relay", "connected", "unit", "tests", "testing", "encapsulation", "jest", "rewire"]
 ---
 Happy chinese new year everyone! In the spirit of the year of the cock, I shall write the rest of this post in chinese. 
 中国著名的大思想家、大教育家。孔子开创了私人讲学的风气，是儒家学派的创始人。孔子曾受业于老子 (roughly translates to... I don't know).
@@ -27,19 +17,19 @@ itself is already tested!
 
 You have two options at this point; you can either bite the bullet and test the redux component meaning mocking a lot of the redux stuff OR 
 you can modify your code to be testable by exporting the private presentational component. This second approach is the one recommended by the 
-[official redux documentation](https://github.com/reactjs/redux/blob/master/docs/recipes/WritingTests.md){:target="_blank"}. I find that although 
+[official redux documentation](https://github.com/reactjs/redux/blob/master/docs/recipes/WritingTests.md). I find that although 
 this works it does so at the expense of encapsulation. I believe code should be driven by design and requirements, not testing restrictions. 
 So I set out to find a better approach.
 
-There is a popular npm package [rewire](https://github.com/jhnns/rewire){:target="_blank"} which seems to be promising. I failed to make it work
-quickly though, because it does not work with es6 so a little more googling reveals [babel-plugin-rewire](https://github.com/speedskater/babel-plugin-rewire){:target="_blank"} 
+There is a popular npm package [rewire](https://github.com/jhnns/rewire) which seems to be promising. I failed to make it work
+quickly though, because it does not work with es6 so a little more googling reveals [babel-plugin-rewire](https://github.com/speedskater/babel-plugin-rewire) 
 which is based on rewire and works with es6. Armed with this library, I embarked on a journey towards a better cock year oops I mean better unit tests. 
 
 ## Enough talk, show me some code
-Consider the following code (which you can see in entirety [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.js){:target="_blank"}):
+Consider the following code (which you can see in entirety [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.js)):
 
 #### home.js
-{% highlight javascript %}
+```jsx
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as Actions from './homeAction';
@@ -79,27 +69,27 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, Actions)(Home);
-{% endhighlight %}
+```
 
 The Home class is private and that's what we want to test. It is not exported at all, so we can't access it directly. 
 As mentioned above, the official redux documentation recommends exporting this class, but that breaks encapsulation.
-So what do we do? Enter [babel-plugin-rewire](https://github.com/speedskater/babel-plugin-rewire){:target="_blank"}.
+So what do we do? Enter [babel-plugin-rewire](https://github.com/speedskater/babel-plugin-rewire).
 
 ## Using rewire
 You need to install the following npm packages:
 
-{% highlight javascript %}
+```jsx
 yarn add --dev jest babel-plugin-rewire enzyme react-addons-test-utils
-{% endhighlight %}
+```
 
-I use [jest](https://facebook.github.io/jest/){:target="_blank"} for my test framework and you should too, it kicks butt. 
-I also use [enzyme](https://github.com/airbnb/enzyme){:target="_blank"} which is a utility library for testing react components. 
-Enzyme requires the official [react-addons-test-utils](https://facebook.github.io/react/docs/test-utils.html){:target="_blank"} package.
+I use [jest](https://facebook.github.io/jest/) for my test framework and you should too, it kicks butt. 
+I also use [enzyme](https://github.com/airbnb/enzyme) which is a utility library for testing react components. 
+Enzyme requires the official [react-addons-test-utils](https://facebook.github.io/react/docs/test-utils.html) package.
 
 In your .babelrc, add an "env" block to include babel-plugin-rewire when running tests:
 
 #### .babelrc
-{% highlight javascript %}
+```jsx
 {
     "presets": ["es2015", "react", "stage-0"],
     
@@ -111,13 +101,13 @@ In your .babelrc, add an "env" block to include babel-plugin-rewire when running
       }
     }
 }
-{% endhighlight %}
+```
 
 ## Write the tests!
-Now we can write the tests! The complete file is [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.test.js){:target="_blank"}:
+Now we can write the tests! The complete file is [here](https://github.com/yusinto/test-react/blob/master/src/universal/home/home.test.js):
 
 #### home.test.js
-{% highlight javascript %}
+```jsx
 import React from 'react';
 import {shallow} from 'enzyme';
 import HomeRedux from './home';
@@ -136,12 +126,12 @@ describe('Home component tests', () => {
     expect(output).toMatchSnapshot();
   });
 });
-{% endhighlight %}
+```
 
 ## Conclusion
 This approach incurs a little more time to setup, but I think it's worth it. We leave the code fully testable, encapsulation intact. 
 This feels right for me. Also, you can apply the same technique to test react components wrapped in relay containers. It works! 
 
-Check out the [sample code](https://github.com/yusinto/test-react){:target="_blank"} for a working example and let me know if this is useful (or not)!
+Check out the [sample code](https://github.com/yusinto/test-react) for a working example and let me know if this is useful (or not)!
 
 ---------------------------------------------------------------------------------------

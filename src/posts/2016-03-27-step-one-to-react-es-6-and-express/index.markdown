@@ -1,13 +1,9 @@
 ---
+path: "/step-one-to-react-es-6-and-express"
+date: "2016-03-27"
+title: "Step 1 to React - Using es6 with Express"
 published: true
-title: "Step 1 to React: Using es6 with Express"
-layout: post
-date: 2016-03-27 17:48
-tag:
-- react
-- es6
-- express
-blog: true
+tags: ["react", "es6", "express"]
 ---
 
 I came from a .Net background but I realised quickly how powerful and easy node is and I love it. The advent of es6 has
@@ -29,9 +25,9 @@ bridged the gap even further. The introduction of arrow functions, classes and d
 ## Step 1.1: Install babel
  You'll need to install express, babel-express and babel-preset-es2015:
 
-{% highlight js %}
+```jsx
 npm install express babel-register babel-preset-es2015 --save
-{% endhighlight %}
+```
 
 Where express is the standard web framework for node, babel-register will compile every file that is require'd with babel and
 babel-preset-es2015 tells babel to transpile es6 code to es5.
@@ -41,11 +37,11 @@ babel-preset-es2015 tells babel to transpile es6 code to es5.
 ## Step 1.2: Configure babel - add a .babelrc file
 Create a new file called .babelrc at the root directory of your project. The file contents should look like this:
 
-{% highlight js %}
+```jsx
 {
     "presets": ["es2015"]
 }
-{% endhighlight %}
+```
 
 This configures babel to transpile es6 code to es5.
 
@@ -55,7 +51,7 @@ This configures babel to transpile es6 code to es5.
 
 In your package.json, add a scripts/start command which tells npm what to do when you run "npm start" in the command line:
 
-{% highlight js %}
+```jsx
 {
 ...
       "scripts": {
@@ -63,22 +59,22 @@ In your package.json, add a scripts/start command which tells npm what to do whe
       }
 ...
 }
-{% endhighlight %}
+```
 
 This tells npm to execute src/server/index.js when you run "npm start" at your root project folder. In this case, index.js 
 is the entry point to your app. The contents of this file should look like this: 
 
-{% highlight js %}
+```jsx
 require('babel-register');
 require('./server');
-{% endhighlight %}
+```
 
 ---
 
 ## Step 1.4: Write es6 code
 The file server.js contains all your es6 code for your app. It should look like this:
 
-{% highlight js %}
+```jsx
 import Express from 'express';
 
 const PORT = 3000;
@@ -91,7 +87,7 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening at ${PORT}`);
 });
-{% endhighlight %}
+```
 
 Here we use import statements in place of the classic require statements, const keyword instead of var, 
 arrow functions instead of inline function declarations and es6 template strings instead of string concatenations.
@@ -101,9 +97,9 @@ arrow functions instead of inline function declarations and es6 template strings
 ## Step 1.5: Run your app!
 Run 
  
-{% highlight js %}
+```jsx
 npm start
-{% endhighlight %}
+```
  
  at your root directory and browse to localhost:3000 to see the output of your app. Download the complete source code from
  [github](https://github.com/yusinto/reactStep1).

@@ -1,17 +1,12 @@
 ---
-published: true
+path: "/react-native-maps-change-marker-image-onpress"
+date: "2017-04-25"
 title: "Change marker image onPress in react-native-maps"
-layout: post
-date: 2017-04-25 09:30
-tag:
-- react
-- native
-- maps
-- change
-- marker
-- image
-- onpress
-blog: true
+published: true
+tags: ["react", "native", "maps", "change", "marker", "image", "onpress"]
+files:
+ - "./simulator_location_menu.png"
+ - "./custom_location.png"
 ---
 
 Recently I started a new pet project which involves maps and markers on ios and android. Of course I started
@@ -20,11 +15,11 @@ a few months since I last did react native development. The landscape has defini
 so fortunate to be a javascript developer at this present moment because of awesome tools like react-native
 at our disposal. The possibilities are truly endless.
 
-Airbnb has open sourced [react-native-maps](https://github.com/airbnb/react-native-maps){:target="_blank"} which 
+Airbnb has open sourced [react-native-maps](https://github.com/airbnb/react-native-maps) which 
 made it so easy to integrate mapping capabilities with your app. There are steps to follow to set it all up but 
 it's not that hard.
 
-All the code in this blog are available on [github](https://github.com/yusinto/react-native-map-markers){:target="_blank"}.
+All the code in this blog are available on [github](https://github.com/yusinto/react-native-map-markers).
 
 ## The problem
 Need to display custom map markers on react-native-maps. Then, onPress of a 
@@ -41,26 +36,26 @@ image props (also supported out of the box) to solve our problem.
 ## Are you done talking? Show me some code!
 So first things first, you need to install and link react-native-maps:
 
-{% highlight shell %}
+```bash
 # stick with 0.13.0 to avoid unresolved issues in ^0.14.0
 yarn add react-native-maps@0.13.0
-{% endhighlight %}
+```
 then link it
-{% highlight shell %}
+```bash
 react-native link react-native-maps
-{% endhighlight %}
+```
 
 <b>GOTCHA</b> react-native-maps requires babel-plugin-module-resolver as well
 otherwise you'll get this error: Unknown plugin module-resolver. This is a bug
 which should be fixed in a later version.
 
-{% highlight shell %}
+```bash
 yarn add babel-plugin-module-resolver
-{% endhighlight %}
+```
 
 Then we can write some code to render a basic map like this:
 
-{% highlight javascript %}
+```jsx
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, View} from 'react-native';
 import MapView from 'react-native-maps';
@@ -124,24 +119,24 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('mapMarkers', () => MapMarkers);
 
-{% endhighlight %}
+```
 
 ## iOS Simulator Setup
 Before you run this in the simulator, you'll need to set a custom location
 in the ios simulator. We'll only be demoing on ios only for this blog.
 
-![Simulator Location Menu](/assets/images/simulator_location_menu.png)
+<img alt="Simulator Location Menu" src="/static/simulator_location_menu.png" id="markdownImage"/>
 
 Set the custom location to Cafe Sydney -33.861924, 151.210891. If you haven't
 been, you have to! It's an awesome restaurant!
 
-![Set Custom Location](/assets/images/custom_location.png)
+<img alt="Set Custom Location" src="/static/custom_location.png" id="markdownImage"/>
 
 ## Run the project
 
-{% highlight shell %}
+```bash
 react-native run-ios
-{% endhighlight %}
+```
 
 You should see a map view with the user location set to Cafe Sydney in Australia.
 Now let's add a few markers.
@@ -201,7 +196,7 @@ const RESTAURANTS = [
       </View>
     );
   }
-{% endhighlight %}
+```
 
 You should see 3 markers on the map. Now we want to use a custom image 
 for our marker. MapView has an image prop we can set so that's easy. 
@@ -236,12 +231,12 @@ RESTAURANTS.map((m, i) =>
     image={this.state.selectedMarkerIndex === i ? selectedMarker : marker} // this is the crux of the blog
   />
 )
-{% endhighlight %}
+```
 
 That's it!
 
 ## Conclusion
-Check out the [complete code](https://github.com/yusinto/react-native-map-markers){:target="_blank"} on 
+Check out the [complete code](https://github.com/yusinto/react-native-map-markers) on 
 github. Let me know if this helps!
 
 ---------------------------------------------------------------------------------------

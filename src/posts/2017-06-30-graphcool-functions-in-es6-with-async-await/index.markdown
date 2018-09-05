@@ -1,20 +1,9 @@
 ---
-published: true
+path: "/graphcool-functions-in-es6-with-async-await"
+date: "2017-06-30"
 title: "Writing Graphcool functions in es6 with async await and jest"
-layout: post
-date: 2017-06-30 08:30
-tag:
-- graphcool
-- functions
-- server
-- side
-- subscription
-- async
-- await
-- es6
-- graphql
-- jest
-blog: true
+published: true
+tags: ["graphcool", "functions", "server", "side", "subscription", "async", "await", "es6", "graphql", "jest"]
 ---
 Graphcool is cool. Graphcool functions are even cooler. There are two types of functions:
 request pipeline and server side subscription. Request pipeline function gets triggered
@@ -38,7 +27,7 @@ the Graphcool console and specify the event which will trigger this logic.
 
 ## Goal
 The goal is to create a stripe customer when a Graphcool customer is created. It's a very common
-use case. The complete code is [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6){:target="_blank"}.
+use case. The complete code is [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6).
 
 Enough talk, let's code!
 
@@ -46,7 +35,7 @@ Enough talk, let's code!
 Create a Customer type in your Graphcool backend so we have something to crud with.
 
 #### customer.graphql
-{% highlight javascript %}
+```jsx
 type Customer implements Node {
   email: String!
   stripeCustomerId: String
@@ -54,23 +43,23 @@ type Customer implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
 }
-{% endhighlight %}
+```
 
 Use the graphcool cli to create a new Graphcool project and create the Customer type.
 
-{% highlight bash %}
+```bash
 npm -g install graphcool
 graphcool init --schema customer.graphql
-{% endhighlight %}
+```
 
 ## Step 2: Create Graphcool server side subscription
 The cli is powerful but it is still work in progress. You can't create functions
 via the cli at this stage (yet). We'll create our ssr function via the console
 for now. You can open the console using the cli:
 
-{% highlight javascript %}
+```jsx
 graphcool console
-{% endhighlight %}
+```
 
 Go to functions -> new function -> server-side subscription -> select Customer type
 as the trigger and click define function. Copy paste the subscription query
@@ -89,7 +78,7 @@ subscription {
     }
   }
 }
-{% endhighlight %}
+```
 
 Let's look at this in detail:
 <ul>
@@ -127,12 +116,12 @@ functions. There's a [bonus section](#bonus-webpack-configuration) at the
 end of this blog if you are interested in how the webpack config works.
 
 ### Step 3.1: Copy package.json
-Copy package.json from [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6){:target="_blank"}
+Copy package.json from [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6)
 to your root directory. Then do yarn.
 
-{% highlight bash %}
+```bash
 yarn
-{% endhighlight %}
+```
 
 The devDependencies are mostly used by webpack to transpile our code. We also
 use jest for unit tests so that's in there too. We also need the stripe
@@ -140,7 +129,7 @@ library and a fetch library so those are included as dependencies.
 
 
 ### Step 3.2: Copy webpack.config.js and .babelrc and create src dir
-Copy webpack.config.js and .babelrc files from [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6){:target="_blank"}
+Copy webpack.config.js and .babelrc files from [here](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6)
 into the root directory of your project. Check the
 [bonus section](#bonus-webpack-configuration) below if you want to dig
 into the webpack config.
@@ -154,7 +143,7 @@ look for this file under src/createStripeCustomer.js. You can change this
 in webpack.config.js if you wish.
 
 #### main method
-{% highlight javascript %}
+```jsx
 const main = event => {
   const {id, email} = event.data.Customer.node;
 
@@ -171,10 +160,10 @@ const main = event => {
     }
   });
 };
-{% endhighlight %}
+```
 
 #### createStripeCustomer method
-{% highlight javascript %}
+```jsx
 const createStripeCustomer = async email => {
   console.log(`Creating stripe customer for ${email}`);
   let stripeCustomer;
@@ -189,10 +178,10 @@ const createStripeCustomer = async email => {
     throw err;
   }
 };
-{% endhighlight %}
+```
 
 #### updateGraphCoolCustomer method
-{% highlight javascript %}
+```jsx
 const updateGraphCoolCustomer = async (id, stripeCustomerId) => {
   const updateCustomer = JSON.stringify({
     query: `
@@ -222,9 +211,9 @@ const updateGraphCoolCustomer = async (id, stripeCustomerId) => {
     throw err;
   }
 };
-{% endhighlight %}
+```
 
-The entire file is available [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/src/createStripeCustomer.js){:target="_blank"}
+The entire file is available [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/src/createStripeCustomer.js)
 on github.
 
 ## Step 4: Deploy and test
@@ -242,28 +231,28 @@ output.libraryTarget to commonjs2.
 <li>
 <b>DO NOT BUNDLE THIRD PARTY LIBRARIES!</b> This will blow up your code size, and it's
 not necessary. Your Graphcool function is executed in webtask
-and it supports most of the npm packages you'll need. Check [here](https://tehsis.github.io/webtaskio-canirequire/){:target="_blank"}
+and it supports most of the npm packages you'll need. Check [here](https://tehsis.github.io/webtaskio-canirequire/)
 for packages webtask supports.
 </li>
 <li>As a result of the point above, use
-[webpack-node-externals](https://github.com/liady/webpack-node-externals){:target="_blank"} to exclude all npm packages.
+[webpack-node-externals](https://github.com/liady/webpack-node-externals) to exclude all npm packages.
 </li>
 <li>
 GOTCHA: To enable latest es6 features and async await, we have to include two npm packages: babel-polyfill and regenerator-runtime/runtime
 </li>
 </ul>
-If you are interested, you can check the complete webpack config [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/webpack.config.js){:target="_blank"}.
+If you are interested, you can check the complete webpack config [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/webpack.config.js).
 
 
 ## Conclusion
 With client side subscriptions, you'll use apollo with
-the [subscriptions-transport-ws](https://github.com/apollographql/subscriptions-transport-ws){:target="_blank"}
+the [subscriptions-transport-ws](https://github.com/apollographql/subscriptions-transport-ws)
 to enable your js client app to "hot listen" to server changes. The server pushes notifications
 to the client, which reacts to these notifications in real-time. It's super cool!
 
 This approach incurs a little more time to setup, but I think it's worth it. We leave the code fully testable, encapsulation intact. 
 This feels right for me. Also, you can apply the same technique to test react components wrapped in relay containers. It works! 
 
-Check out the [sample code](https://github.com/yusinto/test-react){:target="_blank"} for a working example and let me know if this is useful (or not)!
+Check out the [sample code](https://github.com/yusinto/test-react) for a working example and let me know if this is useful (or not)!
 
 ---------------------------------------------------------------------------------------

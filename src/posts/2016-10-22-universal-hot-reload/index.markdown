@@ -1,23 +1,18 @@
 ---
-published: true
+path: "/universal-hot-reload"
+date: "2016-10-22"
 title: "Hot Reloading Universally Bundled Webpack Apps"
-layout: post
-date: 2016-10-22 10:52
-tag:
-- universal
-- hot
-- reload
-- webpack
-- server
-- client
-- bundle
-blog: true
+published: true
+tags: ["universal", "hot", "reload", "webpack", "server", "client", "bundle"]
+files:
+ - "./neo_spoon.jpg"
+ - "./batman_robin.jpg"
 ---
 
 I learnt quite a lot in the past week. Firstly there's no substitute to good sleep. Secondly, you can actually eat a salmon steak raw! Thirdly, it's really really hard
 to hot reload a server bundle if you are writing a universal app.
 
-On the client side, [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware){:target="_blank"} and [react-hot-loader](https://github.com/gaearon/react-hot-loader){:target="_blank"}
+On the client side, [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) and [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 have been around for a while now and have become indispensable to developers. However, what about the server side? 
 
 One solution is to use nodemon to restart the server on file changes. This works if you don't bundle your server side code. If you do, you'll have to use a task runner 
@@ -26,7 +21,7 @@ like gulp to first compile your code, then use nodemon to restart the server.
 I don't particularly like this solution because I need to introduce gulp and nodemon into my project. I believe webpack can solve anything and everything. So the challenge was set:
 use only webpack to implement server side bundling and hot reload.
 
-The final product is [universal-hot-reload](https://github.com/yusinto/universal-hot-reload){:target="_blank"} if you want to skip straight to dessert.
+The final product is [universal-hot-reload](https://github.com/yusinto/universal-hot-reload) if you want to skip straight to dessert.
  
 ## The plan
 
@@ -36,7 +31,7 @@ We want to use webpack to watch our server files for changes, rebundle on change
 
 Watching files for changes is already supported by webpack out of the box so that's easy. For example we can do this:
 
-{% highlight javascript %}
+```jsx
   function watchServerChanges() {
     const webpack = require('webpack');
     const serverCompiler = webpack(require('path/to/webpack/server/config');
@@ -54,15 +49,15 @@ Watching files for changes is already supported by webpack out of the box so tha
       // TODO: restart express here 
     });
   }
-{% endhighlight %}
+```
 
 We can call watchServerChanges on our server bootstrap and walah problem solved. Well not quite. How do we tackle restarting express on server file changes?
 
 ##Step 1: Express server restart using htttp.Server.close()
-The http.Server object provides a [close](https://nodejs.org/api/http.html#http_server_close_callback){:target="_blank"} method which sounds like it might do the job.
+The http.Server object provides a [close](https://nodejs.org/api/http.html#http_server_close_callback) method which sounds like it might do the job.
 For example we can theoretically do this:
 
-{% highlight javascript %}
+```jsx
   function onServerChange(err, stats) {
     if (err) {
       console.log('Server bundling error:' + JSON.stringify(err));
@@ -76,7 +71,7 @@ For example we can theoretically do this:
       console.log('Server restarted ' + new Date());
     });
   }
-{% endhighlight %}
+```
 
 Two things we need to solve here:
 
@@ -85,12 +80,12 @@ Two things we need to solve here:
 2. close() does not restart the server. It stops the server from accepting new connections and then shuts down the server when all its existing connections have closed.
 
 ###Step 1.1: Getting a reference to http.Server
-![Neo Spoon](/assets/images/neo_spoon.jpg)
+<img alt="Neo Spoon" src="/static/neo_spoon.jpg" id="markdownImage"/>
 
 Let's take a look at some code.
 
 ####src/server/index.js (bootstrap)
-{% highlight javascript %}
+```jsx
   require('babel-polyfill');
   
   // require the server entry file where the express server is initialised
@@ -98,10 +93,10 @@ Let's take a look at some code.
   const httpServer = require('./server');
 
   //... then we can call httpServer.close() at some point later
-{% endhighlight %}
+```
 
 ####src/server/server.js (entry)
-{% highlight javascript %}
+```jsx
 import express from 'express';
 
 const PORT = 3000;
@@ -117,7 +112,7 @@ const httpServer = app.listen(PORT, () => {
 
 // export httpServer object so we can access it in bootstrap
 module.exports = httpServer;
-{% endhighlight %}
+```
 
 What's happening here:
 
@@ -133,7 +128,7 @@ Meaning the main export of our app needs to be exposed to the consumer. To do th
 in your webpack server config file, set **output.libraryTarget = 'commonjs2'**, like so:
 
 ####webpack.config.server.js
-{% highlight javascript %}
+```jsx
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -174,7 +169,7 @@ module.exports = {
       }]
   }
 };
-{% endhighlight %}
+```
  
 
 ###Step 1.2: Restarting express
@@ -199,7 +194,7 @@ proceed to shut the server.
 What does it look like in code? 
 
 ####src/server/index.js (bootstrap)
-{% highlight javascript %}
+```jsx
   require('babel-polyfill');
   
   watchServerChanges();
@@ -270,10 +265,10 @@ What does it look like in code?
         }
       });
     }
-{% endhighlight %}
+```
 
 ##Step 2: Clearing the require cache
-![Are we there yet?](/assets/images/batman_robin.jpg)
+<img alt="Are we there yet?" src="/static/batman_robin.jpg" id="markdownImage"/>
 
 If you try the code above, you realise that it does not freakin work. Why? 
 We are forgetting one thing: node caches all modules when required. How is
@@ -283,7 +278,7 @@ same server.bundle.js which is not we want. We want to require the newly
 bundled server.bundle.js which webpack produces. To do this we need to clear
 the require cache:
 
-{% highlight javascript %}
+```jsx
   function clearCache() {
     const cacheIds = Object.keys(require.cache);
     for(let id of cacheIds) {
@@ -293,11 +288,11 @@ the require cache:
       }
     }
   }
-{% endhighlight %}
+```
 
 You call clearCache() in onServerChange callback prior to starting the 
 express server like so:
-{% highlight javascript %}
+```jsx
       
       //... same code as above
       
@@ -315,19 +310,19 @@ express server like so:
       });
     
     // ... 
-{% endhighlight %}
+```
 
 ##Step 3: But wait there's more!
 You can combine this with existing client hot reload techniques using [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 
 and [react-hot-loader](https://github.com/gaearon/react-hot-loader) to achieve the ultimate universal hot reload experience. 
-I have done this in [universal-hot-reload](https://github.com/yusinto/universal-hot-reload){:target="_blank"} so you can check the source
+I have done this in [universal-hot-reload](https://github.com/yusinto/universal-hot-reload) so you can check the source
 code for that if you are interested. But for now, I'm out of time .. I need to take a shower.
 
 
 ## What's next?
 So webpack does solve everything and anything like I said in the beginning.. can it do my laundry and feed my dog too? 
 
-The final product is [universal-hot-reload](https://github.com/yusinto/universal-hot-reload){:target="_blank"}. 
+The final product is [universal-hot-reload](https://github.com/yusinto/universal-hot-reload). 
 Check it out! Let me know if there's any issues.
 
 ---------------------------------------------------------------------------------------

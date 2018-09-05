@@ -1,14 +1,9 @@
 ---
-published: true
+path: "/react-and-microservices"
+date: "2016-05-28"
 title: "How React fits into the microservice team structure"
-layout: post
-date: 2016-05-28 20:45
-tag:
-- react
-- microservices
-- conway's law
-- team structure
-blog: true
+published: true
+tags: ["react", "microservices", "conway's law", "team structure"]
 ---
 
 I am going to digress a little today and talk about how react fits into the microservice architectural style. Of course microservices and 

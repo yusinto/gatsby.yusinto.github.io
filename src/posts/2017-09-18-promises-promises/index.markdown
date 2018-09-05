@@ -1,18 +1,9 @@
 ---
-published: true
+path: "/promises-promises"
+date: "2017-09-18"
 title: "Javascript Job Queues and Promises"
-layout: post
-date: 2017-09-18 07:30
-tag:
-- javascript
-- promises
-- job
-- queues
-- js
-- asynchronous
-- event
-- loop
-blog: true
+published: true
+tags: ["javascript", "promises", "job", "queues", "js", "asynchronous", "event", "loop"]
 ---
 So you think you know how promises work? Someone ever comes to you
 with a little trivia called "what's the sequence of console logs from this
@@ -39,7 +30,7 @@ Understand when parts of your promise gets executed and why.
 ## Step 1: Anatomy of a Promise
 <script src="https://gist.github.com/yusinto/28295371fc7613f66fab39f0c7435c54.js"></script>
 
-Wanna guess what the output is? You can run the code [here](https://repl.it/repls/WelloffSeveralPlatypus){:target="_blank"}
+Wanna guess what the output is? You can run the code [here](https://repl.it/repls/WelloffSeveralPlatypus)
 and see for yourself. Or I can just tell you. It is: 1 3 4 6 2 5.
 
 It doesn’t matter if you guessed right or wrong. It matters if you understand why this is the output.
@@ -58,7 +49,7 @@ Then 3 gets printed. The current tick continues out of the promise constructor a
 This is the interesting part. Remember the promise was resolved? When you
 call .then on a resolved promise, the success handler gets scheduled in
 the job queue. What the hell? What’s a job queue? Never heard of it. Am
-I making this shit up? It’s [real](https://www.ecma-international.org/ecma-262/6.0/#sec-jobs-and-job-queues){:target="_blank"}
+I making this shit up? It’s [real](https://www.ecma-international.org/ecma-262/6.0/#sec-jobs-and-job-queues)
 my friend. Keep reading.
 
 ## Step 4: The job queue

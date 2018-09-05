@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const replaceAll = (source, search, replacement) => {
+  return source.replace(new RegExp(search, 'g'), replacement);
+};
+
 const getField = (frontmatter, fieldName) => {
   const fields = frontmatter.split('\n');
   let i;
@@ -13,6 +17,37 @@ const getField = (frontmatter, fieldName) => {
   }
 };
 
+const getTags = (frontmatter) => {
+  let result = frontmatter.replace('blog: true\n', '');
+  return result.split('tag:')[1].split('\n-').filter(v => v).map(v => `"${v.trim()}"`);
+};
+
+const replaceImages = (content, targetDir) => {
+  const allImages = content.match(/!\[.*\]\(.*\)/gi);
+  if (!allImages) return null;
+
+  let markdown = content;
+  let frontmatterFiles = ['files:'];
+
+  allImages.forEach(r => {
+    const match = /!\[(.*)\]\((.*)\)/gi.exec(r);
+    const alt = match[1];
+    const relativePath = match[2];
+    const filename = path.basename(relativePath);
+
+    frontmatterFiles.push(` - "./${filename}"`);
+
+    // copy image from sourceDir to targetDir
+    fs.copyFileSync(`${__dirname}/../indigo${relativePath}`, `${targetDir}/${filename}`);
+
+    // replace markdown with image tag
+    markdown = markdown.replace(match[0], `<img alt="${alt}" src="/static/${filename}" id="markdownImage"/>`);
+  });
+
+  // console.log(markdown);
+  return {frontmatterFiles, markdown};
+};
+
 const sourceDir = `${__dirname}/../indigo/_posts`;
 const posts = fs.readdirSync(sourceDir);
 
@@ -23,6 +58,7 @@ posts.forEach(p => {
     !dirName.startsWith('2018-05-30') &&
     !dirName.startsWith('2018-04-27') &&
     !dirName.startsWith('2018-03-28') &&
+    !dirName.startsWith('2018-02-28') &&
     !dirName.startsWith('2018-01-18') &&
     !dirName.startsWith('2018-01-14') &&
     !dirName.startsWith('2018-01-9')
@@ -35,57 +71,62 @@ posts.forEach(p => {
     // copy markdown file from indigo to gatsby
     const sourceFilePath = `${sourceDir}/${p}`;
     const destinationFilePath = `${fullDirPath}/index.markdown`;
-    if (!fs.existsSync(destinationFilePath)) {
-      fs.copyFileSync(sourceFilePath, destinationFilePath);
+    if (fs.existsSync(destinationFilePath)) { // delete index.markdown if it exists
+      fs.unlinkSync(destinationFilePath)
     }
 
-    /**
-     ---
-     published: true
-     title: "Relay Modern Persisted Queries"
-     layout: post
-     date: 2017-11-12 07:30
-     tag:
-     - relay
-     - modern
-     - persisted
-     - queries
-     - graphql
-     - javascript
-     - js
-     blog: true
-     ---
-     */
+    // if (dirName.includes('2016-06')) { // for debugging only
+    console.log(`Processing ${p}`);
+    let mdContents = fs.readFileSync(sourceFilePath, {encoding: 'utf-8'});
+    const mdContentsSplit = mdContents.split('---\n', 2);
+    const frontmatter = mdContentsSplit[1];
+    let markdownResult = mdContents.replace(frontmatter, '').replace('---\n', '').replace('---\n', '');
+    let frontmatterResult = ['---'];
 
-    if (dirName.includes('relay-modern-')) { // for debugging only
-      // frontmatter
-      const mdContents = fs.readFileSync(destinationFilePath, {encoding: 'utf-8'});
-      const frontmatter = mdContents.split('---\n')[1];
-      const result = [];
+    let path = dirName.split('-').splice(3).join('-');
+    path = `path: "/${path}"`;
+    frontmatterResult.push(path);
 
-      let path = dirName.split('-').splice(3).join('-');
-      path = `path: "/${path}"`;
-      result.push(path);
+    let date = getField(frontmatter, 'date');
+    date = date.split(' ')[0];
+    date = `date: "${date}"`;
+    frontmatterResult.push(date);
 
-      let date = getField(frontmatter, 'date');
-      date = date.split(' ')[0];
-      date = `date: "${date}"`;
-      result.push(date);
+    let title = getField(frontmatter, 'title');
+    title = `title: ${title}`;
+    frontmatterResult.push(title);
+    frontmatterResult.push('published: true');
 
-      let title = getField(frontmatter, 'title');
-      title = `title: "${title}"`;
-      result.push(title);
-      result.push('published: true');
+    const tags = getTags(frontmatter);
+    frontmatterResult.push(`tags: [${tags.join(', ')}]`);
 
-      console.log(result.join('\n'));
-
-      // TODO: generate tags
-
-      // TODO: replace {% highlight xxx %} with ```xxx
-
-      // TODO: remove {:target="_blank"}
-
-      // TODO: replace images with <img src="/static/content-group-xxx.png" id="markdownImage"/>
+    const replaceImagesResult = replaceImages(markdownResult, fullDirPath);
+    if (replaceImagesResult) {
+      markdownResult = replaceImagesResult.markdown;
+      frontmatterResult = frontmatterResult.concat(replaceImagesResult.frontmatterFiles);
     }
+
+    markdownResult = replaceAll(markdownResult, '{% highlight javascript %}', '```jsx');
+    markdownResult = replaceAll(markdownResult, '{% highlight js %}', '```jsx');
+    markdownResult = replaceAll(markdownResult, '{% highlight json %}', '```json');
+    markdownResult = replaceAll(markdownResult, '{% highlight xml %}', '```xml');
+    markdownResult = replaceAll(markdownResult, '{% highlight c# %}', '```jsx');
+    markdownResult = replaceAll(markdownResult, '{% highlight raw %}', '```bash');
+    markdownResult = replaceAll(markdownResult, '{% highlight bash %}', '```bash');
+    markdownResult = replaceAll(markdownResult, '{% highlight graphql %}', '```graphql');
+    markdownResult = replaceAll(markdownResult, '{% highlight css %}', '```css');
+    markdownResult = replaceAll(markdownResult, '{% highlight html %}', '```html');
+    markdownResult = replaceAll(markdownResult, '{% highlight shell %}', '```bash');
+    markdownResult = replaceAll(markdownResult, '{% endhighlight %}', '```');
+    markdownResult = replaceAll(markdownResult, '{:target="_blank"}', '');
+
+    frontmatterResult.push('---');
+
+    frontmatterResult = frontmatterResult.join('\n');
+    // console.log(markdownResult);
+    const finalResult = `${frontmatterResult}\n${markdownResult}`;
+    // console.log(finalResult);
+    fs.writeFileSync(destinationFilePath, finalResult);
+    // }
   }
 });

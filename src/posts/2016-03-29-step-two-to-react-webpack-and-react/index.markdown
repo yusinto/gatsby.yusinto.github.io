@@ -1,13 +1,9 @@
 ---
+path: "/step-two-to-react-webpack-and-react"
+date: "2016-03-30"
+title: "Step 2 to React - Webpack and React"
 published: true
-title: "Step 2 to React: Webpack and React"
-layout: post
-date: 2016-03-30 21:25
-tag:
-- react
-- webpack
-- babel
-blog: true
+tags: ["react", "webpack", "babel"]
 ---
 
 If you haven't read my [previous post](http://www.reactjunkie.com/step-one-to-react-es-6-and-express/), 
@@ -18,13 +14,13 @@ Let's get into it!
 
 ## Step 2.1: Install webpack, babel and react
 
-{% highlight raw %}
+```bash
 npm install --save-dev webpack babel-loader
-{% endhighlight %}
+```
 
-{% highlight raw %}
+```bash
 npm install --save react react-dom babel-preset-react
-{% endhighlight %}
+```
 
 We use webpack to bundle all our javascript code into a single file. We then include this bundled file 
 in a script tag in our html just like any other js file. This single file alone will be sufficient to run our app in the browser.
@@ -41,7 +37,7 @@ babel-register and babel-loader) to transpile jsx into pure javascript.
 ## Step 2.2: Configure webpack
 Create a new file called webpack.config.dev.js at the root directory of your project. The file contents should look like this:
 
-{% highlight js %}
+```jsx
 var webpack = require('webpack');
 var path = require('path');
 
@@ -59,7 +55,7 @@ module.exports = {
         }]
     }
 };
-{% endhighlight %}
+```
 
 There are 3 main parts to this config:
 <ul>
@@ -79,7 +75,7 @@ poststart command which we don't use here.
 In prestart, we tell npm to run webpack with the config file above essentially
 bundling our app prior to running it.
 
-{% highlight js %}
+```jsx
 {
 ...
       "scripts": {
@@ -88,7 +84,7 @@ bundling our app prior to running it.
       }
 ...
 }
-{% endhighlight %}
+```
 
 When the prestart command completes, a bundle.js file should exist in the dist folder.
 
@@ -143,7 +139,7 @@ export default class App extends Component {
         );
     }
 }
-{% endhighlight %}
+```
 
 It might look like we are writing literal html strings like old school asp/php, 
 but under the bonnet these are shorthand syntax to generate ReactElements.
@@ -167,7 +163,7 @@ import App from '../common/component/appComponent';
 // we use jsx to create our ReactElement and mount it onto a div called 
 // reactDiv on the html template.
 render(<App />, document.getElementById('reactDiv'));
-{% endhighlight %}
+```
 
 ---
 
@@ -178,7 +174,7 @@ We also need to add an express static middleware to serve that static bundle.js 
 between a request and a response. In this example, a GET request comes in from the client asking for dist/bundled.js. Our
 middleware matches the route and executes our code. We use express' built-in static middleware so we get this for free.
 
-{% highlight c# %}
+```jsx
 
 ...
 
@@ -200,7 +196,7 @@ const htmlString = `<!DOCTYPE html>
 app.use('/dist', Express.static('dist'));
 
 ...
-{% endhighlight %}
+```
 
 ---
 

@@ -1,23 +1,16 @@
 ---
-published: true
+path: "/launch-darkly-part-two"
+date: "2016-11-1"
 title: "Targeting users with React Redux and Launch Darkly"
-layout: post
-date: 2016-11-1 19:30
-tag:
-- targeting
-- users
-- react
-- redux
-- feature
-- toggle
-- launch
-- darkly
-- toggling
-- ld-redux
-blog: true
+published: true
+tags: ["targeting", "users", "react", "redux", "feature", "toggle", "launch", "darkly", "toggling", "ld-redux"]
+files:
+ - "./user_targeting_by_country.png"
+ - "./user_targeting_percentage_rollout.png"
+ - "./user_targeting_advanced.png"
 ---
 
-In my [previous previous post](http://www.reactjunkie.com/react-feature-toggle-launch-darkly/){:target="_blank"} 
+In my [previous previous post](http://www.reactjunkie.com/react-feature-toggle-launch-darkly/) 
 I introduced launch darkly as a feature toggling platform and how to use it with react redux. In this post I
 will explain how you can further leverage the power of feature toggling with user targeting.
  
@@ -29,7 +22,7 @@ Or perhaps you want to show special offers only to premium members of your websi
 ## Ok sounds interesting. How do I do it?
 On init, you'll need to pass a user object to Launch Darkly so it has something to work with: 
 
-{% highlight javascript %}
+```jsx
 import ldClient from 'ldclient-js';
 
 // Launch Darkly supports the following user attributes by default
@@ -44,7 +37,7 @@ const user = {
 };
 
 ldClient.initialize('your/client/side/id', user);
-{% endhighlight %}
+```
 
 You'll need to pass a user object containing at least a key property to Launch Darkly.
 
@@ -58,12 +51,12 @@ compared to targeting individual users.
 
 For example, the settings below will target users in Australia:
 
-![Targeting user by country?](/assets/images/user_targeting_by_country.png)
+<img alt="Targeting user by country?" src="/static/user_targeting_by_country.png" id="markdownImage"/>
 
 You can also serve true to a percentage of Australian users using the "percentage rollout" serve option.
 For example the settings below will rollout true to 50% of Australian users:
 
-![Targeting user by country percentage rollout?](/assets/images/user_targeting_percentage_rollout.png)
+<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_percentage_rollout.png" id="markdownImage"/>
 
 ###Advanced targeting
 If you look carefully there's an Advanced option if you select percentage rollout. The purpose of this 
@@ -74,12 +67,12 @@ For example, the settings below will serve true to half of chrome users, half of
 half of firefox users, etc. It's a way of "bucketing" your users so each bucket receives the 
 percentage rollout you specified.
 
-![Targeting user by country percentage rollout?](/assets/images/user_targeting_advanced.png)
+<img alt="Targeting user by country percentage rollout?" src="/static/user_targeting_advanced.png" id="markdownImage"/>
 
 ##Usage with ld-redux
-If you use [ld-redux](https://github.com/yusinto/ld-redux){:target="_blank"}, you pass the user object
+If you use [ld-redux](https://github.com/yusinto/ld-redux), you pass the user object
 as the third parameter to ldRedux.init method:
-{% highlight javascript %}
+```jsx
 import createStore from '<your-project>/store';
 import ldRedux from 'ld-redux';
 
@@ -105,12 +98,12 @@ render(
   </Provider>,
   document.getElementById('reactDiv')
 );
-{% endhighlight %}
+```
 
 By default, if you don't specify a user object, ld-redux will create a default
 user like below:
 
-{% highlight javascript %}
+```jsx
 user = {
    key: uuid.v4(),
    ip: ip.address(),
@@ -119,9 +112,9 @@ user = {
         device, // either mobile, tablet or desktop
    },
 };
-{% endhighlight %}
+```
 
-You can see the complete logic for default user creation [here](https://github.com/yusinto/ld-redux/blob/master/src/init.js){:target="_blank"}.
+You can see the complete logic for default user creation [here](https://github.com/yusinto/ld-redux/blob/master/src/init.js).
 
 The custom property allows you to pass any arbitrary properties to Launch Darkly which you can use for targeting. This is very useful and powerful.
 
@@ -130,6 +123,6 @@ Feature flagging coupled with user targeting is a powerful way to control your t
 new world of possibilities in regards to what you can do with your app. Someday all apps will be built this way.
 
 
-Check out [ld-redux](https://github.com/yusinto/ld-redux){:target="_blank"} if you haven't, and please give me some feedback if you use it! Thanks.
+Check out [ld-redux](https://github.com/yusinto/ld-redux) if you haven't, and please give me some feedback if you use it! Thanks.
 
 ---------------------------------------------------------------------------------------

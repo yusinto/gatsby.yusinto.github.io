@@ -1,13 +1,9 @@
 ---
-published: true
+path: "/brain-drain-australia"
+date: "2016-08-05"
 title: "Australia Brain Drain"
-layout: post
-date: 2016-08-05 01:19
-tag:
-- australia
-- brain
-- drain
-blog: true
+published: true
+tags: ["australia", "brain", "drain"]
 ---
 
 My first NDC conference (anywhere) I have to say the whole event was very well planned, although there are a

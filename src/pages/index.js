@@ -89,7 +89,7 @@ export const indexQuery = graphql`
     query allPosts {
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
-            limit: 10
+#            limit: 30
             filter: {frontmatter: {published: {eq: true}}}
         ) {
             edges {

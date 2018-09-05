@@ -1,17 +1,9 @@
 ---
+path: "/step-three-to-react-speed-dev-with-hot-module-replacement"
+date: "2016-04-2"
+title: "Step 3 to React - Speed dev with hot module replacement"
 published: true
-title: "Step 3 to React: Speed dev with hot module replacement"
-layout: post
-date: 2016-04-2 17:45
-tag:
-- react
-- hmr
-- hot
-- module
-- replacement
-- webpack
-- babel
-blog: true
+tags: ["react", "hmr", "hot", "module", "replacement", "webpack", "babel"]
 ---
 
 In the [previous post](http://www.reactjunkie.com/step-two-to-react-webpack-and-react/) we started writing react code
@@ -29,9 +21,9 @@ This is a short post just to get hmr working so let's dive straight into the cod
 ## Step 3.1: Install transforms and webpack middlewares 
 There are 6 packages we need to install:
 
-{% highlight raw %}
+```bash
 npm install --save-dev babel-plugin-react-transform react-transform-hmr react-transform-catch-errors redbox-react webpack-dev-middleware webpack-hot-middleware
-{% endhighlight %}
+```
 
 
 #### babel-plugin-react-transform
@@ -58,7 +50,7 @@ Used by react-transform-catch-errors to display errors in a red screen of death 
 
 Your .babelrc file should look like this:
 
-{% highlight js %}
+```jsx
 {
     "presets": ["es2015", "react"],
     "plugins": [
@@ -74,7 +66,7 @@ Your .babelrc file should look like this:
         }]
     ]
 }
-{% endhighlight %}
+```
 
 This is the configuration that uses the transform packages above. In short, we instruct the
 react-transform plugin to apply 2 transforms: the hmr and catch-errors transforms to our react 
@@ -86,7 +78,7 @@ example, <b><i>react-transform-catch-errors</i></b> adds a try catch block on th
 ## Step 3.3: Configure webpack
 Your webpack.config.dev.js should look like this:
 
-{% highlight js %}
+```jsx
 var webpack = require('webpack');
 var path = require('path');
 
@@ -116,14 +108,14 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ]
 };
-{% endhighlight %}
+```
 
 ---
 
 ## Step 3.4: Modify express app to support hmr
 Almost there! Now we need to modify server.js to use webpack dev and hot middlewares.
 
-{% highlight c# %}
+```jsx
 ...
 
 import Webpack from 'webpack';
@@ -151,7 +143,7 @@ app.use(WebPackHotMiddleware(webpackCompiler));
 // anymore because webpack-dev-middleware serves our bundle.js from memory
 
 ...
-{% endhighlight %}
+```
 
 ---
 

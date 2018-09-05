@@ -1,20 +1,12 @@
 ---
-published: true
+path: "/react-feature-toggle-launch-darkly"
+date: "2016-09-16"
 title: "Implementing feature toggle with launch darkly and react redux"
-layout: post
-date: 2016-09-16 10:52
-tag:
-- react
-- redux
-- feature
-- toggle
-- launch
-- darkly
-- toggling
-blog: true
+published: true
+tags: ["react", "redux", "feature", "toggle", "launch", "darkly", "toggling"]
 ---
 ###_Update: 22 October 2016_
-_I have published an npm package called [ld-redux](https://github.com/yusinto/ld-redux){:target="_blank"} which covers everything you need to integrate launch darkly with your react
+_I have published an npm package called [ld-redux](https://github.com/yusinto/ld-redux) which covers everything you need to integrate launch darkly with your react
 redux app. It's the contents of this blog in an npm package. If you use it, please give me some feedback. Thanks!_
 
 ---
@@ -29,8 +21,8 @@ access management. So is there anything existing out there we can use to integra
 
 Enter Launch Darkly. I met Edith Harbaugh the CEO of Launch Darkly at NDC Sydney 2016. She was kind enough to give a demo of launch darkly in situ and I was blown away.
 Launch darkly stores feature flags without coupling to the UI, so it works with React or any modern javascript framework with virtual dom reconciliation.
-The sdk supports almost every imaginable platform, but most importantly it's on [npm](https://www.npmjs.com/package/ldclient-js){:target="_blank"} and
-open source on [github](https://github.com/launchdarkly/js-client){:target="_blank"}.
+The sdk supports almost every imaginable platform, but most importantly it's on [npm](https://www.npmjs.com/package/ldclient-js) and
+open source on [github](https://github.com/launchdarkly/js-client).
 
 In this blog I will walk through step by step how to integrate launch darkly feature toggles with your react react-router redux app.
 Note that this blog assumes prior working knowledge of redux and redux-thunk.
@@ -45,9 +37,9 @@ By the end of this blog, we will have a feature-flag driven react redux app usin
 </p>
 
 ## Step 2: Install ldclient-js
-{% highlight bash %}
+```bash
 npm i ldclient-js --save
-{% endhighlight %}
+```
 
 ## Step 3: Create redux action and reducer to instantiate ldclient
 We need to instantiate the ldclient in order to communicate with launch darkly. This instantiation
@@ -57,7 +49,7 @@ re-used throughout the app.
 We'll go ahead and create the action and reducer to perform this instantiation.
 
 ####appAction.js
-{% highlight c# %}
+```jsx
 import ldClient from 'ldclient-js';
 
 export const initialiseLD = () => {
@@ -115,10 +107,10 @@ export const setLDReady = ldClient => {
     data: ldClient
   }
 };
-{% endhighlight %}
+```
 
 ####appReducer.js
-{% highlight c# %}
+```jsx
 import Constants from './common/constant';
 
 const defaultState = {
@@ -139,7 +131,7 @@ export default function App(state = defaultState, action) {
       return state;
   }
 }
-{% endhighlight %}
+```
 
 ## Step 4: Invoke initialiseLD on componentDidMount
 We want to initialise the client just once at the start of the app. The
@@ -148,7 +140,7 @@ best place to do this is at the root component's componentDidMount.
 I'll skip the appContainer snippet to keep things short.
 
 ####appComponent.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class App extends Component {
@@ -161,7 +153,7 @@ export default class App extends Component {
     ...
   }
 }
-{% endhighlight %}
+```
 
 ## Step 5. Fetching feature flags
 This is the jist of the entire blog so pay attention! Now we have the
@@ -170,7 +162,7 @@ feature flagging must subscribe to the isLDReady app state above.
 This is pretty standard in redux, and you can do this like so:
 
 ####homeContainer.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as Actions from './homeAction';
@@ -192,13 +184,13 @@ export default class HomeContainer extends Component {
     return <HomeComponent {...this.props} />;
   }
 }
-{% endhighlight %}
+```
 
 So now we can fetch "home" specific feature flags when ldclient is ready
 like so:
 
 ####homeComponent.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class Home extends Component {
@@ -212,7 +204,7 @@ export default class Home extends Component {
   }
   ...
 }
-{% endhighlight %}
+```
 
 <b><i>initialiseHomeFLags</i></b> is the interesting bit here. The way you
  retrieve flags from launch darkly is through the "variation" method. You
@@ -224,14 +216,14 @@ export default class Home extends Component {
  a clean separation of concerns between actions and business logic.
 
 ####homeLogic.js
-{% highlight c# %}
+```jsx
 export const homeFlags = {
   'random-number': false // default flag value
 };
-{% endhighlight %}
+```
 
 ####homeReducer.js
-{% highlight c# %}
+```jsx
 ...
 const defaultState = {
   randomNumber: 0,
@@ -252,13 +244,13 @@ export default function App(state = defaultState, action) {
       return state;
   }
 }
-{% endhighlight %}
+```
 
 We can then retrieve individual feature flags for the home component
 in our initialiseHomeFlags action using ldclient's variation method:
 
 ####homeAction.js
-{% highlight c# %}
+```jsx
 ...
 export const initialiseHomeFlags = () => {
   // use thunk
@@ -290,7 +282,7 @@ export const initialiseHomeFlags = () => {
   };
 };
 ...
-{% endhighlight %}
+```
 
 <b>EXTRA!!</b> Launch darkly provides support for realtime feature flag change
 propagation using Server Sent Events (SSE, which is a html5 thing). This is like
@@ -309,7 +301,7 @@ websockets but it's a one way connection from the server to client to allow
 This is the most fun and easy part!
 
 ####homeComponent.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class Home extends Component {
@@ -337,7 +329,7 @@ export default class Home extends Component {
     }
   ...
 }
-{% endhighlight %}
+```
 
 Your feature flags will be available to you as props because it's hydrated
 by actions in the state. The only gotcha here is that you need to access
@@ -354,6 +346,6 @@ touched the tip of the iceberg. I will
 be blogging more about my journey towards continuous deployment with docker
 and launch darkly in the coming posts.
 
-All the code in this blog are available on [github](https://github.com/yusinto/launchdarkly){:target="_blank"}
+All the code in this blog are available on [github](https://github.com/yusinto/launchdarkly)
 
 ---------------------------------------------------------------------------------------

@@ -1,20 +1,9 @@
 ---
-published: true
+path: "/demistifying-es6-class-method-and-property-initializer-arrow-function"
+date: "2016-07-30"
 title: "Demistifying es6 class method and property initializer arrow function"
-layout: post
-date: 2016-07-30 14:52
-tag:
-- react
-- es6
-- es 6
-- class
-- classes
-- method
-- property
-- initializer
-- arrow
-- function
-blog: true
+published: true
+tags: ["react", "es6", "es 6", "class", "classes", "method", "property", "initializer", "arrow", "function"]
 ---
 
 Welcome back to another episode of react junkie's blog post. Today I'll be talking about meth crystal meth ice and how to
@@ -28,7 +17,7 @@ I encountered this at work when two of my colleagues (let's call them Lill and W
 in two different styles. Compare the printQuality method in the following code snippets:
 
 ####Lill: Standard es6 class method
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class MethLab extends Component {
@@ -50,10 +39,10 @@ export default class MethLab extends Component {
         console.log(`${this.state.methQuality}`);
     }
 }
-{% endhighlight %}
+```
 
 ####Woic: Property initializer with arrow function
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class MethLab extends Component {
@@ -71,7 +60,7 @@ export default class MethLab extends Component {
         console.log(`${this.state.methQuality}`);
     };
 }
-{% endhighlight %}
+```
 
 Can you guess the output of each implementation? If you've been using react
 for a while, you would guess that they would both output 'bluesky' and you would be
@@ -81,7 +70,7 @@ doing the same thing and are indifferent from each other. It's a fair and logica
 The answer lies in the es5 translation of these syntactic sugar. Let me explain through code:
 
 ####Lill: Standard es6 class method in es5
-{% highlight c# %}
+```jsx
 function MethLab(props) {
     ...
 
@@ -95,10 +84,10 @@ function MethLab(props) {
 MethLab.prototype.printQuality = function printQuality() {
     console.log(this.state.methQuality);
 };
-{% endhighlight %}
+```
 
 ####Woic: Property initializer with arrow function in es5
-{% highlight c# %}
+```jsx
 function MethLab(props) {
     ... 
     
@@ -109,11 +98,11 @@ function MethLab(props) {
     ...
 }
 
-{% endhighlight %}
+```
 
 The above are simplified versions of the actual babel6 output (you can see 
 the full translations using the kick-ass babel6 repl editor 
-[here](https://babeljs.io/repl/){:target="_blank"})
+[here](https://babeljs.io/repl/))
 
 The key point here is that the standard es6 class method translates to
 a method on the function prototype, whereas the arrow function translates
@@ -140,11 +129,11 @@ really happening under the hood.
 ---
 
 ## Other news
-I'll be attending [NDC Sydney](http://ndcsydney.com/){:target="_blank"} on 3-5 August. If you are around, please say hello otherwise
+I'll be attending [NDC Sydney](http://ndcsydney.com/) on 3-5 August. If you are around, please say hello otherwise
 it will be quite a lonely conference for me :(
 
 I have also organised a reading group which will take place on Thu 25 Aug. The pick is ["If Hemingway Wrote Javascript"
-by Angus Croll](https://www.nostarch.com/hemingway){:target="_blank"}. Please reach out to me if you would like to join!
+by Angus Croll](https://www.nostarch.com/hemingway). Please reach out to me if you would like to join!
 
 Until next time, cowabunga.
 

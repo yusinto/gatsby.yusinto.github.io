@@ -1,13 +1,9 @@
 ---
+path: "/step-four-to-react-routing-with-react-router"
+date: "2016-06-30"
+title: "Step 4 to React - Intro to routing with react router"
 published: true
-title: "Step 4 to React: Intro to routing with react router"
-layout: post
-date: 2016-06-30 14:52
-tag:
-- react
-- react router
-- routing
-blog: true
+tags: ["react", "react router", "routing"]
 ---
 
 I am in LA for holidays! Yep, I'm blogging as I am holidaying; I don't know why but I just can't stop thinking about it.
@@ -22,9 +18,9 @@ Let's get into it!
 
 ## Step 4.1: Install react-router
 
-{% highlight raw %}
+```bash
 npm install --save react-router
-{% endhighlight %}
+```
 
 The latest version of react-router at the time of writing is 2.5.1. This single npm package is sufficient for 
 all our routing needs.
@@ -35,7 +31,7 @@ all our routing needs.
 You set up react router routes in jsx. What does that mean? That means you set up your routes
 the same way you write jsx; in an xml-like format with nested parent-child structure. 
  
-{% highlight xml %}
+```xml
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import App from './component/appComponent';
@@ -49,7 +45,7 @@ const routes =
   </Route>;
 
 export default routes;
-{% endhighlight %}
+```
 
 Setting up routes like this maybe confusing to someone who is new to react router and perhaps even more confusing
 for .NET developers who are used to setting up MVC routes. Let me explain how this works in react router:
@@ -68,10 +64,10 @@ matches <b>two</b> components at "/" and "/contact". That means <b>both</b> the 
 You need to use the Link component from react-router package instead of the standard html anchor tags to 
 be able to route across pages SPA style.
 
-{% highlight xml %}
+```xml
 <Link to="/">Home</Link>
 <Link to="/contact">Contact Us</Link>
-{% endhighlight %}
+```
 
 Each Link component needs to have a "to" attribute specified. The value of each "to" attribute must match a route specified in the route.js 
 file in the previous section.
@@ -83,10 +79,10 @@ Instead of rendering your root component directly on the client side, you render
 specified. This is so we can match urls and render matching components using the routes declared in common/route.js
 The history attribute tells react router to use html5 history api as opposed to hash history. If you don't specify this attribute,
  you will get this warning: 
- {% highlight xml %}
+ ```xml
  [react-router] `Router` no longer defaults the history prop to 
  hash history. Please use the `hashHistory` singleton instead."
- {% endhighlight %}
+ ```
 Html5 history api is preferable to hash history because it keeps the url clean:
 
 "/contact" 
@@ -96,7 +92,7 @@ as opposed to:
 "/#/contact"
 
 The whole client/index.js looks like this:
-{% highlight xml %}
+```xml
 // Import the render method from react-dom so we can mount our
 // component onto an html element
 import React from 'react';
@@ -112,7 +108,7 @@ import routes from '../common/route';
  * because it keeps the url clean e.g. "/contact" as opposed to "/#/contact"
  */
 render(<Router routes={routes} history={browserHistory} />, document.getElementById('reactDiv'));
-{% endhighlight %}
+```
 
 ---
 
@@ -121,7 +117,7 @@ Almost there! Now we create the actual Home and Contact components that
 get rendered when matched. These are pretty simple:
 
 #### homeComponent.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class Home extends Component {
@@ -133,9 +129,9 @@ export default class Home extends Component {
     );
   }
 }
-{% endhighlight %}
+```
 #### contactComponent.js
-{% highlight c# %}
+```jsx
 import React, {Component} from 'react';
 
 export default class Contact extends Component {
@@ -147,7 +143,7 @@ export default class Contact extends Component {
     );
   }
 }
-{% endhighlight %}
+```
 
 ---
 
@@ -156,7 +152,7 @@ We'll prettify our app by deactivating the current active link so users get a fe
 The whole appComponent.js looks like this:
 
 #### appComponent.js
-{% highlight xml %}
+```xml
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
@@ -183,7 +179,7 @@ export default class App extends Component {
     );
   }
 }
-{% endhighlight %}
+```
 
 Notes:
 <ul>
