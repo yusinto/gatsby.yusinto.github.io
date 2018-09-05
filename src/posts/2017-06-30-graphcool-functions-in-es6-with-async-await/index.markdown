@@ -35,7 +35,7 @@ Enough talk, let's code!
 Create a Customer type in your Graphcool backend so we have something to crud with.
 
 #### customer.graphql
-```jsx
+```graphql
 type Customer implements Node {
   email: String!
   stripeCustomerId: String
@@ -57,7 +57,7 @@ The cli is powerful but it is still work in progress. You can't create functions
 via the cli at this stage (yet). We'll create our ssr function via the console
 for now. You can open the console using the cli:
 
-```jsx
+```bash
 graphcool console
 ```
 
@@ -66,7 +66,7 @@ as the trigger and click define function. Copy paste the subscription query
 below into the left window pane under subscription query.
 
 #### subscription.graphql
-```jsx
+```graphql
 subscription {
   Customer(filter: {
     mutation_in: [CREATED]
@@ -99,7 +99,7 @@ as is for now, we'll write the code for this in the next section.
 Finally we get to write some code! You can code directly
 in the console inline editor, but doing so forgoes a lot of the benefit
 of your IDE. Furthermore, behind the scenes inline functions are deployed
-to [webtask](https://webtask.io/){:target:"_blank"} which is cool
+to [webtask](https://webtask.io/) which is cool
 but does not support async await.
 
 Optionally you can also write and host your code elsewhere (like aws lambda) and
@@ -143,7 +143,7 @@ look for this file under src/createStripeCustomer.js. You can change this
 in webpack.config.js if you wish.
 
 #### main method
-```jsx
+```js
 const main = event => {
   const {id, email} = event.data.Customer.node;
 
@@ -163,7 +163,7 @@ const main = event => {
 ```
 
 #### createStripeCustomer method
-```jsx
+```js
 const createStripeCustomer = async email => {
   console.log(`Creating stripe customer for ${email}`);
   let stripeCustomer;
@@ -181,7 +181,7 @@ const createStripeCustomer = async email => {
 ```
 
 #### updateGraphCoolCustomer method
-```jsx
+```js
 const updateGraphCoolCustomer = async (id, stripeCustomerId) => {
   const updateCustomer = JSON.stringify({
     query: `
@@ -216,9 +216,6 @@ const updateGraphCoolCustomer = async (id, stripeCustomerId) => {
 The entire file is available [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/src/createStripeCustomer.js)
 on github.
 
-## Step 4: Deploy and test
-TODO
-
 ## Bonus: webpack configuration
 This is not a webpack tutorial but I want to share a few interesting things I
 discovered while working on this:
@@ -231,17 +228,19 @@ output.libraryTarget to commonjs2.
 <li>
 <b>DO NOT BUNDLE THIRD PARTY LIBRARIES!</b> This will blow up your code size, and it's
 not necessary. Your Graphcool function is executed in webtask
-and it supports most of the npm packages you'll need. Check [here](https://tehsis.github.io/webtaskio-canirequire/)
+and it supports most of the npm packages you'll need. Check 
+<a href="https://tehsis.github.io/webtaskio-canirequire/" target="_blank">here</a>
 for packages webtask supports.
 </li>
 <li>As a result of the point above, use
-[webpack-node-externals](https://github.com/liady/webpack-node-externals) to exclude all npm packages.
+<a href="https://github.com/liady/webpack-node-externals" target="_blank">webpack-node-externals</a> to exclude all npm packages.
 </li>
 <li>
 GOTCHA: To enable latest es6 features and async await, we have to include two npm packages: babel-polyfill and regenerator-runtime/runtime
 </li>
 </ul>
-If you are interested, you can check the complete webpack config [here](https://github.com/graphcool-examples/functions/blob/master/stripe-create-customer-es6/webpack.config.js).
+If you are interested, you can check the complete webpack config 
+<a href="https://github.com/yusinto/functions/blob/master/stripe-create-customer-es6/webpack.config.js" target="_blank">here</a>.
 
 
 ## Conclusion
@@ -253,6 +252,6 @@ to the client, which reacts to these notifications in real-time. It's super cool
 This approach incurs a little more time to setup, but I think it's worth it. We leave the code fully testable, encapsulation intact. 
 This feels right for me. Also, you can apply the same technique to test react components wrapped in relay containers. It works! 
 
-Check out the [sample code](https://github.com/yusinto/test-react) for a working example and let me know if this is useful (or not)!
+Check out the code on [github](https://github.com/yusinto/functions/tree/master/stripe-create-customer-es6)!
 
 ---------------------------------------------------------------------------------------

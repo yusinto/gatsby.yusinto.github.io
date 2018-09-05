@@ -30,7 +30,7 @@ it proxy code.
 
 Here are the steps to install emscripten:
 
-* Download [emscripten portable](https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz){:target:"_blank"}
+* Download [emscripten portable](https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz)
 * Unzip and cd into the dir and execute these:
 
 ```bash
@@ -47,7 +47,7 @@ located at /your_download_dir/emsdk-portable/emscripten/1.37.16
 Create a file called utils.c under your src folder.
 
 #### utils.c
-```jsx
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -88,17 +88,17 @@ level for your wasm and js files. You can check the various optimisation levels
 
 ```html
 <!DOCTYPE html>
-    <html>
-         <head>
-            <title>Hasta la vista JS!</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-          </head>
-          <body>
-            <div id="reactDiv"/>
-            <script src="/dist/utils.js"></script>
-            <script src="/dist/bundle.js"></script>
-          </body>
-    </html>
+<html>
+     <head>
+        <title>Hasta la vista JS!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      </head>
+      <body>
+        <div id="reactDiv"/>
+        <script src="/dist/utils.js"></script>
+        <script src="/dist/bundle.js"></script>
+      </body>
+</html>
 ```
 
 ## Step 5: Add an express route to serve wasm files
@@ -106,7 +106,7 @@ level for your wasm and js files. You can check the various optimisation levels
 Express does not serve .wasm files by default so we have to add a custom route.
 
 #### server.js
-```jsx
+```js
 app.get('/:filename.wasm', (req, res) => {
   const wasmFilePath = path.resolve(__dirname, 
     `../../dist/${req.params.filename}.wasm`);
@@ -139,7 +139,6 @@ Till that day arrives, a global script tag will have to do for now.
 
 #### app.js
 ```jsx
-
 export default class App extends Component {
     state = {randomNumber: -1};
     

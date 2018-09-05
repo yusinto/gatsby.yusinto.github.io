@@ -39,6 +39,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: '200',
+            },
+          },
+          {
             resolve: "gatsby-remark-embed-video",
             options: {
               width: 800,
