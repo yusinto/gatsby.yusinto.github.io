@@ -28,7 +28,27 @@ It's actually very interesting!
 Understand when parts of your promise gets executed and why.
 
 ## Step 1: Anatomy of a Promise
-<script src="https://gist.github.com/yusinto/28295371fc7613f66fab39f0c7435c54.js"></script>
+```js
+ const p = new Promise(
+    // this is called the "executor"
+    (resolve, reject) => {
+        console.log(1);
+        resolve(2);
+        console.log(3);
+    }
+);
+
+console.log(4);
+
+p.then(
+    // this is called the success handler
+    result => console.log(result)
+);
+
+setTimeout(() => console.log(5), 0);
+
+console.log(6);
+```
 
 Wanna guess what the output is? You can run the code [here](https://repl.it/repls/WelloffSeveralPlatypus)
 and see for yourself. Or I can just tell you. It is: 1 3 4 6 2 5.
