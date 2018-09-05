@@ -54,7 +54,7 @@ he's really funny. His name reminds of the movie Life of Pi (of course his name 
 
 My picks:
 
-<b>Lee Byron</b> - released [Relay Modern v1.0](https://facebook.github.io/relay/docs/relay-modern.html) 
+<b>Lee Byron</b> - released [Relay Modern](https://facebook.github.io/relay/docs/en/next/introduction-to-relay.html)
 live on stage. Relay Modern now supports static queries, client side only fields and subscriptions. 
 Client side only fields mean that you can use relay to replace redux. Relay classic will still be supported in npm under
 react-relay/classic.

@@ -84,5 +84,6 @@ module.exports = {
         // exclude: ["/preview/**", "/do-not-track/me/too/"],
       },
     },
+    'gatsby-plugin-catch-links',
   ],
 }

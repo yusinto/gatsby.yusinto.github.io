@@ -6,7 +6,7 @@ published: true
 tags: ["react", "hmr", "hot", "module", "replacement", "webpack", "babel"]
 ---
 
-In the [previous post](http://www.reactjunkie.com/step-two-to-react-webpack-and-react/) we started writing react code
+In the [previous post](/step-two-to-react-webpack-and-react/) we started writing react code
 and that was cool. However having to restart the app and refresh the browser everytime we make a change is a pain. 
 There must be a better way to optimise our dev/debug cycle.
 
@@ -148,7 +148,7 @@ app.use(WebPackHotMiddleware(webpackCompiler));
 ---
 
 ## Step 3.5: Run the app!
-If you have been following my [previous post](http://www.reactjunkie.com/step-two-to-react-webpack-and-react/) up to this point, 
+If you have been following my [previous post](/step-two-to-react-webpack-and-react/) up to this point,
 note that you'll need to delete the prestart command from package.json. We don't need that anymore because we are using webpack
 dev middleware to bundle our app on the fly. 
 
