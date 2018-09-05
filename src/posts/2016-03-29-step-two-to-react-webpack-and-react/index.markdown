@@ -6,7 +6,7 @@ published: true
 tags: ["react", "webpack", "babel"]
 ---
 
-If you haven't read my [previous post](/step-one-to-react-es-6-and-express/),
+If you haven't read my [previous post](/step-one-to-react-es-6-and-express/), 
 it might be a good idea to have a quick read before reading this one. We'll build this example based on that last post.
 Let's get into it!
 

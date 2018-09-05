@@ -26,7 +26,7 @@ know about you but I get really turned on by this kind of stuff! Let's get to it
 By the end of this blog, we want to be able to create a docker image containing our react app, be able to run lint, tests and the actual app
 on that image.
 
-We will be using the codebase from my [previous blog on react router](/step-four-to-react-routing-with-react-router/). It's
+We will be using the codebase from my [previous blog on react router](/step-four-to-react-routing-with-react-router/). It's 
 a minimal react spa with routing, you should be able to easily substitute your own codebase and follow the steps here to use docker.
 
 ## Step 1: Install docker

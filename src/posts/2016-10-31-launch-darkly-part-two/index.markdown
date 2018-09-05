@@ -10,7 +10,7 @@ files:
  - "./user_targeting_advanced.png"
 ---
 
-In my [previous previous post](/react-feature-toggle-launch-darkly/)
+In my [previous previous post](/react-feature-toggle-launch-darkly/) 
 I introduced launch darkly as a feature toggling platform and how to use it with react redux. In this post I
 will explain how you can further leverage the power of feature toggling with user targeting.
  

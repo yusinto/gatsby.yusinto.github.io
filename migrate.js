@@ -120,6 +120,7 @@ posts.forEach(p => {
     markdownResult = replaceAll(markdownResult, '{% highlight shell %}', '```bash');
     markdownResult = replaceAll(markdownResult, '{% endhighlight %}', '```');
     markdownResult = replaceAll(markdownResult, '{:target="_blank"}', '');
+    markdownResult = replaceAll(markdownResult, 'http://www.reactjunkie.com', '');
 
     frontmatterResult.push('---');
 

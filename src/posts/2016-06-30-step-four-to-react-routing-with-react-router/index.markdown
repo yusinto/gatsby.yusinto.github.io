@@ -10,7 +10,7 @@ I am in LA for holidays! Yep, I'm blogging as I am holidaying; I don't know why 
 My wife says I'm addicted to work, I said no. We fight a lot but we love each other. Love is weird.
 
 Anyway! This is a short and basic guide to implement routing with react router.
-If you haven't read my [previous post](/step-three-to-react-speed-dev-with-hot-module-replacement/),
+If you haven't read my [previous post](/step-three-to-react-speed-dev-with-hot-module-replacement/), 
 it might be a good idea to have a quick read before reading this one. We'll build this example based on that last post.
 Let's get into it!
 
