@@ -97,10 +97,12 @@ These are some of the people I met and the insights I gathered from them:
 <b>Dafeng Guo cofounder of strikingly</b> - started strikingly with 2 other founders in YCombinator in 2012. They had 0 paying customers
 in 2012, now they have over 130 employees and a lot more customers :). I am a user of strikingly and I can't recommend it enough. He also
 showed me strikingly's latest wechat feature where strikingly websites now are automatically converted to wechat apps. That's super cool!
+
 <img alt="Dafeng" src="/static/dafeng-be0c28025424c3ada2b2b2e22fa6d1c8.png" id="markdownImage"/>
 
 <b>Griffith Tchen Pan</b> - works at myworkpapers.com. Started in Gold Coast Australia and now has offices in USA and London. 8 years of
  dedication and commitment to a product pays off. That's what I learned from him.
+ 
  <img alt="Griffith" src="/static/griffith-90c7466495c87c288e9417ac6e3b70d0.png" id="markdownImage"/>
 
 <b>Brian Christensen</b> Danish guy I met at the workshop. Arguably the smartest guy in Denmark, he knows everything from docker to glam to
@@ -122,6 +124,5 @@ and then back. Is it worth it? Yes. I definitely won't forget it. Here are more 
 the great people I met. Till next time!
 
 <img alt="Brian" src="/static/react_conference_collage-06aad020e79ef66d8d0ecf765e7c182a.png" id="markdownImage"/>
-
 
 ---------------------------------------------------------------------------------------

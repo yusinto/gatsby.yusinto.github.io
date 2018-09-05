@@ -32,9 +32,7 @@ By the end of this blog, we will have a feature-flag driven react redux app usin
 
 ## Step 1: Configure launch darkly dashboard
 
-<p align="center">
-{% youtube _WDy_V0h-qk %}
-</p>
+`youtube: _WDy_V0h-qk`
 
 ## Step 2: Install ldclient-js
 ```bash
