@@ -4,27 +4,32 @@ import {Link, graphql} from 'gatsby'
 
 const Tags = ({pageContext, data}) => {
   const {tag} = pageContext
-  const {edges, totalCount} = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-    } tagged with '${tag}'`
 
-  return (
-    <div>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {edges.map(({node}) => {
-          const {path, title} = node.frontmatter
-          return (
-            <li key={path}>
-              <Link to={path}>{title}</Link>
-            </li>
-          )
-        })}
-      </ul>
-      <Link to='/tags'>All tags</Link>
-    </div>
-  )
+  if(data.allMarkdownRemark) {
+    const {edges, totalCount} = data.allMarkdownRemark
+    const tagHeader = `${totalCount} post${
+      totalCount === 1 ? '' : 's'
+      } tagged with '${tag}'`
+
+    return (
+      <div>
+        <h1>{tagHeader}</h1>
+        <ul>
+          {edges.map(({node}) => {
+            const {path, title} = node.frontmatter
+            return (
+              <li key={path}>
+                <Link to={path}>{title}</Link>
+              </li>
+            )
+          })}
+        </ul>
+        <Link to='/tags'>All tags</Link>
+      </div>
+    )
+  }
+
+  return 'markdown edges null!';
 }
 
 Tags.propTypes = {

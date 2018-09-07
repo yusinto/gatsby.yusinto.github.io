@@ -18,6 +18,20 @@ exports.createPages = ({ actions, graphql }) => {
     toPath: '/ld-react',
   })
 
+  createRedirect({
+    fromPath: '/blog',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/',
+  })
+
+  createRedirect({
+    fromPath: '/about',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/',
+  })
+
   return graphql(`
     {
       allMarkdownRemark(

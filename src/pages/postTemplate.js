@@ -19,17 +19,22 @@ const Hero = styled.img`
 `
 export default ({data}) => {
   const {markdownRemark} = data;
-  const {frontmatter: {title, date, tags, files}, html, timeToRead} = markdownRemark;
-  const hero = files && files.find(f => f.name === 'hero');
 
-  return (
-    <Layout datePosted={date} timeToRead={timeToRead}>
-      <Content><Title>{title}</Title></Content>
-      {hero ? <Hero alt="hero" src={hero.publicURL}/> : null}
-      <Content dangerouslySetInnerHTML={{__html: html}}/>
-      <Content><TagList tags={tags}/></Content>
-    </Layout>
-  );
+  if(markdownRemark) {
+    const {frontmatter: {title, date, tags, files}, html, timeToRead} = markdownRemark;
+    const hero = files && files.find(f => f.name === 'hero');
+
+    return (
+      <Layout datePosted={date} timeToRead={timeToRead}>
+        <Content><Title>{title}</Title></Content>
+        {hero ? <Hero alt="hero" src={hero.publicURL}/> : null}
+        <Content dangerouslySetInnerHTML={{__html: html}}/>
+        <Content><TagList tags={tags}/></Content>
+      </Layout>
+    );
+  }
+
+  return 'markdown is null!'
 };
 
 export const postTemplateQuery = graphql`

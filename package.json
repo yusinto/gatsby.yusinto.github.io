@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.6.3",
     "ellipsize": "^0.1.0",
-    "gatsby": "next",
+    "gatsby": "^2.0.0-rc.13",
     "gatsby-plugin-catch-links": "^1.0.24",
     "gatsby-plugin-google-analytics": "^1.0.31",
-    "gatsby-plugin-manifest": "next",
-    "gatsby-plugin-offline": "next",
-    "gatsby-plugin-react-helmet": "next",
-    "gatsby-plugin-styled-components": "^2.0.11",
+    "gatsby-plugin-manifest": "^2.0.2-rc.1",
+    "gatsby-plugin-offline": "^2.0.0-rc.4",
+    "gatsby-plugin-react-helmet": "^3.0.0-rc.1",
+    "gatsby-plugin-styled-components": "^3.0.0-rc.1",
     "gatsby-plugin-typography": "^1.7.19",
     "gatsby-remark-autolink-headers": "^1.4.19",
     "gatsby-remark-embed-video": "^1.4.0",
@@ -25,7 +26,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
-    "styled-components": "^3.4.2",
+    "react-site-nav": "^0.2.2",
+    "styled-components": "^3.4.5",
     "typography-theme-sutro": "^0.15.10"
   },
   "keywords": [
@@ -36,9 +38,12 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b master -r https://github.com/yusinto/yusinto.github.io.git",
+    "gh-pages-help": "gh-pages --help"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "prettier": "^1.14.2"
   },
   "repository": {

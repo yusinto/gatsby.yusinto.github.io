@@ -21,7 +21,6 @@ const Bio = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  opacity: 0.8;
   
   @media(min-width: 552px) {
     grid-area: bio;
@@ -34,6 +33,7 @@ const Name = styled.div`
 `
 const Blurb = styled.div`
  font-size: 15px;
+ opacity: 0.8;
 `
 const RootDiv = styled.div`
   display: grid;
