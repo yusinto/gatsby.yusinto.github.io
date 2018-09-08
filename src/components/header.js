@@ -1,22 +1,27 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
-import {StickyHeaderHeight} from '../constants'
+import {SiteNavHeight, HeaderHeight} from '../constants'
 import TwitterSvg from './svg/twitter'
 import GithubSvg from './svg/github'
 import EmailSvg from './svg/email'
 import LinkedinSvg from './svg/linkedin'
+import SiteNav, {ContentGroup} from './siteNav'
+import Blog from './siteNav/blog'
+import Social from './siteNav/social'
 
 const RootDiv = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: ${StickyHeaderHeight}px;
   opacity: 0.96;
   background: white;
   z-index: 2;
+`
+const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  height: ${HeaderHeight}px;
 `
 const Logo = styled.h1`
   margin: 0;
@@ -49,34 +54,47 @@ const SocialLink = styled.span`
       margin: 10px 13px;
     }
 `
-const Header = () => (
+export default () => (
   <RootDiv>
-    <Logo>
-      <Link to="/">ReactJunkie</Link>
-    </Logo>
-    <SocialLinks>
-      <SocialLink>
-        <a href="https://twitter.com/yusinto" target="_blank" rel="noopener noreferrer">
-          <TwitterSvg/>
-        </a>
-      </SocialLink>
-      <SocialLink>
-        <a href="https://github.com/yusinto" target="_blank" rel="noopener noreferrer">
-          <GithubSvg/>
-        </a>
-      </SocialLink>
-      <SocialLink>
-        <a href="mailto:yusinto@gmail.com">
-          <EmailSvg/>
-        </a>
-      </SocialLink>
-      <SocialLink>
-        <a href="https://www.linkedin.com/in/yusinto" target="_blank" rel="noopener noreferrer">
-          <LinkedinSvg/>
-        </a>
-      </SocialLink>
-    </SocialLinks>
+    <Header>
+      <Logo>
+        <Link to="/">ReactJunkie</Link>
+      </Logo>
+      <SocialLinks>
+        <SocialLink>
+          <a href="https://twitter.com/yusinto" target="_blank" rel="noopener noreferrer">
+            <TwitterSvg/>
+          </a>
+        </SocialLink>
+        <SocialLink>
+          <a href="https://github.com/yusinto" target="_blank" rel="noopener noreferrer">
+            <GithubSvg/>
+          </a>
+        </SocialLink>
+        <SocialLink>
+          <a href="mailto:yusinto@gmail.com">
+            <EmailSvg/>
+          </a>
+        </SocialLink>
+        <SocialLink>
+          <a href="https://www.linkedin.com/in/yusinto" target="_blank" rel="noopener noreferrer">
+            <LinkedinSvg/>
+          </a>
+        </SocialLink>
+      </SocialLinks>
+    </Header>
+    <SiteNav
+      background="#323232"
+      fontSize="14"
+      rowHeight={SiteNavHeight}
+      debug={true}
+    >
+      <ContentGroup title="Blog" width="420" height="270">
+        some blog
+      </ContentGroup>
+      <ContentGroup title="Social" width="160" height="230">
+        <Social/>
+      </ContentGroup>
+    </SiteNav>
   </RootDiv>
 )
-
-export default Header

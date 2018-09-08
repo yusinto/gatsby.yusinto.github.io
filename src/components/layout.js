@@ -3,13 +3,10 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
-import SiteNav, {ContentGroup} from './siteNav'
 import Header from './header'
 import AuthorBio from './authorBio'
 import AuthorBioHomepage from './authorBioHomepage'
 import {StickyHeaderHeight} from '../constants'
-import Blog from './siteNav/blog'
-import Social from './siteNav/social'
 
 injectGlobal`
   html {
@@ -67,14 +64,6 @@ const RootDiv = styled.div`
   width: 100%;
   padding: ${StickyHeaderHeight}px 0;
 `
-const SiteNavContainer = styled.div`
-  position: fixed;
-  top: ${StickyHeaderHeight}px;
-  width: 100%;
-  opacity: 0.96;
-  //background: white;
-  z-index: 2;
-`
 const Layout = ({children, pageType, datePosted, timeToRead}) => (
   <StaticQuery
     query={graphql`
@@ -103,22 +92,6 @@ const Layout = ({children, pageType, datePosted, timeToRead}) => (
           <html lang="en"/>
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title}/>
-        <SiteNavContainer>
-          <SiteNav
-            background="#323232"
-            color="white"
-            fontSize="12"
-            rowHeight="35"
-            debug={true}
-          >
-            <ContentGroup title="Blog" width="420" height="270">
-              <Blog/>
-            </ContentGroup>
-            <ContentGroup title="Social" width="160" height="230">
-              <Social/>
-            </ContentGroup>
-          </SiteNav>
-        </SiteNavContainer>
         <RootDiv>
           {
             pageType === 'home' ?
