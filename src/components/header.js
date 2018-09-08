@@ -89,7 +89,7 @@ export default () => (
       contentBackground="#eff2f5"
       debug={false}
     >
-      <ContentGroup title="Blog" width="300" height="400">
+      <ContentGroup title="Blog" width="300" height="410">
         <Blog/>
       </ContentGroup>
       <ContentGroup title="Social" width="160" height="230">

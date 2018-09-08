@@ -74,12 +74,12 @@ const LatestHeading = styled.div`
 `
 const BlogTitle = styled.div`
   font-weight: bold;
-  opacity: 0.9;
+  opacity: 0.7;
   font-size: 13px;
 `
 const BlogExcerpt = styled.div`
   font-size: 12px;
-  opacity: 0.9;
+  opacity: 0.8;
 `
 const StyledLink = styled(Link)`
   color: black;
