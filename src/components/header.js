@@ -1,11 +1,8 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
-import {SiteNavHeight, HeaderHeight} from '../constants'
-import TwitterSvg from './svg/twitter'
-import GithubSvg from './svg/github'
-import EmailSvg from './svg/email'
-import LinkedinSvg from './svg/linkedin'
+import {SiteNavHeight, HeaderHeight, SocialList} from '../constants'
+import SvgIcon from './svg'
 import SiteNav, {ContentGroup} from './siteNav'
 import Blog from './siteNav/blog'
 import Social from './siteNav/social'
@@ -60,26 +57,22 @@ export default () => (
         <Link to="/">ReactJunkie</Link>
       </Logo>
       <SocialLinks>
-        <SocialLink>
-          <a href="https://twitter.com/yusinto" target="_blank" rel="noopener noreferrer">
-            <TwitterSvg/>
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="https://github.com/yusinto" target="_blank" rel="noopener noreferrer">
-            <GithubSvg/>
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="mailto:yusinto@gmail.com">
-            <EmailSvg/>
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="https://www.linkedin.com/in/yusinto" target="_blank" rel="noopener noreferrer">
-            <LinkedinSvg/>
-          </a>
-        </SocialLink>
+        {
+          SocialList.map(({type, url}) =>
+            <SocialLink key={type}>
+              {
+                type === 'email' ?
+                  <a href={url}>
+                    <SvgIcon type={type}/>
+                  </a>
+                  :
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <SvgIcon type={type}/>
+                  </a>
+              }
+            </SocialLink>
+          )
+        }
       </SocialLinks>
     </Header>
     <SiteNav

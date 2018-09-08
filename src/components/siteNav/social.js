@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SvgIcon from '../svg'
+import {SocialList} from '../../../src/constants'
 
 const List = styled.ul`
   display: flex;
@@ -30,19 +31,13 @@ const StyledLink = styled.a`
     opacity: 0.7;
   }
 `;
-const socialList = [
-  {type: 'twitter', url: 'https://twitter.com/yusinto'},
-  {type: 'github', url: 'https://github.com/yusinto'},
-  {type: 'email', url: 'mailto:yusinto@gmail.com'},
-  {type: 'linkedin', url: 'https://www.linkedin.com/in/yusinto'},
-];
 const iconFill = 'grey'
 const iconWidth = 16
 export default () => {
   return (
     <List>
       {
-        socialList.map(({type, url}) =>
+        SocialList.map(({type, url}) =>
           <ListItem key={type}>
             {
               type === 'email' ?
