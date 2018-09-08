@@ -240,8 +240,8 @@ const ContentGroupContainer = styled.div`
   ${({show}) => show ? `${fadeInContentSeconds}` : `${fadeOutContentSeconds}`}s
   forwards;
 `;
-export const ContentGroup = ({title, width, height}) => {
-  return <div>{title}: {width}x{height}</div>;
+export const ContentGroup = ({title, width, height, background}) => {
+  return <div>{title}: {width}x{height}; {background}</div>;
 };
 
 export default class SiteNav extends Component {
@@ -265,7 +265,7 @@ export default class SiteNav extends Component {
    */
   memoizeMenuData = memoize((columnWidth, children) => React.Children.map(children, (child, i) => {
     // if width or height is not specified, add defaults
-    const width = child.props.width ? child.props.width : defaultContentWidth;
+    const width = child.props.width || defaultContentWidth;
     return {
       height: defaultContentHeight,
       ...child.props, // order is important here! spread child.props after height, followed by width.
@@ -368,6 +368,7 @@ export default class SiteNav extends Component {
     const rootGridItems = this.memoizeGridItems(children);
     const content = this.memoizeContent(children, fromData, toData);
     const justifyContent = this.memoizeAlign(align);
+    const contentBackgroundSanitised = (toData && toData.background) || contentBackground;
 
     return (
       <nav>
@@ -394,7 +395,7 @@ export default class SiteNav extends Component {
               toData={toData}
               top={contentTop}
               onClick={this.onClickMovingDiv}
-              background={contentBackground}
+              background={contentBackgroundSanitised}
               leftOffset={leftOffset}
               rightOffset={rightOffset}
             />
@@ -406,7 +407,7 @@ export default class SiteNav extends Component {
               color={contentColor}
               top={contentTop}
               onClick={this.onClickMovingDiv}
-              background={contentBackground}
+              background={contentBackgroundSanitised}
             >
               {content}
             </MovingDiv>

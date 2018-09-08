@@ -79,10 +79,9 @@ export default () => (
       background="#323232"
       fontSize="14"
       rowHeight={SiteNavHeight}
-      contentBackground="#eff2f5"
       debug={false}
     >
-      <ContentGroup title="Blog" width="300" height="410">
+      <ContentGroup title="Blog" width="300" height="410" background="#eff2f5">
         <Blog/>
       </ContentGroup>
       <ContentGroup title="Social" width="160" height="230">
