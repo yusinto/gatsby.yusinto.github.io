@@ -14,7 +14,6 @@ const RootDiv = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  //opacity: 0.96;
   background: #f6f9fc;
   z-index: 2;
 `
@@ -87,11 +86,11 @@ export default () => (
       background="#323232"
       fontSize="14"
       rowHeight={SiteNavHeight}
-      contentBackground="#f6f9fc"
-      debug={true}
+      contentBackground="#eff2f5"
+      debug={false}
     >
-      <ContentGroup title="Blog" width="420" height="270">
-        some blog
+      <ContentGroup title="Blog" width="300" height="400">
+        <Blog/>
       </ContentGroup>
       <ContentGroup title="Social" width="160" height="230">
         <Social/>
