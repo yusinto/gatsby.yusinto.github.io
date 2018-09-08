@@ -13,6 +13,7 @@ const defaultContentBackground = '#fff';
 const defaultContentColor = '#323232';
 const defaultContentWidth = 320;
 const defaultContentHeight = 200;
+const defaultContentTop = 0;
 
 const arrowHeight = 8;
 const perspective = 850;
@@ -106,10 +107,12 @@ const FadeOut = keyframes`
   }
 `;
 const MovingDiv = styled.div`
+  opacity: 1;
   ${setFromProps('color')};
   ${setFromProps('background')};
   position: absolute;
   z-index: 999;
+  top: ${({top}) => top}px;
   left: ${({fromData}) => fromData ? fromData.left : 0}px;
   width: ${({fromData}) => fromData ? fromData.width : 0}px;
   height: ${({fromData}) => fromData ? fromData.height : 0}px;
@@ -172,7 +175,7 @@ const MoveArrow = (fromData, toData, leftOffset, rightOffset) => keyframes`
   }
 `;
 const Arrow = styled.div`
-  top: -${arrowHeight}px;
+  top: -${({top}) => (arrowHeight - top)}px;
   z-index: 1;
   position: absolute;
   ${({toData, leftOffset, rightOffset}) => calculateArrowMarginLeft(toData, leftOffset, rightOffset)}
@@ -251,6 +254,7 @@ export default class SiteNav extends Component {
     background: defaultBackground,
     contentBackground: defaultContentBackground,
     contentColor: defaultContentColor,
+    contentTop: defaultContentTop,
     breakpoint: defaultBreakpoint,
     color: defaultColor,
     debug: false,
@@ -356,7 +360,7 @@ export default class SiteNav extends Component {
 
   render() {
     const {
-      columnWidth, rowHeight, background, contentBackground, contentColor,
+      columnWidth, rowHeight, background, contentBackground, contentColor, contentTop,
       children, align, fontSize, fontFamily, color, breakpoint
     } = this.props;
     const {fromData, toData, display, fadeOut, leftOffset, rightOffset} = this.state;
@@ -388,6 +392,7 @@ export default class SiteNav extends Component {
               fadeOut={fadeOut}
               fromData={fromData}
               toData={toData}
+              top={contentTop}
               onClick={this.onClickMovingDiv}
               background={contentBackground}
               leftOffset={leftOffset}
@@ -399,6 +404,7 @@ export default class SiteNav extends Component {
               fromData={fromData}
               toData={toData}
               color={contentColor}
+              top={contentTop}
               onClick={this.onClickMovingDiv}
               background={contentBackground}
             >
