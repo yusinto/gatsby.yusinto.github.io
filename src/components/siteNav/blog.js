@@ -43,7 +43,7 @@ const LisItemHeadingText = styled.div`
 `;
 const ListItemHeading = styled.div`
   margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 `;
 const Latest = styled.div`
@@ -90,7 +90,7 @@ export default ({data}) => (
       query latestBlogs {
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
-            limit: 3
+            limit: 4
             filter: {frontmatter: {published: {eq: true}}}
         ) {
             edges {
@@ -138,7 +138,7 @@ export default ({data}) => (
                         <ListItemContent>
                           <LisItemHeadingText>
                             <ListItemHeading>{title}</ListItemHeading>
-                            <DateReadTime fontSizeDesktop={10} date={date} timeToRead={timeToRead}/>
+                            <DateReadTime fontSizeDesktop={11} date={date} timeToRead={timeToRead}/>
                           </LisItemHeadingText>
                         </ListItemContent>
                       </Link>

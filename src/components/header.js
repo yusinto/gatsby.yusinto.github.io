@@ -6,6 +6,7 @@ import SvgIcon from './svg'
 import SiteNav, {ContentGroup} from './siteNav'
 import Blog from './siteNav/blog'
 import Social from './siteNav/social'
+import OpenSource from './siteNav/openSource'
 
 const RootDiv = styled.div`
   position: fixed;
@@ -81,11 +82,11 @@ export default () => (
       rowHeight={SiteNavHeight}
       debug={false}
     >
-      <ContentGroup title="Blog" width="300" height="410" background="#eff2f5">
+      <ContentGroup title="Blog" width="350" height="420" background="#eff2f5">
         <Blog/>
       </ContentGroup>
-      <ContentGroup title="Social" width="160" height="230">
-        <Social/>
+      <ContentGroup title="Open Source" width="320" height="390">
+        <OpenSource/>
       </ContentGroup>
     </SiteNav>
   </RootDiv>

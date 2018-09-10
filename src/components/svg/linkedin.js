@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default ({fill}) =>
-  <svg viewBox="0 0 1024 1024" fill={fill}>
+export default ({width, fill}) =>
+  <svg viewBox="0 0 1024 1024" fill={fill} width={width}>
     <title>linkedin</title>
     <path className="path1"
           d="M256 153.6c0 54.374-36.352 101.171-102.451 101.171-62.208 0-102.349-44.134-102.349-98.509 0-55.808 38.912-105.062 102.4-105.062s101.171 46.592 102.4 102.4zM51.2 972.8v-665.6h204.8v665.6h-204.8z"></path>

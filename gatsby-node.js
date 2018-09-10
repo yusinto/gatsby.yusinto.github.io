@@ -32,6 +32,13 @@ exports.createPages = ({ actions, graphql }) => {
     toPath: '/',
   })
 
+  createRedirect({
+    fromPath: '/about/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/',
+  })
+
   return graphql(`
     {
       allMarkdownRemark(
