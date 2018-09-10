@@ -13,7 +13,7 @@ export const RepoList = [
   {
     name: 'react-site-nav',
     description: 'A kick ass site menu powered by styled components inspired by Stripe',
-    stars: 109,
+    stars: 110,
   },
   {
     name: 'relay-compiler-plus',
