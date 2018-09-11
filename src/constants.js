@@ -1,6 +1,7 @@
 export const HeaderHeight = 50
 export const SiteNavHeight = 35
-export const StickyHeaderHeight = HeaderHeight + SiteNavHeight + 10
+export const HeaderSiteNavHeightMobile = HeaderHeight
+export const HeaderSiteNavHeightDesktop = HeaderHeight + SiteNavHeight + 10
 
 export const SocialList = [
   {type: 'twitter', url: 'https://twitter.com/yusinto'},

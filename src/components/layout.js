@@ -6,7 +6,7 @@ import styled, {injectGlobal} from 'styled-components'
 import Header from './header'
 import AuthorBio from './authorBio'
 import AuthorBioHomepage from './authorBioHomepage'
-import {StickyHeaderHeight} from '../constants'
+import {HeaderSiteNavHeightMobile, HeaderSiteNavHeightDesktop} from '../constants'
 
 injectGlobal`
   html {
@@ -62,7 +62,11 @@ injectGlobal`
 const RootDiv = styled.div`
   margin: 0 auto;
   width: 100%;
-  padding: ${StickyHeaderHeight}px 0;
+  padding: ${HeaderSiteNavHeightMobile}px 0;
+  
+  @media(min-width: 768px) {
+    padding: ${HeaderSiteNavHeightDesktop}px 0;
+  }
 `
 const Layout = ({children, pageType, datePosted, timeToRead}) => (
   <StaticQuery

@@ -111,7 +111,6 @@ const MovingDiv = styled.div`
   ${setFromProps('color')};
   ${setFromProps('background')};
   position: absolute;
-  z-index: 999;
   top: ${({top}) => top}px;
   left: ${({fromData}) => fromData ? fromData.left : 0}px;
   width: ${({fromData}) => fromData ? fromData.width : 0}px;
