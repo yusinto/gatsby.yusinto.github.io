@@ -59,6 +59,9 @@ const GridItem = styled.div`
     opacity: 0.5;
     cursor: default;
   }
+  & a {
+    ${setFromProps('color')};
+  }
 `;
 const ContentRow = styled.div`
   grid-column: 1 / span ${({columns}) => columns};
@@ -290,12 +293,14 @@ export default class SiteNav extends Component {
       left: (((i + 1) * columnWidth) - (columnWidth / 2)) - (sanitisedWidth / 2),
     };
   }));
-  memoizeGridItems = memoize(children => React.Children.map(children, (child, i) => {
+  memoizeGridItems = memoize((children, color) => React.Children.map(children, (child, i) => {
       const {title, rootUrl} = child.props;
       return (
         <GridItem key={`menu-title-${i}`}
                   index={i}
-                  onMouseEnter={(e) => this.onMouseEnter(e.target, i)}>
+                  onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
+                  color={color}
+        >
           {
             rootUrl ? <a href={rootUrl}>{title}</a> : title
           }
@@ -387,7 +392,7 @@ export default class SiteNav extends Component {
     } = this.props;
     const {fromData, toData, display, fadeOut, leftOffset, rightOffset} = this.state;
     const columns = this.memoizeColumns(children);
-    const rootGridItems = this.memoizeGridItems(children);
+    const rootGridItems = this.memoizeGridItems(children, color);
     const content = this.memoizeContent(children, fromData, toData);
     const justifyContent = this.memoizeAlign(align);
     const contentBackgroundSanitised = (toData && toData.background) || contentBackground;
