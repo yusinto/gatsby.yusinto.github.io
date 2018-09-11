@@ -4,8 +4,6 @@ import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
 import styled, {injectGlobal} from 'styled-components'
 import Header from './header'
-import AuthorBio from './authorBio'
-import AuthorBioHomepage from './authorBioHomepage'
 import {HeaderSiteNavHeightMobile, HeaderSiteNavHeightDesktop} from '../constants'
 
 injectGlobal`
@@ -97,13 +95,6 @@ const Layout = ({children, pageType, datePosted, timeToRead}) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title}/>
         <RootDiv>
-          {
-            pageType === 'home' ?
-              <AuthorBioHomepage blurb={blurb}/>
-              :
-              <AuthorBio blurb={blurb} datePosted={datePosted} timeToRead={timeToRead}/>
-          }
-
           {children}
         </RootDiv>
         </>

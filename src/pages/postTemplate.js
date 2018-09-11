@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import TagList from '../components/tagList';
 import {ContentStyles} from '../utils/sc-utils';
+import AuthorBio from '../components/authorBio'
 
 const Title = styled.h1`
   margin-top: 20px;
@@ -18,14 +19,15 @@ const Hero = styled.img`
   object-fit: cover;
 `
 export default ({data}) => {
-  const {markdownRemark} = data;
+  const {markdownRemark, site: { siteMetadata: { blurb }}} = data;
 
   if(markdownRemark) {
     const {frontmatter: {title, date, tags, files}, html, timeToRead} = markdownRemark;
     const hero = files && files.find(f => f.name === 'hero');
 
     return (
-      <Layout datePosted={date} timeToRead={timeToRead}>
+      <Layout>
+        <AuthorBio blurb={blurb} datePosted={date} timeToRead={timeToRead}/>
         <Content><Title>{title}</Title></Content>
         {hero ? <Hero alt="hero" src={hero.publicURL}/> : null}
         <Content dangerouslySetInnerHTML={{__html: html}}/>
@@ -39,6 +41,11 @@ export default ({data}) => {
 
 export const postTemplateQuery = graphql`
     query postByPath($path: String!) {
+        site {
+          siteMetadata {
+            blurb
+          }
+        }
         markdownRemark(frontmatter: { path: { eq: $path } }) {
             html
             timeToRead

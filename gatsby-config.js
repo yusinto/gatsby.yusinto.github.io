@@ -3,7 +3,7 @@ module.exports = {
     title: `ReactJunkie - Yusinto Ngadiman's blog`,
     keywordsCsv: 'yusinto,ngadiman,blog,yus,react,junkie,reactjunkie,graphql,react-site-nav,ld-redux,universal-hot-reload,relay-compiler-plus',
     blurb: 'Frontend Engineer @ Qantas. Tinkerer of things. Tea lover. Passionate about react graphql and making things fast.',
-    description: 'Read writing from Yusinto Ngadiman on reactjunkie.com.',
+    description: `Yusinto Ngadiman's blog. Read writing from Yusinto Ngadiman on reactjunkie.com.`,
   },
   plugins: [
     'gatsby-plugin-offline',

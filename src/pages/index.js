@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {ContentStyles} from '../utils/sc-utils'
 import Layout from '../components/layout';
 import DateReadTime from '../components/dateReadTime'
+import AuthorBioHomepage from '../components/authorBioHomepage'
 
 const Content = styled.div`
   ${ContentStyles}
@@ -53,10 +54,11 @@ const Summary = styled.div`
   font-size: 16px;
 `
 export default ({data}) => {
-  const posts = data.allMarkdownRemark.edges;
+  const {allMarkdownRemark: {edges: posts}, site: {siteMetadata: {blurb}}} = data;
 
   return (
-    <Layout pageType="home">
+    <Layout>
+      <AuthorBioHomepage blurb={blurb}/>
       <Content>
         <h4>Latest</h4>
         {
@@ -87,6 +89,11 @@ export default ({data}) => {
 
 export const indexQuery = graphql`
     query allPosts {
+        site {
+          siteMetadata {
+            blurb
+          }
+        }
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
 #            limit: 30
