@@ -1,6 +1,6 @@
 export const HeaderHeight = 50
 export const SiteNavHeight = 35
-export const HeaderSiteNavHeightMobile = HeaderHeight
+export const HeaderSiteNavHeightMobile = HeaderHeight + 10
 export const HeaderSiteNavHeightDesktop = HeaderHeight + SiteNavHeight + 10
 
 export const SocialList = [

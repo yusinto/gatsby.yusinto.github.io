@@ -87,6 +87,7 @@ export default () => (
       <ContentGroup title="Open Source" width="320" height="400">
         <OpenSource/>
       </ContentGroup>
+      <ContentGroup title="About" rootUrl="/about"/>
     </SiteNav>
   </RootDiv>
 )

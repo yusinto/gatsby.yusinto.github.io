@@ -178,7 +178,12 @@ const Arrow = styled.div`
   z-index: 1;
   position: absolute;
   ${({toData, leftOffset, rightOffset}) => calculateArrowMarginLeft(toData, leftOffset, rightOffset)}
-  display: ${({display}) => display};
+  display: ${({display, toData}) => {
+    if(toData && toData.width === 0 && toData.height === 0) {
+      return 'none';
+    }
+    return display;
+  }};
   width: 0; 
   height: 0;
   border-left: ${arrowHeight}px solid transparent;
@@ -263,22 +268,40 @@ export default class SiteNav extends Component {
    * Injects index and left properties into MenuData
    */
   memoizeMenuData = memoize((columnWidth, children) => React.Children.map(children, (child, i) => {
-    // if width or height is not specified, add defaults
-    const width = child.props.width || defaultContentWidth;
+    // if width and height are not specified, that means we don't want to render the content group i.e. we only
+    // want to render root item
+    const {width, height} = child.props;
+    let sanitisedWidth, sanitisedHeight;
+
+    if (!width && !height) {
+      sanitisedWidth = 0;
+      sanitisedHeight = 0;
+    } else {
+      // if width or height is not specified, add defaults
+      sanitisedWidth = width || defaultContentWidth;
+      sanitisedHeight = height || defaultContentHeight;
+    }
+
     return {
-      height: defaultContentHeight,
       ...child.props, // order is important here! spread child.props after height, followed by width.
-      width,
+      height: sanitisedHeight,
+      width: sanitisedWidth,
       index: i,
-      left: (((i + 1) * columnWidth) - (columnWidth / 2)) - (width / 2),
+      left: (((i + 1) * columnWidth) - (columnWidth / 2)) - (sanitisedWidth / 2),
     };
   }));
-  memoizeGridItems = memoize(children => React.Children.map(children, (child, i) =>
-    <GridItem key={`menu-title-${i}`}
-              index={i}
-              onMouseEnter={(e) => this.onMouseEnter(e.target, i)}>
-      {child.props.title}
-    </GridItem>
+  memoizeGridItems = memoize(children => React.Children.map(children, (child, i) => {
+      const {title, rootUrl} = child.props;
+      return (
+        <GridItem key={`menu-title-${i}`}
+                  index={i}
+                  onMouseEnter={(e) => this.onMouseEnter(e.target, i)}>
+          {
+            rootUrl ? <a href={rootUrl}>{title}</a> : title
+          }
+        </GridItem>
+      );
+    }
   ));
   memoizeContent = memoize((children, fromData, toData) => React.Children.map(children, (child, i) =>
     <ContentGroupContainer
