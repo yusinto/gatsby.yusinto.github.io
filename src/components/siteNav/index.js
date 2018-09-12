@@ -30,11 +30,10 @@ const setFromProps = camelCaseKey => css`
   ${props => props[camelCaseKey] ? `${kebabCase(camelCaseKey)}: ${props[camelCaseKey]}` : null}`;
 
 const GridContainer = styled.div`
-  // HACK: can't use display none because menu flashes when breakpoint changes for some reason!
+  // use visibility hidden instead of display none because menu flashes when breakpoint changes for some reason!
   @media(max-width: ${({breakpoint}) => (breakpoint - 1)}px) {
     position: absolute;
-    opacity: 0;
-    z-index: -1;
+    visibility: hidden;
   }
   
   @media(min-width: ${({breakpoint}) => breakpoint}px) {
@@ -106,7 +105,7 @@ const FadeOut = keyframes`
     opacity: 0;
     transform: perspective(${perspective}px) rotateX(-60deg);
     transform-origin: top center;
-    z-index: -1; // HACK: do this so hidden div does not block other elements on the page! We should have set display: none here, but its too hard
+    visibility: hidden;
   }
 `;
 const MovingDiv = styled.div`
