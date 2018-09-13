@@ -19,6 +19,27 @@ exports.createPages = ({ actions, graphql }) => {
   })
 
   createRedirect({
+    fromPath: '/ld-react-context-api/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/ld-react',
+  })
+
+  createRedirect({
+    fromPath: '/projects',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/',
+  })
+
+  createRedirect({
+    fromPath: '/projects/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/',
+  })
+
+  createRedirect({
     fromPath: '/blog',
     isPermanent: true,
     redirectInBrowser: true,
