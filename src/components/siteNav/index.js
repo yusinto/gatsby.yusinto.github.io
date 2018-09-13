@@ -49,6 +49,20 @@ const GridContainer = styled.div`
     ${setFromProps('fontSize')}px;  
   }
 `;
+const GridItemLink = styled.a`
+  grid-column: ${({index}) => index + 1} / span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    opacity: 0.5;
+  }
+  ${setFromProps('color')};
+  
+  &:visited {
+    ${setFromProps('color')};
+  }
+`;
 const GridItem = styled.div`
   grid-column: ${({index}) => index + 1} / span 1;
   display: flex;
@@ -57,9 +71,6 @@ const GridItem = styled.div`
   &:hover {
     opacity: 0.5;
     cursor: default;
-  }
-  & a {
-    ${setFromProps('color')};
   }
 `;
 const ContentRow = styled.div`
@@ -181,11 +192,11 @@ const Arrow = styled.div`
   position: absolute;
   ${({toData, leftOffset, rightOffset}) => calculateArrowMarginLeft(toData, leftOffset, rightOffset)}
   display: ${({display, toData}) => {
-    if(toData && toData.width === 0 && toData.height === 0) {
-      return 'none';
-    }
-    return display;
-  }};
+  if (toData && toData.width === 0 && toData.height === 0) {
+    return 'none';
+  }
+  return display;
+}};
   width: 0; 
   height: 0;
   border-left: ${arrowHeight}px solid transparent;
@@ -228,6 +239,7 @@ const FadeOutContent = keyframes`
   
   to {
     opacity: 0;
+    visibility: hidden;
   }
 `;
 const ContentGroupContainer = styled.div`
@@ -238,6 +250,7 @@ const ContentGroupContainer = styled.div`
   height: 100%;
   opacity: ${({show}) => show ? 1 : 0};
   z-index: ${({show}) => show ? 1 : 0};
+  pointer-events: ${({show}) => show ? 'auto' : 'none'}; // disregard mouse event if content group is inactive
   animation: ${({show, fadeOut}) => {
   if (show) return FadeInContent;
   if (fadeOut) return FadeOutContent;
@@ -294,15 +307,29 @@ export default class SiteNav extends Component {
   }));
   memoizeGridItems = memoize((children, color) => React.Children.map(children, (child, i) => {
       const {title, rootUrl} = child.props;
+
+      if (rootUrl) {
+        return (
+          <GridItemLink
+            href={rootUrl}
+            key={`menu-title-${i}`}
+            index={i}
+            onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
+            color={color}
+          >
+            {title}
+          </GridItemLink>
+        );
+      }
+
       return (
-        <GridItem key={`menu-title-${i}`}
-                  index={i}
-                  onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
-                  color={color}
+        <GridItem
+          key={`menu-title-${i}`}
+          index={i}
+          onMouseEnter={(e) => this.onMouseEnter(e.target, i)}
+          color={color}
         >
-          {
-            rootUrl ? <a href={rootUrl}>{title}</a> : title
-          }
+          {title}
         </GridItem>
       );
     }
