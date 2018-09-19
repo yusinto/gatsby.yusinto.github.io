@@ -47,6 +47,6 @@ engineers, we should embrace progress because that's how we learn and improve. G
 I embraced it.
 
 ## Thanks
-[Kyle Mathes](https://twitter.com/kylemathews) thank you for introducing gatsby to this world.
+[Kyle Mathews](https://twitter.com/kylemathews) thank you for introducing gatsby to this world.
 
 ---------------------------------------------------------------------------------------
