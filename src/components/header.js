@@ -3,7 +3,7 @@ import {Link} from 'gatsby'
 import styled from 'styled-components'
 import {SiteNavHeight, HeaderHeight, SocialList} from '../constants'
 import SvgIcon from './svg'
-import SiteNav, {ContentGroup} from './siteNav'
+import SiteNav, {ContentGroup} from 'react-site-nav'
 import Blog from './siteNav/blog'
 import OpenSource from './siteNav/openSource'
 
@@ -81,7 +81,7 @@ export default () => (
       rowHeight={SiteNavHeight}
       debug={false}
     >
-      <ContentGroup title="Blog" width="350" height="420" background="#eff2f5">
+      <ContentGroup title="Blog" width="350" height="435" background="#eff2f5">
         <Blog/>
       </ContentGroup>
       <ContentGroup title="Open Source" width="320" height="400">
