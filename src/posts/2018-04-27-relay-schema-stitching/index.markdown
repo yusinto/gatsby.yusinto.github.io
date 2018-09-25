@@ -71,7 +71,7 @@ graphql get-schema
 ## Step 3: Stitch
 The stitching part is standard, following [Apollo's doco](https://www.apollographql.com/docs/graphql-tools/schema-stitching.html):
 
-```js
+```js{11,14,20,29,30}
 import {mergeSchemas, makeRemoteExecutableSchema, makeExecutableSchema} from 'graphql-tools';
 import {importSchema} from 'graphql-import';
 import {HttpLink} from 'apollo-link-http';
@@ -155,7 +155,7 @@ query {
 ## Step 4: Compile
 Say we have a relay query like so:
 
-```jsx
+```jsx{7}
 const query = graphql`
     query client_index_Query {
         user {
