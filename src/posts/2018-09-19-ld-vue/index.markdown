@@ -1,11 +1,11 @@
 ---
-path: "/vue-mixin-params"
-date: "2018-09-20"
-title: "Using Vue mixins with params"
+path: "/ld-vue"
+date: "2018-09-19"
+title: "Vue js Launch Darkly integration"
 published: false
-files: 
+files:
  - "./hero.png"
-tags: ["gatsby", "js", "gastbyjs", "react", "reactjs", "spa", "migrate", "migration", "gatsby2"]
+tags: ["ld-vue", "launch", "darkly", "vue", "vuejs", "vue2", "vuejs2", "ldvue", "feature", "flag", "integration", "context", "api", "toggle"]
 ---
 
 Hello Gatsby! Finally reactjunkie.com is on Gatsby!
