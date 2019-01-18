@@ -7,28 +7,30 @@
     "babel-plugin-styled-components": "^1.6.3",
     "ellipsize": "^0.1.0",
     "gatsby": "^2.0.0-rc.13",
-    "gatsby-plugin-catch-links": "^1.0.24",
-    "gatsby-plugin-google-analytics": "^1.0.31",
+    "gatsby-plugin-catch-links": "^2.0.9",
+    "gatsby-plugin-google-analytics": "^2.0.9",
     "gatsby-plugin-manifest": "^2.0.2-rc.1",
     "gatsby-plugin-offline": "^2.0.0-rc.4",
     "gatsby-plugin-react-helmet": "^3.0.0-rc.1",
     "gatsby-plugin-styled-components": "^3.0.0-rc.1",
-    "gatsby-plugin-typography": "^1.7.19",
-    "gatsby-remark-autolink-headers": "^1.4.19",
+    "gatsby-plugin-typography": "^2.2.5",
+    "gatsby-remark-autolink-headers": "^2.0.12",
     "gatsby-remark-embed-video": "^1.4.0",
     "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-remark-prismjs": "^2.0.5",
-    "gatsby-remark-responsive-iframe": "^1.4.20",
-    "gatsby-source-filesystem": "^1.5.39",
-    "gatsby-transformer-remark": "^1.7.44",
-    "memoize-one": "^4.0.2",
+    "gatsby-remark-prismjs": "^3.2.0",
+    "gatsby-remark-responsive-iframe": "^2.0.8",
+    "gatsby-source-filesystem": "^2.0.16",
+    "gatsby-transformer-remark": "^2.2.0",
+    "memoize-one": "^5.0.0",
     "prismjs": "^1.15.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-site-nav": "^0.2.9",
-    "styled-components": "^3.4.5",
-    "typography-theme-sutro": "^0.15.10"
+    "react-typography": "^0.16.18",
+    "styled-components": "^4.1.3",
+    "typography": "^0.16.18",
+    "typography-theme-sutro": "^0.16.18"
   },
   "keywords": [
     "gatsby"
@@ -43,8 +45,9 @@
     "gh-pages-help": "gh-pages --help"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0",
-    "prettier": "^1.14.2"
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.14.2",
+    "prop-types": "^15.6.2"
   },
   "repository": {
     "type": "git",

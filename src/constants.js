@@ -14,21 +14,21 @@ export const RepoList = [
   {
     name: 'react-site-nav',
     description: 'A kick ass site menu powered by styled components inspired by Stripe',
-    stars: 112,
+    stars: 117,
   },
   {
     name: 'relay-compiler-plus',
     description: 'Custom relay compiler which supports persisted queries',
-    stars: 52,
+    stars: 59,
   },
   {
     name: 'universal-hot-reload',
     description: 'Hot reload client and server webpack bundles for the ultimate development experience',
-    stars: 40,
+    stars: 52,
   },
   {
-    name: 'ld-redux',
-    description: 'A library to integrate launch darkly with react redux',
-    stars: 23,
+    name: 'ld-react',
+    description: 'A library to integrate launch darkly with react',
+    stars: 20,
   },
 ]

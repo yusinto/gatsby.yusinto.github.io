@@ -64,6 +64,7 @@ module.exports = {
                 sh: 'bash',
               },
               showLineNumbers: true,
+              noInlineHighlight: false
             },
           },
           {

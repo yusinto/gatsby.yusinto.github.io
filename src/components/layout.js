@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {StaticQuery, graphql} from 'gatsby'
-import styled, {injectGlobal} from 'styled-components'
+import styled, {createGlobalStyle} from 'styled-components'
 import Header from './header'
 import {HeaderSiteNavHeightMobile, HeaderSiteNavHeightDesktop} from '../constants'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html {
     font-family: sans-serif;
   }
@@ -16,7 +16,7 @@ injectGlobal`
   }
   
   h2, h3, h4, h5 {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 12px;
   }
   
@@ -25,26 +25,48 @@ injectGlobal`
   }
   
   a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
     opacity: 0.7;
   }
   
   ul, ol {
     margin-left: 1.78rem;
   }
-  
-  .gatsby-highlight {
-    margin-bottom: 30px;
-  }
-  
+
   .gatsby-highlight-code-line {
     background-color: #14161a;
     display: block;
-    margin-right: -1em;
-    margin-left: -1em;
-    padding-right: 1em;
-    padding-left: 0.75em;
+    margin-left: -0.45em;
+    padding-left: 0.2em;
     border-left: 0.2em solid yellowgreen;
+  }
+  
+  .gatsby-highlight pre span.line-numbers-rows {
+    width: 5% !important;
+  }
+    
+  .gatsby-highlight pre span.line-numbers-rows span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .gatsby-highlight {
+    border-radius: 0.3em;
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+  
+  .gatsby-highlight pre[class*="language-"] {
+    margin: 0 !important;
+    padding: 0;
+    overflow: initial;
+    float: left; /* 1 */
+    min-width: 100%; /* 2 */
+  }
+  
+  .gatsby-highlight pre[class*="language-"].line-numbers {
+    padding-left: 2.8em; /* 3 */
   }
   
   .embedVideoIframe {
@@ -84,19 +106,20 @@ const Layout = ({children, pageType, datePosted, timeToRead}) => (
       const {title, description, keywordsCsv, blurb} = data.site.siteMetadata;
       return (
         <>
-        <Helmet
-          title={title}
-          meta={[
-            {name: 'description', content: `${description} ${blurb}`},
-            {name: 'keywords', content: keywordsCsv},
-          ]}
-        >
-          <html lang="en"/>
-        </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title}/>
-        <RootDiv>
-          {children}
-        </RootDiv>
+          <GlobalStyle />
+          <Helmet
+            title={title}
+            meta={[
+              {name: 'description', content: `${description} ${blurb}`},
+              {name: 'keywords', content: keywordsCsv},
+            ]}
+          >
+            <html lang="en"/>
+          </Helmet>
+          <Header siteTitle={data.site.siteMetadata.title}/>
+          <RootDiv>
+            {children}
+          </RootDiv>
         </>
       )
     }}
