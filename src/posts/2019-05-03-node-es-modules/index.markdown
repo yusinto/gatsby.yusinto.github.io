@@ -46,6 +46,8 @@ import someModule from './someModule';
 console.log(random({exactly:5, wordsPerString: 3}));
 ```
 
-Try it out yourself, it works!
+where *someModule.js* is your own module without having to be an *.mjs* file!
+
+Yay!
 
 ---------------------------------------------------------------------------------------
