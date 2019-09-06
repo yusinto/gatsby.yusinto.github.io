@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `ReactJunkie - Yusinto Ngadiman's blog`,
-    keywordsCsv: 'yusinto,ngadiman,blog,yus,react,junkie,reactjunkie,graphql,react-site-nav,ld-redux,universal-hot-reload,relay-compiler-plus',
-    blurb: 'Frontend Engineer @ LaunchDarkly. Book addict and tea lover. Passionate about react graphql and making things fast.',
+    keywordsCsv:
+      'yusinto,ngadiman,blog,yus,react,junkie,reactjunkie,graphql,react-site-nav,ld-redux,universal-hot-reload,relay-compiler-plus',
+    blurb:
+      'Frontend Engineer @ LaunchDarkly. Book addict and tea lover. Passionate about react graphql and making things simple and fast.',
     description: `Yusinto Ngadiman's blog. Read writing from Yusinto Ngadiman on reactjunkie.com.`,
   },
   plugins: [
@@ -45,14 +47,14 @@ module.exports = {
             },
           },
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               width: 800,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
               // height: 400, // Optional: Overrides optional.ratio
               related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
-              noIframeBorder: true //Optional: Disable insertion of <style> border: 0
-            }
+              noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
+            },
           },
           'gatsby-remark-responsive-iframe',
           {
@@ -64,15 +66,15 @@ module.exports = {
                 sh: 'bash',
               },
               showLineNumbers: true,
-              noInlineHighlight: false
+              noInlineHighlight: false,
             },
           },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "nofollow"
-            }
+              target: '_blank',
+              rel: 'nofollow',
+            },
           },
         ],
       },
