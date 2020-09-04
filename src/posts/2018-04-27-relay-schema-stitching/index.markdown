@@ -1,7 +1,7 @@
 ---
 path: "/relay-schema-stitching"
 date: "2018-04-27"
-title: "Relay Schema Stitching with Pesisted Queries"
+title: "Relay Schema Stitching with Persisted Queries"
 published: true
 tags: ["relay", "schema", "stitching", "graphql", "apollo", "react", "js", "javascript", "prisma", "graphcool", "persisted", "queries"]
 files:
