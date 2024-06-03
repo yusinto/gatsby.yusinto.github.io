@@ -41,7 +41,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build && gh-pages -d public -b master -r https://github.com/yusinto/yusinto.github.io.git",
+    "deploy": "gatsby build && gh-pages -d docs -b master -r https://github.com/yusinto/yusinto.github.io.git",
     "gh-pages-help": "gh-pages --help"
   },
   "devDependencies": {
